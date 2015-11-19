@@ -47,35 +47,35 @@ int Plane::get_number_of_economy_plus_rows() {
 }
 
 int Plane::get_number_of_first_class_rows() {
-    return Plane::number_of_first_class_rows;
-    
+    return Plane::number_of_first_class_rows;    
 }
-
 
 void Plane::set_column(int column)
 {
+    Plane::column = column;    
+}
 
+void Plane::set_number_of_economy_class_rows(const int economy_class_rows)
+{
+    Plane::number_of_economy_class_rows = economy_class_rows;
+}
+
+void Plane::set_number_of_economy_plus_rows(const int economy_plus_class_rows)
+{
+    Plane::number_of_economy_plus_rows = economy_plus_class_rows;
     
 }
 
-void Plane::set_number_of_economy_class_rows(const int rows)
+void Plane::set_number_of_first_class_rows(const int first_class_rows)
+{
+    Plane::number_of_first_class_rows = first_class_rows;
+}
+
+
+int main() 
+
 {
     
-}
-
-void Plane::set_number_of_economy_plus_rows(const int rows)
-{
-    
-}
-
-void Plane::set_number_of_first_class_rows(const int rows)
-{
-    
-}
-
-
-int main() {
-
        
     return 0;
 }

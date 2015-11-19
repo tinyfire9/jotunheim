@@ -37,15 +37,13 @@ public:
     int get_number_of_first_class_rows();
 
     
-    
-    
     void set_column(int column);
     
-    void set_number_of_economy_class_rows(const int rows);
+    void set_number_of_economy_class_rows(const int economy_class_rows);
     
-    void set_number_of_economy_plus_rows(const int rows);
+    void set_number_of_economy_plus_rows(const int economy_plus_rows);
     
-    void set_number_of_first_class_rows(const int rows);
+    void set_number_of_first_class_rows(const int first_class_rows);
     
     
 private:
