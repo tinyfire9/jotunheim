@@ -26,13 +26,9 @@ private:
     
     
 public:
-    int generatedID(int &array);
-    void writeFile(int &array,string filename);
-    void populateReadArray(int &array, string filename);
-    vector<int> getData();
-    
-    
-    
+    virtual int generatedID(int &array);
+    virtual void writeFile(int &array,string filename);
+    virtual void populateReadArray(int &array, string filename);
 };
 
 #endif	/* UTILITY_H */
