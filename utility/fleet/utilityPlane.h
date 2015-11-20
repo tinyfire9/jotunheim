@@ -19,31 +19,24 @@ class planeUtility{
     
 private:
     
-    string seats;
-    string fleet; // maybe is string. not sure yet
-    string status;
-    int firstClassRows;
-    int economyRows;
-    int economyPlusRows;
-    int planeId; 
-    int column;
+    string getSeats;
+    string getFleet; // maybe is string. not sure yet
+    string getStatus;
+    int getFirstClassRows;
+    int getEconomyRows;
+    int getEconomyPlusRows;
+    int getPlaneId; 
+    int getColumn;
     
     
 public:
     
-    addPlane(
-            string status,
-            int column,
-            int firstClassRows,
-            int economyRows,
-            int economyPlusRows
-            );
-    void updateData(&seats, &planeId, &fleet);
-    
+    //Missing plane_id
+    void addPlane(string planeId,string status,int column,int firstClassRows,int economyRows,int economyPlusRows); 
+    void updateData(string seats, int planeId, string fleet);   
     string listAvailablePlanes(string status,string fleet);
-    
-    vector<int> seats;
-    vector<string> planeId;
+    vector<int> seatData;
+    vector<string> planeIdData;
     //vector<string> fleet; not sure yet 
      
     
