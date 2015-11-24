@@ -8,9 +8,10 @@
 
 class FlightScheduleUtility : public utility{
 	public:
-		FlightScheduleUtility();
+		FlightScheduleUtility(){};
 		int generateId(vector<Flight> &flights);
 	    void writeFile(vector<Flight> &flights,string filename);
 	    void populateReadArray(vector<Flight> &flights, string filename);
+	    void split(string line, vector<string> &words);
 };
 #endif
