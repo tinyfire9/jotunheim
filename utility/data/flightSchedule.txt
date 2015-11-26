@@ -1,0 +1,5 @@
+flightID planeID origin destination depDate depTime retDate retTime | 1111 fName lName | 2222 fName lName
+flightID planeID origin destination depDate depTime retDate retTime | 3333 fName lName | 4444 fName lName
+flightID planeID origin destination depDate depTime retDate retTime | passengerID fName lName | passengerID fName lName
+flightID planeID origin destination depDate depTime retDate retTime | passengerID fName lName | passengerID fName lName
+flightID planeID origin destination depDate depTime retDate retTime | passengerID fName lName | passengerID fName lName
