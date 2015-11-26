@@ -8,12 +8,14 @@ using namespace std;
 		* document each method
 */
 
+#ifndef FLIGHT_H
+#define FLIGHT_H
+
 class Flight
 {
 	public:
-		Flight(		
-			int id, 
-			int flightNumber, 
+		Flight(
+			int planeId,
 			string origin, 
 			string destination,
 			string departureDate,
@@ -21,7 +23,7 @@ class Flight
 			string returnDate,
 			string returnTime
 		);
-		int getId();
+		int getPlaneId();
 		int getFlightNumber();
 		string getOrigin(); 
 		string getDestination(); 
@@ -31,7 +33,7 @@ class Flight
 		string getReturnTime();
 		vector<int> getPassengerIds();
 		vector<string> getPassengerNames();
-		void setFlightNumber(int flightNumber);
+		void setPlaneId(int planeId);
 		void setOrigin(string origin); 
 		void setDestination(string destination); 
 		void setDepartureDate(string departureDate); 
@@ -41,8 +43,7 @@ class Flight
 		void addPassengerId(int passengerId);
 		void addPassengerName(string passengerName);
 	private:
-		int id;
-		int flightNumber;
+		int planeId;
 		string origin; 
 		string destination; 
 		string departureDate; 
@@ -52,3 +53,5 @@ class Flight
 		vector<int> passengerIds;
 		vector<string> passengerNames;
 };
+
+#endif

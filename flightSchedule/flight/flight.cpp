@@ -4,9 +4,11 @@
 #include "flight.h"
 using namespace std;
 
+#ifndef FLIGHT_CPP
+#define FLIGHT_CPP
+
 Flight::Flight(
-		int id, 
-		int flightNumber, 
+		int planeId, 
 		string origin, 
 		string destination,
 		string departureDate,
@@ -15,8 +17,7 @@ Flight::Flight(
 		string returnTime
 
 	){
-	Flight::id = id;
-	Flight::flightNumber = flightNumber;
+	Flight::planeId = planeId;
 	Flight::origin = origin;
 	Flight:: destination = destination;
 	Flight::departureDate = departureDate;
@@ -25,12 +26,8 @@ Flight::Flight(
 	Flight::returnTime = returnTime; 
 }
 
-int Flight::getId(){
-	return Flight::id;
-}
-
-int Flight::getFlightNumber(){
-	return Flight::flightNumber;
+int Flight::getPlaneId(){
+	return Flight::planeId;
 }
 
 string Flight::getOrigin(){
@@ -66,9 +63,9 @@ vector<string> Flight::getPassengerNames()
 	return Flight::passengerNames;
 }
 
-void Flight::setFlightNumber(int flightNumber)
+void Flight::setPlaneId(int planeId)
 {
-	Flight::flightNumber = flightNumber;
+	Flight::planeId = planeId;
 }
 
 void Flight::setOrigin(string origin)
@@ -108,3 +105,5 @@ void Flight::addPassengerId(int passengerId){
 void Flight::addPassengerName(string passengerName){
 	Flight::passengerNames.push_back(passengerName);
 }
+
+#endif
