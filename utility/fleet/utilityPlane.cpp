@@ -4,94 +4,63 @@
  *
  * Created on November 19, 2015, 9:14 PM
  */
-
+#include <fstream> 
+#include <sstream>
 #include <cstdlib>
-#include "utility.h"
-#include "utilityPlane.h"
 #include <iomanip>
-//#include "plane.h"
-
+#include <iostream>
+#include "utilityPlane.h"
 using namespace std;
 
 
 
+int PlaneUtility::generatedId(vector<Plane> &planes){
+	int maximum = 0;
+	for(int i = 0; i < planes.size(); i++)
+	{
+		if(planes[i].get_plane_id() > maximum)
+		{
+			maximum = planes[i].get_plane_id();
+		}
+	}
+	return maximum;
+}
 
-void planeUtility::addPlane(string planeId,string status,int column,int firstClassRows,int economyRows,int economyPlusRows)
-{
-            cout << planeId << setw(10) ;
-            cout << status << setw(5) ;
-            cout << column << setw(5);
-            cout << firstClassRows << setw(5);
-            cout <<economyPlusRows << setw(5);
-            cout << economyRows << setw(5);
-            
-            for (int i = 0 ; i < 5; i++)
-            {
-            planeIdData.push_back(planeId);
-            cout << "value of vec " << i << " \n";
-            
-            }
-           
-            
-            
-    
-              
-            
+void PlaneUtility::populateReadArray(){
 
-            
-           
-    
-};
 
-void askQuestion(planeUtility& thePlaneUtility);
+	string line = "";
+	string chunk ="";
+	vector< vector<string> >data;
+	fstream readStream;
 
-void askQuestion(planeUtility& thePlaneUtility)
-{
-    
-   
-    string input;
-    string readyStatus ="READY";
-    string notReadyStatus ="NOT AVAILABLE";
-    int column;
-    int firstclassrow;
-    int economyplusclassrow;
-    int economyclassrow;
-    int planeId;
-    
-    cout << "Do you wish to add new plane? \n";
-    cout << "Enter Y if you wish to add new plane \n";
-    cin >> input;
-    
-    bool checkInput = true;
-    while(checkInput)
-    {
-        if (input == "Y" )
-        {
-            cout << "Enter the column\n >>";
-            cin >> column;
-            cout << "Enter first class row \n >>";
-            cin >> firstclassrow;
-            cout << "Enter economy plus row \n >>";
-            cin >> economyplusclassrow;
-            cout <<"Enter economy class row \n >>";
-            cin >> economyclassrow;
-            thePlaneUtility.addPlane("XYZ",readyStatus,column,firstclassrow,economyplusclassrow,economyclassrow);
-            //We are still missing the plane ID generator
-          
-            checkInput = false;
-        }
-           else
-           checkInput = false;
-    }
+	readStream.open("../data/plane.txt");
+	
+
+	while(getline(readStream,line, '\n'))
+	{
+		vector<string> row;
+		stringstream ss(line);
+		while(getline(ss,chunk, '|'))
+		{
+			row.push_back(chunk);
+
+		}
+		data.push_back(row);
          
+	}
+
+
+	for(int i =0; i <data.size(); i++)
+	{
+		for(int p =0; p <data[i].size(); p++)
+		{
+			cout << data[i][p] << " | ";
+		}
+
+		cout << endl;
+	}
+
 }
 
-int main() {
-    
-    planeUtility ut;
-    
-    askQuestion(ut);
- 
-    return 0;
-}
 
