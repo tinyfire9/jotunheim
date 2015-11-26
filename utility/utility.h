@@ -29,7 +29,7 @@ public:
 	utility(){};
     virtual int generatedID(vector<Flight> &flights){};
     virtual void writeFile(int &array,string filename){};
-    virtual void populateReadArray(int &array, string filename){};
+    virtual void populateReadArray(/*int &array, string filename*/){};
 };
 
 #endif	/* UTILITY_H */
