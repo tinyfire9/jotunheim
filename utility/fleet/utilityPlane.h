@@ -8,6 +8,9 @@
 #include <string>
 #include <iostream>
 #include <vector>
+ #include "../../fleet/plane/plane.cpp"
+#include "../utility.h"
+ 
 
 
 #ifndef UTILITYPLANE_H
@@ -15,7 +18,7 @@
 
 using namespace std;
 
-class planeUtility{
+class PlaneUtility{
     
 private:
     
@@ -31,13 +34,15 @@ private:
     
 public:
     
-    //Missing plane_id
+  
+    int generatedId(vector<Plane> &planes);
+    void populateReadArray();
     void addPlane(string planeId,string status,int column,int firstClassRows,int economyRows,int economyPlusRows); 
     void updateData(string seats, int planeId, string fleet);   
     string listAvailablePlanes(string status,string fleet);
     vector<int> seatData;
     vector<string> planeIdData;
-    //vector<string> fleet; not sure yet 
+
      
     
 };
