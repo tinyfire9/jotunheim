@@ -1,5 +1,5 @@
-flight# planeID origin destination depDate depTime retDate retTime | 1111 fName lName | 2222 fName lName
-1 22 origin destination depDate depTime retDate retTime | 3333 fName lName | 4444 fName lName
-2 23 origin destination depDate depTime retDate retTime | passengerID fName lName | passengerID fName lName
-3 24 origin destination depDate depTime retDate retTime | passengerID fName lName | passengerID fName lName
-4 25 origin destination depDate depTime retDate retTime | passengerID fName lName | passengerID fName lName
+11 12 origin destination depDate depTime retDate retTime | 9111 fName lName | 9222 fName lName
+1 22 origin destination depDate depTime retDate retTime | 8333 fName lName | 8444 fName lName
+2 23 origin destination depDate depTime retDate retTime | 79999 fName lName | 79999 fName lName
+3 24 origin destination depDate depTime retDate retTime | 65555 fName lName | 65555 fName lName
+4 25 origin destination depDate depTime retDate retTime | 5888 fName lName | 5888 fName lName
