@@ -7,8 +7,15 @@
 
 #include <cstdlib>
 #include "plane.h"
+#include <vector>
+#include <string>
 
 using namespace std;
+
+
+
+#ifndef PLANE_CPP
+#define PLANE_CPP
 
 
 Plane::Plane(   
@@ -50,6 +57,7 @@ int Plane::get_number_of_first_class_rows() {
     return Plane::number_of_first_class_rows;    
 }
 
+
 void Plane::set_column(int column)
 {
     Plane::column = column;    
@@ -71,12 +79,14 @@ void Plane::set_number_of_first_class_rows(const int first_class_rows)
     Plane::number_of_first_class_rows = first_class_rows;
 }
 
-
-int main() 
-
+void Plane::addPassengerId(int passengerId)
 {
-    
-       
-    return 0;
+    Plane::passengerIds.push_back(passengerId);
 }
 
+void Plane::addPassengerName(string passengerName)
+{
+    Plane::passengerNames.push_back(passengerName);
+}
+
+#endif
