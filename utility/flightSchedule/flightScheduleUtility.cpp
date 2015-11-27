@@ -36,11 +36,12 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, st
 	readStream.open("../data/flightSchedule.txt");
 
 	//read each line and split by |
-	while(getline(readStream, line, '\n'))
+	while(getline(readStream, line))
 	{
+		cout << "** " << line << endl;
 		vector<string> row;
 		stringstream ss(line);
-		while(getline(ss, chunk, '|'))
+		while(getline(ss, chunk, '|') )
 		{
 			row.push_back(chunk);
 		}
@@ -73,12 +74,51 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, st
 			vector<string> passsengerInfo;
 			util.split(data[i][j], passsengerInfo);
 			flight.addPassengerId(util.stringToInt(passsengerInfo[0]));
-			flight.addPassengerName(passsengerInfo[2] + ", " + passsengerInfo[1]);//lastname, firstname
+			flight.addPassengerName(passsengerInfo[1] + " " + passsengerInfo[2]);//lastname, firstname
 		}
 		flights.push_back(flight);
 	}
 }
 
+
+void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vector<StorageFlight> &newFlights, string filename)
+{
+	ofstream outputStream;
+	outputStream.open("../data/test.txt");
+	int iteration = storageFlights.size() + newFlights.size();
+	for (int i = 0; i < iteration; i++)
+	{
+		if(i != storageFlights.size())
+		{
+			outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " ";
+			outputStream << storageFlights[i].getOrigin() << " " << storageFlights[i].getDestination() << " ";
+			outputStream << storageFlights[i].getDepartureDate() << " " << storageFlights[i].getDepartureTime() << " ";
+			outputStream << storageFlights[i].getReturnDate() << " " << storageFlights[i].getReturnTime();
+			vector<int> passengerIds = storageFlights[i].getPassengerIds();
+			vector<string> passengerNames = storageFlights[i].getPassengerNames();
+			for (int j = 0; j < passengerIds.size(); j++)
+			{
+				outputStream << " | " << passengerIds[j] << " " << passengerNames[j];
+			}
+			outputStream << endl;
+		}
+		else
+		{
+			outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " ";
+			outputStream << storageFlights[i].getOrigin() << " " << storageFlights[i].getDestination() << " ";
+			outputStream << storageFlights[i].getDepartureDate() << " " << storageFlights[i].getDepartureTime() << " ";
+			outputStream << storageFlights[i].getReturnDate() << " " << storageFlights[i].getReturnTime();
+			vector<int> passengerIds = storageFlights[i].getPassengerIds();
+			vector<string> passengerNames = storageFlights[i].getPassengerNames();
+			for (int j = 0; j < passengerIds.size(); j++)
+			{
+				outputStream << " | " << passengerIds[j] << " " << passengerNames[j];
+			}
+			outputStream << endl;
+		}
+	}
+	outputStream.close();
+}
 void FlightScheduleUtility::split(string line, vector<string> &words)
 {
 	stringstream ss(line);
