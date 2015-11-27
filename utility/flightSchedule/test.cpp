@@ -1,14 +1,16 @@
 #include <iostream>
-// #include ""
+// #include "../../flightSchedule/flight/newFlight.cpp"
 #include "flightScheduleUtility.cpp"
 
 int main(){
-	std::vector<StorageFlight> flights;
+	std::vector<StorageFlight> storageFlights;
+	std::vector<NewFlight> newFlights;
 	FlightScheduleUtility test;
-	test.populateReadArray(flights, "asa");
-	for (int i = 0; i < flights.size(); i++)
+	test.populateReadArray(storageFlights, "asa");
+	for (int i = 0; i < storageFlights.size(); i++)
 	{
-		cout << flights[i].getFlightNumber() << " " << flights[i].getPlaneId() << " " << flights[i].getOrigin() << " " << flights[i].getDestination() << endl;
+		cout << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " " << storageFlights[i].getOrigin() << " " << storageFlights[i].getDestination() << endl;
 	}
+	test.writeFile(storageFlights, newFlights, "aasd");
 	return 0;
 }
