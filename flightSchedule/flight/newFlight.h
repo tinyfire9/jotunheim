@@ -1,19 +1,33 @@
 #include <iostream>
 #include <string>
 #include "flight.cpp"
-#include "../../utility/flightSchedule/flightScheduleUtility.cpp"
+#include <sstream>
+#include <fstream>
 using namespace std;
 
 #ifndef NEW_FLIGHT_H
 #define NEW_FLIGHT_H
 
-FlightScheduleUtility util;
-
 class NewFlight : public Flight{
 public:
 	NewFlight(int planeId, string origin, string destination,string departureDate,string departureTime,string returnDate,string returnTime)
 	: Flight(planeId, origin, destination, departureDate, departureTime, returnDate, returnTime){
-		NewFlight::flightNumber = util.generateId();
+		string line = "";
+		int max = 0;
+		int id = 0;
+		fstream readStream;
+		readStream.open("../data/flightSchedule.txt");
+		while(getline(readStream, line))
+		{
+			stringstream ss(line);
+			ss >> id;
+			if(id > max)
+			{
+				max = id;
+			}
+		}
+		NewFlight::flightNumber = max + 1;
+
 	}
 	int getFlightNumber();
 private:
