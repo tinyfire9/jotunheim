@@ -5,10 +5,10 @@
  * Created on November 17, 2015, 9:28 PM
  */
 
-#include<iostream>
-#include<string>
-#include<fstream>
-#include<vector>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
 #ifndef PLANE_H
 #define	PLANE_H
 using namespace std;
@@ -21,9 +21,9 @@ public:
     Plane(
             int plane_id,
             int column,
-            int number_of_economy_class_rows,
-            int number_Of_economy_plus_rows,
-            int number_of_first_class_rows
+            string number_of_economy_class_rows,
+            string number_Of_economy_plus_rows,
+            string number_of_first_class_rows
             
           );   
       
@@ -31,11 +31,11 @@ public:
    
     int get_column();
 
-    int get_number_of_economy_class_rows();
+    string get_number_of_economy_class_rows();
 
-    int get_number_of_economy_plus_rows();
+    string get_number_of_economy_plus_rows();
 
-    int get_number_of_first_class_rows();
+    string get_number_of_first_class_rows();
 
     vector<int> getPassengerIds();
 
@@ -43,11 +43,11 @@ public:
 
     void set_column(int column);
     
-    void set_number_of_economy_class_rows(const int economy_class_rows);
+    void set_number_of_economy_class_rows(string number_of_economy_class_rows);
     
-    void set_number_of_economy_plus_rows(const int economy_plus_rows);
+    void set_number_of_economy_plus_rows(string number_of_economy_plus_rows);
     
-    void set_number_of_first_class_rows(const int first_class_rows);
+    void set_number_of_first_class_rows(string number_of_first_class_rows);
     
     void addPassengerId(int passengerId);
 
@@ -57,15 +57,11 @@ public:
 private:
     int plane_id;
     int column;
-    int number_of_economy_class_rows;
-    int number_of_economy_plus_rows;
-    int number_of_first_class_rows;
+    string number_of_economy_class_rows;
+    string number_of_economy_plus_rows;
+    string number_of_first_class_rows;
     vector<int> passengerIds;
     vector<string> passengerNames;
-    
-
-    
-    
     
    
 };
