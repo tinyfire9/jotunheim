@@ -1,0 +1,5 @@
+passengerID FlightNumber Fname Lname seat  
+passengerID FlightNumber Fname Lname seat  
+passengerID FlightNumber Fname Lname seat  
+passengerID FlightNumber Fname Lname seat  
+12 1 Fname Lname 5A
