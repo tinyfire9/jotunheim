@@ -27,7 +27,6 @@ private:
     
 public:
 	utility(){};
-    virtual int generatedID(/*vector<Flight> &flights*/){};
     virtual void writeFile(int &array,string filename){};
     virtual void populateReadArray(vector<Flight> &flights, string filename){};
 };
