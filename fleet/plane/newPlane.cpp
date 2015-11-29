@@ -6,4 +6,3 @@ int NewPlane::getPlaneNumber(){
 	return NewPlane::PlaneNumber;
 }
 
-
