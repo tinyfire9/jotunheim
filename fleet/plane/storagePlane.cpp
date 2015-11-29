@@ -2,6 +2,8 @@
 #include <string>
 #include "storagePlane.h"
 
+/*
 int StoragePlane::getPlaneNumber(){
-	return StoragePlane::planeNumber;
+	return StoragePlane::planeId;
 }
+*/
