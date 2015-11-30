@@ -8,14 +8,15 @@ using namespace std;
 
 class StoragePlane : public Plane{
 public:
-	StoragePlane(int planeId, int columns, int FirstClassRows, int EconomyClassRows,int EconomyPlusRows)
-	: Plane(planeId, columns, FirstClassRows, EconomyPlusRows,EconomyClassRows)
+	StoragePlane(int plane_id, int column, string number_of_economy_class_rows, string number_of_economy_plus_rows,string number_of_first_class_rows)
+	: Plane(plane_id, column, number_of_economy_class_rows, number_of_economy_plus_rows,number_of_first_class_rows)
 	{
-		StoragePlane::planeNumber = planeNumber;
 	}
 	int getPlaneNumber();
 private:
 	int planeNumber;
+
+
 };				
 
 #endif

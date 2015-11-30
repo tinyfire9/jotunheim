@@ -12,8 +12,6 @@
 
 using namespace std;
 
-
-
 #ifndef PLANE_CPP
 #define PLANE_CPP
 
@@ -21,12 +19,11 @@ using namespace std;
 Plane::Plane(   
     int plane_id,
     int column,           
-    int number_of_economy_class_rows,
-    int number_of_economy_plus_rows,
-    int number_of_first_class_rows
+    string number_of_economy_class_rows,
+    string number_of_economy_plus_rows,
+    string number_of_first_class_rows
     
-)
-{
+){
  
  Plane::plane_id = plane_id;
  Plane::column = column;
@@ -44,37 +41,45 @@ int Plane::get_column() {
     
 }
 
-int Plane::get_number_of_economy_class_rows() {
+string Plane::get_number_of_economy_class_rows() {
     return Plane::number_of_economy_class_rows;
     
 }
 
-int Plane::get_number_of_economy_plus_rows() {
+string Plane::get_number_of_economy_plus_rows() {
     return Plane::number_of_economy_plus_rows;
 }
 
-int Plane::get_number_of_first_class_rows() {
+string  Plane::get_number_of_first_class_rows() {
     return Plane::number_of_first_class_rows;    
 }
 
+vector<int> Plane::getPassengerIds(){
+    return Plane:: passengerIds;
+}
+
+vector<string> Plane::getPassengerSeats()
+{
+    return Plane::passengerSeats;
+}
 
 void Plane::set_column(int column)
 {
     Plane::column = column;    
 }
 
-void Plane::set_number_of_economy_class_rows(const int economy_class_rows)
+void Plane::set_number_of_economy_class_rows(string economy_class_rows)
 {
     Plane::number_of_economy_class_rows = economy_class_rows;
 }
 
-void Plane::set_number_of_economy_plus_rows(const int economy_plus_class_rows)
+void Plane::set_number_of_economy_plus_rows(string economy_plus_class_rows)
 {
     Plane::number_of_economy_plus_rows = economy_plus_class_rows;
     
 }
 
-void Plane::set_number_of_first_class_rows(const int first_class_rows)
+void Plane::set_number_of_first_class_rows(string first_class_rows)
 {
     Plane::number_of_first_class_rows = first_class_rows;
 }
@@ -84,9 +89,9 @@ void Plane::addPassengerId(int passengerId)
     Plane::passengerIds.push_back(passengerId);
 }
 
-void Plane::addPassengerName(string passengerName)
+void Plane::addPassengerSeat(string passengerSeat)
 {
-    Plane::passengerNames.push_back(passengerName);
+    Plane::passengerSeats.push_back(passengerSeat);
 }
 
 #endif

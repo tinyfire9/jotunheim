@@ -3,14 +3,15 @@
 #include <vector>
 #include "passenger.h"
 
-Passenger::Passenger(string firstName, string lastName, string seatNumber, int flightNumber){
+Passenger::Passenger(int passengerId,string firstName, string lastName, string seatNumber, int flightNumber){
+	Passenger::passengerId = passengerId;
 	Passenger::firstName = firstName;
 	Passenger::lastName = lastName;
 	Passenger::seatNumber = seatNumber;
 	Passenger::flightNumbers.push_back(flightNumber);
 }
 
-int Passenger::getId(){
+int Passenger::getPassengerId(){
 	return Passenger::passengerId;
 }
 
@@ -28,6 +29,9 @@ string Passenger::getSeatNumber(){
 
 vector<int> Passenger::getFlightNumbers(){
 	return Passenger::flightNumbers;
+}
+void Passenger::setPassengerId(int passengerId){
+	Passenger::passengerId =  passengerId;
 }
 
 void Passenger::setFirstName(string firstName){
