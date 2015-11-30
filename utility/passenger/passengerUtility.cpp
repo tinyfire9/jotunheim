@@ -3,5 +3,12 @@
 #include <sstream>
 #include <fstream>
 #include <typeinfo>
-//#include "../../passenger/passenger/"
+#include <cstdlib.h>
+#include "../../passenger/passenger/storagePassenger.cpp"
 #include "../utility.h"
+using namespace std;
+
+void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers)
+{
+	
+}
