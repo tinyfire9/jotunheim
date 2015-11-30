@@ -1,5 +1,4 @@
-passengerID FlightNumber Fname Lname seat  
-passengerID FlightNumber Fname Lname seat  
-passengerID FlightNumber Fname Lname seat  
-passengerID FlightNumber Fname Lname seat  
-12 1 Fname Lname 5A
+passengerID FName LName | seat FlightNumber | seat FlightNumber 
+passengerID FName LName | seat FlightNumber | seat FlightNumber
+passengerID FName LName | seat FlightNumber | seat FlightNumber | seat FlightNumber
+passengerID FName LName | seat FlightNumber | seat FlightNumber | seat FlightNumber
