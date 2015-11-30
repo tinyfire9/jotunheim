@@ -39,7 +39,7 @@ public:
 
     vector<int> getPassengerIds();
 
-    vector<string> getPassengerNames();  
+    vector<string> getPassengerSeats();  
 
     void set_column(int column);
     
@@ -51,7 +51,7 @@ public:
     
     void addPassengerId(int passengerId);
 
-    void addPassengerName(string passengerName);
+    void addPassengerSeat(string passengerSeat);
 
 
 private:
@@ -61,7 +61,7 @@ private:
     string number_of_economy_plus_rows;
     string number_of_first_class_rows;
     vector<int> passengerIds;
-    vector<string> passengerNames;
+    vector<string> passengerSeats;
     
    
 };
