@@ -4,6 +4,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <typeinfo>
+#include <exception>
 #include "../../flightSchedule/flight/storageFlight.cpp"
 #include "flightScheduleUtility.h"
 
@@ -16,8 +17,8 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights)
 	string chunk = "";
 	vector< vector<string> > data;
 	fstream readStream;
-	readStream.open("../data/flightSchedule.txt");
-
+	readStream.open("../utility/data/flightSchedule.txt");
+	
 	//read each line and split by |
 	while(getline(readStream, line))
 	{
@@ -65,11 +66,10 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights)
 
 void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights)
 {
-	// cout << "CHeck YESSSS~!!" << newFlights[0].getOrigin() <<endl;
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
-	outputStream.open("../data/flightSchedule.txt");
+	outputStream.open("../utility/data/flightSchedule.txt");
 	for (int i = 0; i < storageFlights.size(); i++)
 	{
 		outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " ";
@@ -86,7 +86,6 @@ void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vect
 	}
 	for (int i = 0; i < newFlights.size(); i++)
 	{
-		cout << newFlights[i].getReturnDate() << endl;
 		outputStream << newFlights[i].getFlightNumber() << " " << newFlights[i].getPlaneId() << " ";
 		outputStream << newFlights[i].getOrigin() << " " << newFlights[i].getDestination() << " ";
 		outputStream << newFlights[i].getDepartureDate() << " " << newFlights[i].getDepartureTime() << " ";
