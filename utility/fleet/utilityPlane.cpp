@@ -18,12 +18,15 @@ using namespace std;
 
 
 
-void PlaneUtility::populateReadArray(vector<StoragePlane> &planes){
+void PlaneUtility::populateReadArray(vector<StoragePlane> &planes)
+{
 
 
     PlaneUtility util;
 	string line = "";
-	string chunk ="";
+	string chunk = "";
+
+
 	vector< vector<string> >data;
 	fstream readStream;
 	readStream.open("../data/plane.txt");
@@ -33,7 +36,7 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes){
 	{
 		vector<string> row;
 		stringstream ss(line);
-		while(getline(ss,chunk, '|'))
+		while(getline(ss,chunk, '|') )
 		{
 			row.push_back(chunk);
 
@@ -42,12 +45,11 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes){
          
 	}
 
-
 	for(int i = 0; i < data.size(); i++ )
 	{
 		vector<string> chunks;
 		vector< vector<string> > passenger;
-		util.split(data[i][0],chunks);
+		util.split(data[i][0], chunks);
 
 		StoragePlane Plane(
 			util.stringToInt(chunks[0]),
@@ -62,7 +64,7 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes){
           vector<string> passengerInfo;
           util.split(data[i][j],passengerInfo);
           Plane.addPassengerId(util.stringToInt(passengerInfo[0]));
-          Plane.addPassengerName(passengerInfo[1] + " " + passengerInfo[2]);
+          Plane.addPassengerSeat(passengerInfo[1]);
 
 	    }
 	    planes.push_back(Plane);
@@ -70,7 +72,7 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes){
 
 }
 
-void writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes, string filename)
+void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes)
 {
 	string pipe = "|";
 	ofstream outputStream;
@@ -82,7 +84,7 @@ void writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes,
 		outputStream << storagePlanes[i].get_number_of_first_class_rows() << " " << storagePlanes[i].get_number_of_economy_class_rows() << " ";
 	    outputStream << storagePlanes[i].get_number_of_economy_plus_rows();
 	    vector<int> passengerIds = storagePlanes[i].getPassengerIds();
-	    vector<string> passengerNames = storagePlanes[i].getPassengerNames();
+	    vector<string> passengerNames = storagePlanes[i].getPassengerSeats();
 	    for (int j = 0; j < passengerIds.size(); j++)
 	    {
 	    	outputStream << " " << pipe << " " << passengerIds[j] << " " << passengerNames[j];
@@ -97,10 +99,10 @@ void writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes,
     outputStream << NewPlanes[i].get_number_of_first_class_rows() << " " << NewPlanes[i].get_number_of_economy_class_rows() << " ";
     outputStream << NewPlanes[i].get_number_of_economy_plus_rows() << " ";
     vector<int> passengerIds = NewPlanes[i].getPassengerIds();
-    vector<string> passengerNames = NewPlanes[i].getPassengerNames();
+    vector<string> passengerSeats = NewPlanes[i].getPassengerSeats();
     for (int j =0; j < passengerIds.size(); j++)
     {
-    	outputStream << " " << pipe << " " << passengerIds[j] << " " << passengerNames[i]; 
+    	outputStream << " " << pipe << " " << passengerIds[j] << " " << passengerSeats[i]; 
     }
     outputStream << endl;
   }
