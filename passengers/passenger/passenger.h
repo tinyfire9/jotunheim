@@ -1,6 +1,11 @@
 #include <string>
+#include <fstream>
 #include <iostream>
 #include <vector>
+
+#ifndef PASSENGER_H
+#define PASSENGER_H
+
 using namespace std;
 
 class Passenger
@@ -40,3 +45,5 @@ class Passenger
 		vector<string>passengerSeats;
 		
 };
+
+#endif
