@@ -5,9 +5,8 @@
 #include <fstream>
 using namespace std;
 
-#ifdef NEW_PLANE_H
+#ifndef NEW_PLANE_H
 #define NEW_PLANE_H
-
 
 class NewPlane : public Plane{
 public:
@@ -36,5 +35,4 @@ public:
 private:
 	int planeNumber;
 };
-
 #endif
