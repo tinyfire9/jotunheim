@@ -12,6 +12,11 @@ public:
 	: Plane(plane_id, column, number_of_economy_class_rows, number_of_economy_plus_rows,number_of_first_class_rows)
 	{
 	}
+	int getPlaneNumber();
+private:
+	int planeNumber;
+
+
 };				
 
 #endif
