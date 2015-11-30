@@ -3,6 +3,6 @@
 #include "newPlane.h"
 
 int NewPlane::getPlaneNumber(){
-	return NewPlane::PlaneNumber;
+	return NewPlane::planeNumber;
 }
 
