@@ -1,6 +1,5 @@
-PlaneID	columns FirstRows EconomyRows EconomyPlus | PassengerID seat | Passenger ID seat | 2222 3A | 3333 3B 
-PlaneID	columns FirstRows EconomyRows EconomyPlus | PassengerID seat | Passenger ID seat | 4444 4A | 5555 5A 
-PlaneID	columns FirstRows EconomyRows EconomyPlus | PassengerID seat | Passenger ID seat | PassengerID seat | Passenger ID seat 
-PlaneID	columns FirstRows EconomyRows EconomyPlus | PassengerID seat | Passenger ID seat | PassengerID seat | Passenger ID seat  
-
+1 12 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
+2 23 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
+3 35 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
+4 45 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
 
