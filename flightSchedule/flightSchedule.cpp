@@ -25,6 +25,5 @@ void FlightSchedule::addFlight(
 		returnTime
 	);
 	FlightSchedule::newFlights.push_back(flight);
-	// cout << FlightSchedule::newFlights[1].getFlightNumber() << " -- yoyo " << FlightSchedule::storageFlights.size() << FlightSchedule::newFlights.size() << endl;
 	FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights);
 }
