@@ -16,7 +16,7 @@ public:
 		int max = 0;
 		int id = 0;
 		fstream readStream;
-		readStream.open("../data/flightSchedule.txt");
+		readStream.open("../utility/data/flightSchedule.txt");
 		while(getline(readStream, line))
 		{
 			stringstream ss(line);
@@ -26,8 +26,8 @@ public:
 				max = id;
 			}
 		}
+		readStream.close();
 		NewFlight::flightNumber = max + 1;
-
 	}
 	int getFlightNumber();
 private:
