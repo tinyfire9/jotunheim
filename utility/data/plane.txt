@@ -1,5 +1,6 @@
-1 12 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-2 23 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-3 35 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-4 45 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-
+1 12 EconomyRows EconomyPlus FirstRows | 0 seat | 0 seat
+2 23 EconomyRows EconomyPlus FirstRows | 0 seat | 0 seat
+3 35 EconomyRows EconomyPlus FirstRows | 0 seat | 0 seat
+4 45 EconomyRows EconomyPlus FirstRows | 0 seat | 0 seat
+1 6 plus First econom  | 1234 5a | 4566 5a | 8765 5a
+2 7 8 3 6  | 8999 5C | 9999 5C

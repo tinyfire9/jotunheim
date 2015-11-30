@@ -10,8 +10,8 @@ using namespace std;
 
 class NewPassenger : public Passenger{
 public:
-	NewPassenger(int passengerId,string firstName, string lastName,string seatNumber, int flightNumber)
-	: Passenger(passengerId,firstName,lastName,seatNumber,flightNumber)
+	NewPassenger(int passengerId,string firstName, string lastName)
+	: Passenger(passengerId,firstName,lastName)
 	{
 		string line = "";
 		int max = 0;
@@ -32,4 +32,6 @@ public:
 	int getPassengerNumber();
 private:
     int passengerNumber;
-}
+};
+
+#endif
