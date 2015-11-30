@@ -58,9 +58,9 @@ vector<int> Plane::getPassengerIds(){
     return Plane:: passengerIds;
 }
 
-vector<string> Plane::getPassengerNames()
+vector<string> Plane::getPassengerSeats()
 {
-    return Plane::passengerNames;
+    return Plane::passengerSeats;
 }
 
 void Plane::set_column(int column)
@@ -89,9 +89,9 @@ void Plane::addPassengerId(int passengerId)
     Plane::passengerIds.push_back(passengerId);
 }
 
-void Plane::addPassengerName(string passengerName)
+void Plane::addPassengerSeat(string passengerSeat)
 {
-    Plane::passengerNames.push_back(passengerName);
+    Plane::passengerSeats.push_back(passengerSeat);
 }
 
 #endif
