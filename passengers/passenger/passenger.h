@@ -1,47 +1,49 @@
 #include <string>
+#include <fstream>
 #include <iostream>
 #include <vector>
+
+#ifndef PASSENGER_H
+#define PASSENGER_H
+
 using namespace std;
 
 class Passenger
 {
 	public:
-		Passenger(
+		Passenger
+		(
 			int passengerId, 
 			string firstName,
-			string lastName,
-			string seatNumber,
-			int flightNumber
-		);		
+			string lastName
+		
+		);	
+
 		int getPassengerId();
-		int getFlightNumber();
 		string getFirstName();
 		string getLastName();
-		string getSeatNumber();
 		
 
-		vector<int> getPassengerIds();
-		vector<string> getPassengerNames();
+		vector<int> getFlightNumber();
+		vector<string> getPassengerSeats();
 
 		void setPassengerId(int passengerId);
-		void setFlightNumber(int flightNumber);
 		void setFirstName(string firstName);
 		void setLastName(string lastName);
-		void setSeatNumber(string seatNumber);
+		
 
-		//void addPassengerId(int passengerId);
 		void addFlightNumber(int flightNumber);
-		//void addPassengerName(string passengerName);
-		//void addPassengerSeat(string passengerSeat);
+		void addPassengerSeat(string passengerSeat);
+
 		
 
 	private:
 		int passengerId;
 		string firstName;
-		string lastName;
-		string seatNumber;
-		//vector<int> passengerIds;
+		string lastName;	
 		vector<int> flightNumbers;
-		//vector<string> passengerNames;
-		//vector<string> passengerSeat;
+		vector<string>passengerSeats;
+		
 };
+
+#endif

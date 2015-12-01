@@ -11,7 +11,7 @@ PlaneUtility test;
 
 test.populateReadArray(storagePlanes);
 
-NewPlane test2(1,6,"First","econom","plus");
+NewPlane test2(10,"First","economy","economyplus");
 test2.addPassengerId(1234);
 test2.addPassengerSeat("5a");
 
@@ -24,7 +24,7 @@ test2.addPassengerSeat("9a");
 newPlanes.push_back(test2);
 test.writeFile(storagePlanes,newPlanes);
 
-NewPlane test3(2,7,"3","6","8");
+NewPlane test3(12,"First","Economy","economyplus");
 test3.addPassengerId(8999);
 test3.addPassengerSeat("2b");
 

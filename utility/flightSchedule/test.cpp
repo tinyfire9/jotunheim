@@ -17,7 +17,7 @@ int main(){
 	newFlights.push_back(test2);
 	test.writeFile(storageFlights, newFlights);
 
-	NewFlight test3(10, "SFO", "JFK","dec.22","10:00am","dec23","03:00am");
+	NewFlight test3(15, "SFO", "JFK","dec.22","10:00am","dec23","03:00am");
 	test3.addPassengerId(1234);
 	test3.addPassengerName("yohannes seifu");
 

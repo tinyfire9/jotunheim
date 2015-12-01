@@ -8,8 +8,9 @@ using namespace std;
 
 class StoragePassenger : public Passenger{
 public:
-	StoragePassenger(int passengerId, string firstName, string lastName, string seatNumber, int flightNumber)
-	: Passenger(passengerId, firstName, lastName, seatNumber, flightNumber ){
+	StoragePassenger(int passengerId, string firstName, string lastName)
+	: Passenger(passengerId, firstName, lastName)
+	{
 		Storage::flightNumber = flightNumber;
 	}
 	int getFlightNumber();

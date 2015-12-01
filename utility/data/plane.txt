@@ -1,5 +1,16 @@
-1 12 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-2 23 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-3 35 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-4 45 EconomyPlus FirstRows EconomyRows | 0 seat | 0 seat | 0 seat | 0 seat
-
+27 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+28 12 First Economy economyplus | 8999 5C | 9999 5C
+29 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+30 12 First Economy economyplus | 8999 5C | 9999 5C
+31 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+32 12 First Economy economyplus | 8999 5C | 9999 5C
+33 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+34 12 First Economy economyplus | 8999 5C | 9999 5C
+35 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+36 12 First Economy economyplus | 8999 5C | 9999 5C
+37 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+38 12 First Economy economyplus | 8999 5C | 9999 5C
+39 10 First economy economyplus | 1234 5a | 4566 5a | 8765 5a
+40 12 First Economy economyplus | 8999 5C | 9999 5C
+41 10 First economy economyplus  | 1234 5a | 4566 5a | 8765 5a
+42 12 First Economy economyplus  | 8999 5C | 9999 5C
