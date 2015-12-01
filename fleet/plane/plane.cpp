@@ -17,23 +17,18 @@ using namespace std;
 
 
 Plane::Plane(   
-    int plane_id,
-    int column,           
+    int column, 
+    string number_of_first_class_rows,          
     string number_of_economy_class_rows,
-    string number_of_economy_plus_rows,
-    string number_of_first_class_rows
+    string number_of_economy_plus_rows
     
 ){
  
- Plane::plane_id = plane_id;
  Plane::column = column;
  Plane::number_of_first_class_rows = number_of_first_class_rows;
  Plane::number_of_economy_class_rows = number_of_economy_class_rows;
  Plane::number_of_economy_plus_rows = number_of_economy_plus_rows;
     
-}
-int Plane::get_plane_id(){
-    return Plane::plane_id;
 }
 
 int Plane::get_column() {
