@@ -19,15 +19,14 @@ class Plane
 public:
     
     Plane(
-            int plane_id,
             int column,
+            string number_of_first_class_rows,
             string number_of_economy_class_rows,
-            string number_Of_economy_plus_rows,
-            string number_of_first_class_rows
+            string number_Of_economy_plus_rows
+            
             
           );   
       
-    int get_plane_id ();
    
     int get_column();
 
@@ -55,7 +54,7 @@ public:
 
 
 private:
-    int plane_id;
+
     int column;
     string number_of_economy_class_rows;
     string number_of_economy_plus_rows;
