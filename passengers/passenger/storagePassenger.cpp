@@ -2,6 +2,7 @@
 #include <string>
 #include "storagePassenger.h"
 
+
 int StoragePassenger::getPassengerNumber(){
-	return StoragePassenger::flightNumber;
+	return StoragePassenger::passengerId;
 }
