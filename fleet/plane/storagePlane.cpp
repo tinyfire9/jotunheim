@@ -4,5 +4,5 @@
 
 
 int StoragePlane::getPlaneNumber(){
-	return StoragePlane::planeNumber;
+	return StoragePlane::plane_id;
 }
