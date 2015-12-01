@@ -3,5 +3,6 @@
 #include "newPassenger.h"
 
 int NewPassenger::getPassengerNumber(){
-	return NewPassenger::planeNumber;
+	return NewPassenger::passengerNumber;
 }
+
