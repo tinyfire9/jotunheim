@@ -7,7 +7,7 @@ class FlightSchedule
 public:
 	FlightSchedule();
 	void addFlight(int planeId, string origin, string destination,string departureDate,string departureTime,string returnDate,string returnTime);
-	void addPassenger(int flightNumber, string firstName, string lastName);
+	void addPassenger(int flightNumber, int passengerId, string firstName, string lastName);
 private:
 	vector<StorageFlight> storageFlights;
 	vector<NewFlight> newFlights;
