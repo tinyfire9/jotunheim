@@ -30,6 +30,7 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights)
 		}
 		data.push_back(row);
 	}
+	
 	//(Format) data[i][0] : flightID planeID origin destination depDate depTime retDate retTime
 	// on each iteration, 
 		// breakdown the flight info part of the data ^ by space & put it in a vector
