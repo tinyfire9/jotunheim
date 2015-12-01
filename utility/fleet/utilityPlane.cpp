@@ -80,7 +80,7 @@ void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlan
 	outputStream.open("../data/plane.txt");
 	for (int i = 0; i< storagePlanes.size(); i++)
 	{
-		outputStream << storagePlanes[i].get_plane_id() << " " << storagePlanes[i].get_column() << " ";
+		outputStream << storagePlanes[i].getPlaneNumber() << " " << storagePlanes[i].get_column() << " ";
 		outputStream << storagePlanes[i].get_number_of_first_class_rows() << " " << storagePlanes[i].get_number_of_economy_class_rows() << " ";
 	    outputStream << storagePlanes[i].get_number_of_economy_plus_rows();
 	    vector<int> passengerIds = storagePlanes[i].getPassengerIds();
@@ -94,8 +94,8 @@ void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlan
      }
    for (int i =0 ; i < NewPlanes.size(); i++)
  {
-	cout << NewPlanes[i].get_plane_id() << endl;
-	outputStream << NewPlanes[i].get_plane_id() << " " << NewPlanes[i].get_column() << " ";
+	//cout << NewPlanes[i].get_plane_id() << endl;
+	outputStream << NewPlanes[i].getPlaneNumber() << " " << NewPlanes[i].get_column() << " ";
     outputStream << NewPlanes[i].get_number_of_first_class_rows() << " " << NewPlanes[i].get_number_of_economy_class_rows() << " ";
     outputStream << NewPlanes[i].get_number_of_economy_plus_rows() << " ";
     vector<int> passengerIds = NewPlanes[i].getPassengerIds();
