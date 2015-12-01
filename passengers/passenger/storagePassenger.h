@@ -3,19 +3,21 @@
 #include "passenger.cpp"
 using namespace std;
 
-#ifdef STORAGE_PASSENGER_H
+#ifndef STORAGE_PASSENGER_H
 #define STORAGE_PASSENGER_H
 
 class StoragePassenger : public Passenger{
 public:
 	StoragePassenger(int passengerId, string firstName, string lastName)
-	: Passenger(passengerId, firstName, lastName)
+	: Passenger(firstName, lastName)
 	{
-		Storage::flightNumber = flightNumber;
+		StoragePassenger::passengerId =  passengerId;
 	}
-	int getFlightNumber();
+	int getPassengerNumber();
 private:
-	int flightNumber;
-};
+	int passengerId;
+
+
+};				
 
 #endif
