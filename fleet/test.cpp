@@ -5,11 +5,10 @@ int main()
 	Fleet plane;
 
 	plane.addPlane(
-		12334,
-		234,
-		"CHO",
-		"Jan_12",
-		"1:OOPM"
+		12,
+		"5FirstclassRow",
+		"7Economyclassrow",
+		"8Economyplusrow"
 		);
 	return 0;
 }
