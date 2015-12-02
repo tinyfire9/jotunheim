@@ -31,41 +31,51 @@ void FlightSchedule::addFlight(
 
 void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firstName, string lastName){
 	bool found = false;
-	bool duplicatePassenger;
+	bool duplicatePassenger = false;
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
-		duplicatePassenger = find(
-			FlightSchedule::storageFlights[i].getPassengerIds().begin(), 
-			FlightSchedule::storageFlights[i].getPassengerIds().end(), flightNumber 
-		) != FlightSchedule::storageFlights[i].getPassengerIds().end();
-
-		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber && duplicatePassenger)
+		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
+		{
+			found = true;
+			std::vector<int> ids = FlightSchedule::storageFlights[i].getPassengerIds();
+			for (int j = 0; j < ids.size(); j++)
+			{
+				if(ids[j] == passengerId)
+				{
+					duplicatePassenger = true;
+				}
+			}
+		}
+		if((duplicatePassenger == false) && (found == true))
 		{
 			FlightSchedule::storageFlights[i].addPassengerId(passengerId);
 			FlightSchedule::storageFlights[i].addPassengerName(firstName + " " + lastName);
-			found = true;
 		}
 	}
-	for (int i = 0; i < newFlights.size(); i++)
-	{
-		duplicatePassenger = find(
-			FlightSchedule::newFlights[i].getPassengerIds().begin(), 
-			FlightSchedule::newFlights[i].getPassengerIds().end(), flightNumber 
-		) != FlightSchedule::newFlights[i].getPassengerIds().end();
-		
-		if(FlightSchedule::newFlights[i].getFlightNumber() == flightNumber && duplicatePassenger)
-		{
-			FlightSchedule::newFlights[i].addPassengerId(passengerId);
-			FlightSchedule::newFlights[i].addPassengerName(firstName + " " + lastName);
-			found = true;
-		}
-	}
+	// for (int i = 0; i < newFlights.size(); i++)
+	// {
+	// 	std::vector<int> ids = FlightSchedule::newFlights[i].getPassengerIds();
+	// 	for (int j = 0; j < ids.size(); j++)
+	// 	{
+	// 		cout << ids[j] << " == " << passengerId << " :: " << duplicatePassenger<< endl;
+	// 		if(ids[j] == passengerId)
+	// 		{
+	// 			duplicatePassenger = true;
+	// 		}
+	// 	}
+	// 	if(FlightSchedule::newFlights[i].getFlightNumber() == flightNumber && duplicatePassenger)
+	// 	{
+	// 		FlightSchedule::newFlights[i].addPassengerId(passengerId);
+	// 		FlightSchedule::newFlights[i].addPassengerName(firstName + " " + lastName);
+	// 		found = true;
+	// 	}
+	// }
 
-	if(!found)
+	if(found == false)
 	{
 		cout << "Entered flight number, " << flightNumber << ", does not exist! Please try again!" << endl;
 	}
-	else if(duplicatePassenger)
+	else if(duplicatePassenger == true)
 	{
 		cout << "Passenger " << firstName << " " << lastName << ", with Id #" << passengerId << " is already in the flight !" << endl;
 	}
