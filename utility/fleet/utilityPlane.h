@@ -17,8 +17,8 @@ class PlaneUtility : public utility{
 
     public:
     PlaneUtility(){};
-    void writeFile(vector<StoragePlane> &storagePlanes,vector<NewPlane> &NewPlanes);
-    void populateReadArray(vector<StoragePlane> &planes);
+    void writeFile(vector<StoragePlane> &storagePlanes,vector<NewPlane> &NewPlanes,string path);
+    void populateReadArray(vector<StoragePlane> &planes,string path);
     void split(string line, vector<string> &words);
     int stringToInt(string word);
     
