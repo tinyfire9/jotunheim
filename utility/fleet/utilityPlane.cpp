@@ -18,7 +18,7 @@ using namespace std;
 
 
 
-void PlaneUtility::populateReadArray(vector<StoragePlane> &planes)
+void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string fleet)
 {
 
 
@@ -29,7 +29,7 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes)
 
 	vector< vector<string> >data;
 	fstream readStream;
-	readStream.open("../data/plane.txt");
+	readStream.open("../utility/data/plane.txt");
 	
 
 	while(getline(readStream,line))
@@ -72,12 +72,12 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes)
 
 }
 
-void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes)
+void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes,string fleet)
 {
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
-	outputStream.open("../data/plane.txt");
+	outputStream.open("../utility/data/plane.txt");
 	for (int i = 0; i< storagePlanes.size(); i++)
 	{
 		outputStream << storagePlanes[i].getPlaneNumber() << " " << storagePlanes[i].get_column() << " ";
