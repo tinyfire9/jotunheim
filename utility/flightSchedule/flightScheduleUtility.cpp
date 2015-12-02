@@ -10,14 +10,14 @@
 
 using namespace std;
 
-void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights)
+void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, string path)
 {
 	FlightScheduleUtility util;
 	string line = "";
 	string chunk = "";
 	vector< vector<string> > data;
 	fstream readStream;
-	readStream.open("../utility/data/flightSchedule.txt");
+	readStream.open(path.c_str());
 	
 	//read each line and split by |
 	while(getline(readStream, line))
@@ -65,12 +65,12 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights)
 }
 
 
-void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights)
+void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights, string path)
 {
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
-	outputStream.open("../utility/data/flightSchedule.txt");
+	outputStream.open(path.c_str());
 	for (int i = 0; i < storageFlights.size(); i++)
 	{
 		outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " ";
