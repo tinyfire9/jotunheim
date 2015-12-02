@@ -30,3 +30,5 @@
 36 10 HHHHHHHH JFK nov.10 10:00am nov12 9:00pm | 1234 yohannes seifu | 5678 yoho zel
 37 10 ETH JFK dec.22 10:00am dec23 03:00am | 1234 yohannes seifu | 5678 yoho zel
 38 123 BJI CHO Jan_12 1:OOPM Jan_13 6:00PM
+39 123 BJI CHO Jan_12 1:OOPM Jan_13 6:00PM
+40 123 BJI CHO Jan_12 1:OOPM Jan_13 6:00PM | 112233 seifu slimfire
