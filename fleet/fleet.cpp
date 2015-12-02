@@ -24,59 +24,49 @@ void Fleet::addPlane(
 }
 void Fleet::addPassenger(int planeNumber, int passengerId, string seat){
 	bool found = false;
-	bool duplicatePassenger;
-	bool duplicateSeat;
-
+	bool duplicatePassenger = false;
+	bool duplicateSeat = false;
 	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
 	{
-		duplicatePassenger = find(
-			Fleet::storagePlanes[i].getPassengerIds().begin(), 
-			Fleet::storagePlanes[i].getPassengerIds().end(), planeNumber 
-		) != Fleet::storagePlanes[i].getPassengerIds().end();
-
-		duplicateSeat = find(
-			Fleet::storagePlanes[i].getPassengerSeats().begin(), 
-			Fleet::storagePlanes[i].getPassengerSeats().end(), seat 
-		) != Fleet::storagePlanes[i].getPassengerSeats().end();
-
-		cout << Fleet::storagePlanes[i].getPlaneNumber() <<  " ==== " << planeNumber  <<  " -- " << duplicatePassenger <<  " -- " << duplicateSeat << endl;
-	
-		if(Fleet::storagePlanes[i].getPlaneNumber() == planeNumber && duplicatePassenger && duplicateSeat )
+		if(Fleet::storagePlanes[i].getPlaneNumber() == planeNumber)
+		{
+			found = true;
+			vector<int> ids = Fleet::storagePlanes[i].getPassengerIds();
+			vector<string> seatNumbers = Fleet::storagePlanes[i].getPassengerSeats();
+			for (int j = 0; j < ids.size(); j++)
+			{
+				if(ids[j] == passengerId)
+				{
+					duplicatePassenger = true;
+				}
+			}
+			for (int j = 0; j < seatNumbers.size(); j++)
+			{
+				if(seatNumbers[j] == seat)
+				{
+					duplicateSeat = true;
+				}
+			}
+		}
+		if((duplicatePassenger == false) && (duplicateSeat == false) && (found == true))
 		{
 			Fleet::storagePlanes[i].addPassengerId(passengerId);
 			Fleet::storagePlanes[i].addPassengerSeat(seat);
-			found = true;
 		}
 	}
 
-	for (int i = 0; i < newPlanes.size(); i++)
-	{
-		duplicatePassenger = find(
-			Fleet::newPlanes[i].getPassengerIds().begin(), 
-			Fleet::newPlanes[i].getPassengerIds().end(), planeNumber 
-		) != Fleet::newPlanes[i].getPassengerIds().end();
-
-		duplicateSeat = find(
-			Fleet::newPlanes[i].getPassengerSeats().begin(), 
-			Fleet::newPlanes[i].getPassengerSeats().end(), seat 
-		) != Fleet::newPlanes[i].getPassengerSeats().end();
-		
-		cout << "hee";
-		if(Fleet::newPlanes[i].getPlaneNumber() == planeNumber && duplicatePassenger && duplicateSeat )
-		{
-			Fleet::newPlanes[i].addPassengerId(passengerId);
-			Fleet::newPlanes[i].addPassengerSeat(seat);
-			found = true;
-		}
-	}
-
-	if(!found)
+	
+	if(found == false)
 	{
 		cout << "Entered plane number, " << planeNumber << ", does not exist! Please try again!" << endl;
 	}
-	else if(duplicatePassenger)
+	if(duplicatePassenger == true)
 	{
 		cout << "Passenger ID " << passengerId << ", with seat number " << seat << " is already taken in the flight !" << endl;
+	}
+	if(duplicateSeat == true)
+	{
+		cout << "Seat number " << seat << ", with passenger Id " << passengerId << " is already taken in the flight !" << endl;
 	}
 	else
 	{
