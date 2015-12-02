@@ -27,10 +27,10 @@ private:
     
 public:
 	utility(){};
-    virtual void writeFile(int &array,string filename){};
-    // virtual void populateReadArray(vector<Flight> &flights, string filename){};
-    //virtual void populateReadArray(vector<Plane> &planes, string filename){};
-    virtual void populateReadArray(vector<Passenger> &planes, string filename){};
+    virtual void writeFile(string path){};
+    virtual void populateReadArray(string path){};
+    virtual void split(string line, vector<string> &words){};
+    virtual int stringToInt(string word){};
 };
 
 #endif	/* UTILITY_H */
