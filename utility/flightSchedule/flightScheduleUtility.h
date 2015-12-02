@@ -9,8 +9,8 @@
 class FlightScheduleUtility : public utility{
 	public:
 		FlightScheduleUtility(){};
-	    void writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights);
-	    void populateReadArray(vector<StorageFlight> &flights);
+	    void writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights, string path);
+	    void populateReadArray(vector<StorageFlight> &flights, string path);
 	    void split(string line, vector<string> &words);
 	    int stringToInt(string word);
 };
