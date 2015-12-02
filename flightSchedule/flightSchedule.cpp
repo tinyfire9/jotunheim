@@ -74,3 +74,26 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 		FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "../utility/data/flightSchedule.txt");
 	}
 }
+
+// @TODO make it account newFlights ?
+bool FlightSchedule::flight(int flightNumber){
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool FlightSchedule::plane(int flightNumber, int planeId){
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber && FlightSchedule::storageFlights[i].getPlaneId() == planeId)
+		{
+			return true;
+		}
+	}
+	return false;
+}
