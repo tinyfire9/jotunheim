@@ -18,7 +18,7 @@ using namespace std;
 
 
 
-void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers)
+void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, string passenger)
 {
 
 
@@ -29,7 +29,7 @@ void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers)
 
 	vector< vector<string> >data;
 	fstream readStream;
-	readStream.open("../data/passenger.txt");
+	readStream.open("../utility/data/passenger.txt");
 	
 
 	while(getline(readStream,line))
@@ -70,12 +70,12 @@ void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers)
 
 }
 
-void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, vector<NewPassenger> &NewPassengers)
+void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, vector<NewPassenger> &NewPassengers, string passenger)
 {
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
-	outputStream.open("../data/passenger.txt");
+	outputStream.open("../utility/data/passenger.txt");
 	for (int i = 0; i< storagePassengers.size(); i++)
 	{
 		outputStream << storagePassengers[i].getPassengerNumber() << " " << storagePassengers[i].getFirstName() << " ";
