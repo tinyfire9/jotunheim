@@ -14,8 +14,8 @@ int main()
 		);
 */
 	plane.addPassenger(
-		48,
-		100000,
+		42,
+		8999,
 		"5a");
 
 	// plane.addPassenger(
