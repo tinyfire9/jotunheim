@@ -7,6 +7,7 @@ class PassengerSCH
 public:
 	PassengerSCH();
 	void addPassenger(string firstName, string lastName);
+	void addFlight(int passengerID, int flightNumber, string seat);
 private:
 	vector<StoragePassenger> storagePassengers;
 	vector<NewPassenger> newPassengers;
