@@ -17,8 +17,8 @@ class PassengerUtility : public utility{
 
     public:
     PassengerUtility(){};
-    void writeFile(vector<StoragePassenger> &storagePassengers,vector<NewPassenger> &NewPassengers);
-    void populateReadArray(vector<StoragePassenger> &passengers);
+    void writeFile(vector<StoragePassenger> &storagePassengers,vector<NewPassenger> &NewPassengers, string path);
+    void populateReadArray(vector<StoragePassenger> &passengers ,string path);
     void split(string line, vector<string> &words);
     int stringToInt(string word);
     
