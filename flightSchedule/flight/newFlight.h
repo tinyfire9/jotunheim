@@ -16,7 +16,7 @@ public:
 		int max = 0;
 		int id = 0;
 		fstream readStream;
-		readStream.open("../utility/data/flightSchedule.txt");
+		readStream.open("./utility/data/flightSchedule.txt");
 		while(getline(readStream, line))
 		{
 			stringstream ss(line);
