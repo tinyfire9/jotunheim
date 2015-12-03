@@ -4,7 +4,7 @@
 #include <algorithm>
 
 PassengerSCH::PassengerSCH(){
-	PassengerSCH::utility.populateReadArray(PassengerSCH::storagePassengers,"../utility/data/passenger.txt");
+	PassengerSCH::utility.populateReadArray(PassengerSCH::storagePassengers,"./utility/data/passenger.txt");
 }
 
 void PassengerSCH::addPassenger(
@@ -17,7 +17,7 @@ void PassengerSCH::addPassenger(
 		lastName
 	);
 	PassengerSCH::newPassengers.push_back(passenger);
-	PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers,"../utility/data/passenger.txt");
+	PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers,"./utility/data/passenger.txt");
 }
 void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 	bool found = false;
@@ -67,7 +67,7 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 	}
 	else
 	{
-		PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers, "../utility/data/passenger.txt");
+		PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers, "./utility/data/passenger.txt");
 	}
     
 }
