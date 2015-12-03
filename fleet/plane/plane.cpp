@@ -18,9 +18,9 @@ using namespace std;
 
 Plane::Plane(   
     int column, 
-    string number_of_first_class_rows,          
-    string number_of_economy_class_rows,
-    string number_of_economy_plus_rows
+    int number_of_first_class_rows,          
+    int number_of_economy_class_rows,
+    int number_of_economy_plus_rows
     
 ){
  
@@ -36,16 +36,16 @@ int Plane::get_column() {
     
 }
 
-string Plane::get_number_of_economy_class_rows() {
+int Plane::get_number_of_economy_class_rows() {
     return Plane::number_of_economy_class_rows;
     
 }
 
-string Plane::get_number_of_economy_plus_rows() {
+int Plane::get_number_of_economy_plus_rows() {
     return Plane::number_of_economy_plus_rows;
 }
 
-string  Plane::get_number_of_first_class_rows() {
+int  Plane::get_number_of_first_class_rows() {
     return Plane::number_of_first_class_rows;    
 }
 
@@ -63,18 +63,18 @@ void Plane::set_column(int column)
     Plane::column = column;    
 }
 
-void Plane::set_number_of_economy_class_rows(string economy_class_rows)
+void Plane::set_number_of_economy_class_rows(int economy_class_rows)
 {
     Plane::number_of_economy_class_rows = economy_class_rows;
 }
 
-void Plane::set_number_of_economy_plus_rows(string economy_plus_class_rows)
+void Plane::set_number_of_economy_plus_rows(int economy_plus_class_rows)
 {
     Plane::number_of_economy_plus_rows = economy_plus_class_rows;
     
 }
 
-void Plane::set_number_of_first_class_rows(string first_class_rows)
+void Plane::set_number_of_first_class_rows(int first_class_rows)
 {
     Plane::number_of_first_class_rows = first_class_rows;
 }

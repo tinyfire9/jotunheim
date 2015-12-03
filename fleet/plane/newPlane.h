@@ -10,7 +10,7 @@ using namespace std;
 
 class NewPlane : public Plane{
 public:
-	NewPlane(int column, string number_of_first_class_rows, string number_of_economy_class_rows, string number_of_economy_plus_rows)
+	NewPlane(int column, int number_of_first_class_rows, int number_of_economy_class_rows, int number_of_economy_plus_rows)
 	: Plane(column, number_of_first_class_rows, number_of_economy_class_rows, number_of_economy_plus_rows){
 		string line = "";
 		int max = 0;
