@@ -18,7 +18,7 @@ using namespace std;
 
 
 
-void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string fleet)
+void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string path)
 {
 
 
@@ -29,7 +29,7 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string fleet)
 
 	vector< vector<string> >data;
 	fstream readStream;
-	readStream.open("../utility/data/plane.txt");
+	readStream.open(path.c_str());
 	
 
 	while(getline(readStream,line))
@@ -54,9 +54,9 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string fleet)
 		StoragePlane Plane(
 			util.stringToInt(chunks[0]),
 			util.stringToInt(chunks[1]),
-			chunks[2],
-			chunks[3],
-			chunks[4]
+			util.stringToInt(chunks[2]),
+			util.stringToInt(chunks[3]),
+			util.stringToInt(chunks[4])
 	    );
 
 	    for(int j = 1; j< data[i].size(); j++)
@@ -72,12 +72,12 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string fleet)
 
 }
 
-void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes,string fleet)
+void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlane> &NewPlanes,string path)
 {
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
-	outputStream.open("../utility/data/plane.txt");
+	outputStream.open(path.c_str());
 	for (int i = 0; i< storagePlanes.size(); i++)
 	{
 		outputStream << storagePlanes[i].getPlaneNumber() << " " << storagePlanes[i].get_column() << " ";
