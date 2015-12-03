@@ -39,7 +39,6 @@ int Fleet::getAvailableFirstClassSeats(int planeId){
 		    }
     	}
     }
-    cout << planeId << " -- " << totalAvailableSeats;
     return totalAvailableSeats;
 }
 
