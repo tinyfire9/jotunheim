@@ -1,29 +1,9 @@
-
 #include <iostream>
-#include "fleet/fleet.cpp"
-#include "fleet/fleet.h"
-
-
-using namespace std;
-
-
+#include <string>
+#include "airline.cpp"
 
 int main()
 {
-	Fleet test;
-
-	test.addPassenger(
-       42,
-       8999,
-       "5a"
-		);
-
-	// PassengerSCH test2;
-
-	// test2.addFlight(
-	// 	2,
-	// 	55,
-	// 	"8A");
-	
-	return 0;
-};
+	Airline airline;
+	airline.transferPassengers(0, 1, 1);
+}
