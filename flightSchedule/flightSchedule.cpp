@@ -4,7 +4,7 @@
 #include "./flight/newFlight.cpp"
 
 FlightSchedule::FlightSchedule(){
-	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "../utility/data/flightSchedule.txt");
+	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
 }
 
 void FlightSchedule::addFlight(
@@ -26,7 +26,7 @@ void FlightSchedule::addFlight(
 		returnTime
 	);
 	FlightSchedule::newFlights.push_back(flight);
-	FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "../utility/data/flightSchedule.txt");
+	FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
 }
 
 void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firstName, string lastName){
@@ -50,6 +50,7 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 		{
 			FlightSchedule::storageFlights[i].addPassengerId(passengerId);
 			FlightSchedule::storageFlights[i].addPassengerName(firstName + " " + lastName);
+			break;
 		}
 	}
 	// for (int i = 0; i < newFlights.size(); i++)
@@ -81,7 +82,7 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 	}
 	else
 	{
-		FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "../utility/data/flightSchedule.txt");
+		FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
 	}
 }
 
