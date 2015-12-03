@@ -10,6 +10,8 @@ public:
 	void addPassenger(int flightNumber, int passengerId, string firstName, string lastName);
 	bool flight(int flightNumber);
 	bool plane(int flightNumber, int planeId);
+	void displayPassengers(int flightNumber);
+	void displayUpcomingFlights();
 private:
 	vector<StorageFlight> storageFlights;
 	vector<NewFlight> newFlights;
