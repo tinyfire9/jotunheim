@@ -42,7 +42,7 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber && duplicatePassenger)
 		{
 			FlightSchedule::storageFlights[i].addPassengerId(passengerId);
-			FlightSchedule::storageFlights[i].addPassengerName(lastName + " " + firstName);
+			FlightSchedule::storageFlights[i].addPassengerName(firstName + " " + lastName);
 			found = true;
 		}
 	}
@@ -56,7 +56,7 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 		if(FlightSchedule::newFlights[i].getFlightNumber() == flightNumber && duplicatePassenger)
 		{
 			FlightSchedule::newFlights[i].addPassengerId(passengerId);
-			FlightSchedule::newFlights[i].addPassengerName(lastName + " " + firstName);
+			FlightSchedule::newFlights[i].addPassengerName(firstName + " " + lastName);
 			found = true;
 		}
 	}
