@@ -4,14 +4,121 @@
 #include <algorithm>
 
 Fleet::Fleet(){
-	Fleet::utility.populateReadArray(Fleet::storagePlanes, "../utility/data/plane.txt");
+	Fleet::utility.populateReadArray(Fleet::storagePlanes, "./utility/data/plane.txt");
 }
 
+int Fleet::getAvailableFirstClassSeats(int planeId){
+    int row, number_of_first_class_rows, planeIndex, totalAvailableSeats, column;
+    for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+    {
+    	if(Fleet::storagePlanes[i].getPlaneNumber() == planeId)
+    	{
+    		planeIndex = i;
+    		number_of_first_class_rows = Fleet::storagePlanes[i].get_number_of_first_class_rows();
+    		column = Fleet::storagePlanes[i].get_column();
+    		totalAvailableSeats = column * number_of_first_class_rows;
+		    std::vector<string> seats= Fleet::storagePlanes[planeIndex].getPassengerSeats();
+		    for (int i = 0; i < seats.size(); i++)
+		    {
+		    	// computes for 2A - type of seat
+		        if(seats[i].length() == 1)
+		        {
+		            row = Fleet::utility.stringToInt(seats[i].substr(0,1));
+
+		        }
+		        //computes for 23A - type
+		        else if(seats[i].length() == 2)
+		        {
+		            row = Fleet::utility.stringToInt(seats[i].substr(0,2));
+		        }
+		        // subtract the number of seats taken from the total possible seats
+	            if((row > 0) && (row <= number_of_first_class_rows))
+	            {
+	                totalAvailableSeats--;
+	            }
+		    }
+    	}
+    }
+    cout << planeId << " -- " << totalAvailableSeats;
+    return totalAvailableSeats;
+}
+
+int Fleet::getAvailableEconomyClassSeats(int planeId){
+   int row, number_of_economy_class_rows, number_of_first_class_rows, planeIndex, totalAvailableSeats, column;
+    for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+    {
+    	if(Fleet::storagePlanes[i].getPlaneNumber() == planeId)
+    	{
+    		planeIndex = i;
+    		number_of_first_class_rows = Fleet::storagePlanes[i].get_number_of_first_class_rows();
+    		number_of_economy_class_rows = Fleet::storagePlanes[i].get_number_of_economy_class_rows();
+    		column = Fleet::storagePlanes[i].get_column();
+    		totalAvailableSeats = column * number_of_economy_class_rows;
+		    std::vector<string> seats= Fleet::storagePlanes[planeIndex].getPassengerSeats();
+		    for (int i = 0; i < seats.size(); i++)
+		    {
+		    	// computes for 2A - type of seat
+		        if(seats[i].length() == 2)
+		        {	
+		            row = Fleet::utility.stringToInt(seats[i].substr(0,1));
+		        }
+		        //computes for 23A - type
+		        else if(seats[i].length() == 3)
+		        {
+		        	row = Fleet::utility.stringToInt(seats[i].substr(0,2));
+		        }
+		        // subtract the number of seats taken from the total possible seats
+	            if((row > number_of_first_class_rows) && (row <= number_of_first_class_rows + number_of_economy_class_rows))
+	            {
+	                totalAvailableSeats--;
+	            }
+		    }
+    	}
+    }
+    return totalAvailableSeats;
+}
+
+int Fleet::getAvailableEconomyPlusClassSeats(int planeId){
+   int row,number_of_economy_plus_rows, number_of_economy_class_rows, number_of_first_class_rows, planeIndex, totalAvailableSeats, column;
+    for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+    {
+    	if(Fleet::storagePlanes[i].getPlaneNumber() == planeId)
+    	{
+    		planeIndex = i;
+    		number_of_first_class_rows = Fleet::storagePlanes[i].get_number_of_first_class_rows();
+    		number_of_economy_class_rows = Fleet::storagePlanes[i].get_number_of_economy_class_rows();
+    		number_of_economy_plus_rows = Fleet::storagePlanes[i].get_number_of_economy_plus_rows();
+    		column = Fleet::storagePlanes[i].get_column();
+    		totalAvailableSeats = column * number_of_economy_plus_rows;
+		    std::vector<string> seats= Fleet::storagePlanes[planeIndex].getPassengerSeats();
+		    for (int i = 0; i < seats.size(); i++)
+		    {
+		    	// computes for 2A - type of seat
+		        if(seats[i].length() == 2)
+		        {
+		            row = Fleet::utility.stringToInt(seats[i].substr(0,1));
+		        }
+				//computes for 23A - type
+		        else if(seats[i].length() == 3)
+		        {
+		        	row = Fleet::utility.stringToInt(seats[i].substr(0,2));
+		        }
+		        // subtract the number of seats taken from the total possible seats
+	            if((row > number_of_first_class_rows + number_of_economy_class_rows) && (row <= number_of_first_class_rows + number_of_economy_class_rows + number_of_economy_plus_rows))
+	            {
+	                totalAvailableSeats--;
+	            }
+
+		    }
+    	}
+    }
+    return totalAvailableSeats;
+}
 void Fleet::addPlane(
 	int column,
-	string number_of_economy_class_rows,
-	string number_of_economy_plus_rows,
-	string number_of_first_class_rows ){
+	int number_of_economy_class_rows,
+	int number_of_economy_plus_rows,
+	int number_of_first_class_rows ){
 	
 	NewPlane plane(
 		column,
@@ -20,14 +127,16 @@ void Fleet::addPlane(
 		number_of_first_class_rows
 	);
 	Fleet::newPlanes.push_back(plane);
-	Fleet::utility.writeFile(Fleet::storagePlanes, Fleet::newPlanes,"../utility/data/plane.txt");
+	Fleet::utility.writeFile(Fleet::storagePlanes, Fleet::newPlanes,"./utility/data/plane.txt");
 }
 void Fleet::addPassenger(int planeNumber, int passengerId, string seat){
 	bool found = false;
 	bool duplicatePassenger = false;
 	bool duplicateSeat = false;
+	cout << storagePlanes.size() << endl;
 	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
 	{
+		cout << Fleet::storagePlanes[i].getPlaneNumber() << " -- " << planeNumber << endl;
 		if(Fleet::storagePlanes[i].getPlaneNumber() == planeNumber)
 		{
 			found = true;
@@ -52,10 +161,11 @@ void Fleet::addPassenger(int planeNumber, int passengerId, string seat){
 		{
 			Fleet::storagePlanes[i].addPassengerId(passengerId);
 			Fleet::storagePlanes[i].addPassengerSeat(seat);
+			break;
 		}
 	}
 
-	
+
 	if(found == false)
 	{
 		cout << "Entered plane number, " << planeNumber << ", does not exist! Please try again!" << endl;
@@ -70,7 +180,7 @@ void Fleet::addPassenger(int planeNumber, int passengerId, string seat){
 	}
 	else
 	{
-		Fleet::utility.writeFile(Fleet::storagePlanes, Fleet::newPlanes, "../utility/data/plane.txt");
+		Fleet::utility.writeFile(Fleet::storagePlanes, Fleet::newPlanes, "./utility/data/plane.txt");
 	}
     
 }
