@@ -1,7 +1,9 @@
 #include <iostream>
 #include <algorithm>
+#include <ctime>
 #include "flightSchedule.h"
 #include "./flight/newFlight.cpp"
+
 
 FlightSchedule::FlightSchedule(){
 	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
@@ -27,6 +29,7 @@ void FlightSchedule::addFlight(
 	);
 	FlightSchedule::newFlights.push_back(flight);
 	FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
+	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
 }
 
 void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firstName, string lastName){
@@ -53,24 +56,6 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 			break;
 		}
 	}
-	// for (int i = 0; i < newFlights.size(); i++)
-	// {
-	// 	std::vector<int> ids = FlightSchedule::newFlights[i].getPassengerIds();
-	// 	for (int j = 0; j < ids.size(); j++)
-	// 	{
-	// 		cout << ids[j] << " == " << passengerId << " :: " << duplicatePassenger<< endl;
-	// 		if(ids[j] == passengerId)
-	// 		{
-	// 			duplicatePassenger = true;
-	// 		}
-	// 	}
-	// 	if(FlightSchedule::newFlights[i].getFlightNumber() == flightNumber && duplicatePassenger)
-	// 	{
-	// 		FlightSchedule::newFlights[i].addPassengerId(passengerId);
-	// 		FlightSchedule::newFlights[i].addPassengerName(firstName + " " + lastName);
-	// 		found = true;
-	// 	}
-	// }
 
 	if(found == false)
 	{
@@ -83,10 +68,10 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 	else
 	{
 		FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
+		FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
 	}
 }
 
-// @TODO make it account newFlights ?
 bool FlightSchedule::flight(int flightNumber){
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
@@ -107,4 +92,75 @@ bool FlightSchedule::plane(int flightNumber, int planeId){
 		}
 	}
 	return false;
+}
+
+void FlightSchedule::displayPassengers(int flightNumber)
+{
+	bool found = false;
+	vector<string> passengers;
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
+		{
+			found = true;
+			passengers = FlightSchedule::storageFlights[i].getPassengerNames();
+			for (int i = 0; i < passengers.size(); i++)
+			{
+				cout << passengers[i] << endl;
+			}
+			break;
+		}
+	}
+	if(!found)
+	{
+		cout << "Sorry the entered flight number doesn't match any flight! Please try another one! " << endl;
+	}
+}
+
+void FlightSchedule::displayUpcomingFlights(){
+	time_t currentTime;
+	struct tm *localTime;
+	time( &currentTime );                   // Get the current time
+	localTime = localtime( &currentTime );  // Convert the current time to the local time
+
+	int currentYear =  localTime->tm_year + 1900 ;
+	int currentMonth = localTime->tm_mon + 1;
+	int currentDay = localTime->tm_mday;
+	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13)
+	 << "destination" << setw(13) << "depDate" << setw(13) << "depTime" << setw(13) 
+	 << "retDate" << setw(13) << "retTime" << endl;
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		string departureDate = FlightSchedule::storageFlights[i].getDepartureDate();
+		int month = FlightSchedule::utility.stringToInt(departureDate.substr(0, 2));
+		int day = FlightSchedule::utility.stringToInt(departureDate.substr(3,2));
+		int year = FlightSchedule::utility.stringToInt(departureDate.substr(6, 4));
+		if(year == currentYear)
+		{	
+			if(month == currentMonth)
+			{
+				if(day >= currentDay)
+				{
+					cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+					cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+					cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+					cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+				}
+			}
+			else if(month > currentMonth)
+			{
+				cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+				cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+				cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+				cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+			}
+		}
+		else if(year > currentYear)
+		{
+			cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+			cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+			cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+			cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+		}
+	}
 }
