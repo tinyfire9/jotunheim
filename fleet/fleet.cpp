@@ -195,3 +195,16 @@ int Fleet::getMaxPlaneId(){
 	}
 	return max;
 }
+
+bool Fleet::plane(int planeId){
+	bool found = false;
+	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+	{
+		if(Fleet::storagePlanes[i].getPlaneNumber() == planeId)
+		{
+			found = true;
+			break;
+		}
+	}
+	return found;
+}
