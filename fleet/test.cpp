@@ -25,5 +25,6 @@ int main()
 	cout << "# of firstClassSeats " << plane.getAvailableFirstClassSeats(27) << endl;
 	cout << "# of economyClassSeats " << plane.getAvailableEconomyClassSeats(27) << endl;
 	cout << "# of economyPlusClassSeats " << plane.getAvailableEconomyPlusClassSeats(27) << endl;
+	cout << "maximum assigned passenger id : " << plane.getMaxPlaneId() << endl;
 	return 0;
 }
