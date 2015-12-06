@@ -11,6 +11,7 @@ public:
     int getAvailableFirstClassSeats(int planeId);
     int getAvailableEconomyClassSeats(int planeId);
     int getAvailableEconomyPlusClassSeats(int planeId);
+    int getMaxPlaneId();
 
 private:
 	vector<StoragePlane> storagePlanes;
