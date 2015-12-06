@@ -5,17 +5,20 @@
 Airline::Airline(){};
 
 void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPlaneId){
-	Airline::schedule.displayPassengers(1000);
-	if((Airline::schedule.plane(flightNumber, currentPlaneId) == true) 
-		&& ((Airline::schedule.plane(flightNumber, newPlaneId) == true)))
+	if((Airline::schedule.flight(flightNumber, currentPlaneId) == true) 
+		&& ((Airline::fleet.plane(newPlaneId) == true)))
 	{
+		cout << Airline::fleet.getAvailableFirstClassSeats(currentPlaneId) << " >= " << Airline::fleet.getAvailableFirstClassSeats(newPlaneId) << endl;
+		cout << Airline::fleet.getAvailableEconomyClassSeats(currentPlaneId) << " >= " << Airline::fleet.getAvailableEconomyClassSeats(newPlaneId) << endl;
+		cout << Airline::fleet.getAvailableEconomyPlusClassSeats(currentPlaneId) << " >= " << Airline::fleet.getAvailableEconomyPlusClassSeats(newPlaneId) << endl;
 		if(
 			(Airline::fleet.getAvailableFirstClassSeats(currentPlaneId) >= Airline::fleet.getAvailableFirstClassSeats(newPlaneId)) &&
 			(Airline::fleet.getAvailableEconomyClassSeats(currentPlaneId) >= Airline::fleet.getAvailableEconomyClassSeats(newPlaneId)) &&
 			(Airline::fleet.getAvailableEconomyPlusClassSeats(currentPlaneId) >= Airline::fleet.getAvailableEconomyPlusClassSeats(newPlaneId))
 			)
 		{
-			cout << "***HeyyyY!!!!" << endl;
+			Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId);
+			// call transfer passengers from fleet
 		}
 		else
 		{
@@ -24,7 +27,7 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 	}
 	else
 	{
-		cout << ":/ :/ :/" << endl;
+		cout << "The entered flight number and plane id doesn't match. Please try again!" << endl;
 	}
 }
 
