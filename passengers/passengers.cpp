@@ -71,3 +71,15 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 	}
     
 }
+
+int PassengerSCH::getMaxPassengerId(){
+	int max = 0;
+	for (int i = 0; i < PassengerSCH::storagePassengers.size(); i++)
+	{
+		if(PassengerSCH::storagePassengers[i].getPassengerNumber() > max)
+		{
+			max = PassengerSCH::storagePassengers[i].getPassengerNumber();
+		}
+	}
+	return max;
+}
