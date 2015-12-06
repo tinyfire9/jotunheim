@@ -164,3 +164,15 @@ void FlightSchedule::displayUpcomingFlights(){
 		}
 	}
 }
+
+int FlightSchedule::getMaxFlightId(){
+	int max = 0;
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		if(FlightSchedule::storageFlights[i].getFlightNumber() > max)
+		{
+			max = FlightSchedule::storageFlights[i].getFlightNumber();
+		}
+	}
+	return max;
+}
