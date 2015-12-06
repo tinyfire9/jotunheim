@@ -183,3 +183,15 @@ void Fleet::addPassenger(int planeNumber, int passengerId, string seat){
 	}
     
 }
+
+int Fleet::getMaxPlaneId(){
+	int max = 0;
+	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+	{
+		if(Fleet::storagePlanes[i].getPlaneNumber() > max)
+		{
+			max = Fleet::storagePlanes[i].getPlaneNumber();
+		}
+	}
+	return max;
+}
