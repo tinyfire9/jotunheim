@@ -24,6 +24,7 @@ public:
 	void addNewPassengerToList(string firstName, string lastName);
 	void displayPassengers(int flightNumber);
 	void displayUpcomingFlights();
+	int getMaxId(string type);
 private:
 	Fleet fleet;
 	PassengerSCH passengers;
