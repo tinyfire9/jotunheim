@@ -12,6 +12,7 @@ public:
 	bool plane(int flightNumber, int planeId);
 	void displayPassengers(int flightNumber);
 	void displayUpcomingFlights();
+	int getMaxFlightId();
 private:
 	vector<StorageFlight> storageFlights;
 	vector<NewFlight> newFlights;
