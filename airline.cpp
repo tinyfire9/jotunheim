@@ -53,3 +53,22 @@ void Airline::displayPassengers(int flightNumber){
 void Airline::displayUpcomingFlights(){
 	Airline::schedule.displayUpcomingFlights();
 }
+
+int Airline::getMaxId(string type){
+	if(type == "plane")
+	{
+		return Airline::fleet.getMaxPlaneId();
+	}
+	else if(type == "passenger")
+	{
+		return Airline::passengers.getMaxPassengerId();
+	}
+	else if(type == "flight")
+	{
+		return Airline::schedule.getMaxFlightId();
+	}
+	else
+	{
+		cout << "Entered type does not exist! Available types are plane, passenger and flight. Please try again!" << endl;
+	}
+}
