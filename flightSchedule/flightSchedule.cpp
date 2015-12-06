@@ -72,18 +72,7 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 	}
 }
 
-bool FlightSchedule::flight(int flightNumber){
-	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
-	{
-		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
-bool FlightSchedule::plane(int flightNumber, int planeId){
+bool FlightSchedule::flight(int flightNumber, int planeId){
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber && FlightSchedule::storageFlights[i].getPlaneId() == planeId)
@@ -175,4 +164,14 @@ int FlightSchedule::getMaxFlightId(){
 		}
 	}
 	return max;
+}
+
+void FlightSchedule::changePlane(int flightNumber, int currentPlaneId, int newPlaneId){
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		if((FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber) && (FlightSchedule::storageFlights[i].getPlaneId() == currentPlaneId))
+		{
+			FlightSchedule::storageFlights[i].setPlaneId(newPlaneId);
+		}
+	}
 }
