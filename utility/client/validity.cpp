@@ -7,28 +7,23 @@
 
 Validity::Validity(){};
 
-void Validity::choiceValid(){
+bool Validity::choiceValid(int choice){
 
 	
 bool checkInput;
-checkInput = true;
+checkInput = false;
  
-    // for (int i =0; i < choice.size(); i++)
-    //  {
-	   //  if(!isalpha(choice[i]) || isspace(word[i]))
-	   //  {
-		  //   //cout << "WRONG INPUT";
-		  //   checkInput = true;
-	   //   }
-	     
-	   //   else
-	   //   {
-    //         checkInput = false;
-           
-	   //   }
-
-    // }
-	
+    if (choice >= 1 && choice <= 9)
+    {
+      checkInput = true;
+      //cout << " CORRECT";
+    }
+    else
+    {
+      checkInput = false;
+    //cout <<" WRONG INPUT !";
+    }
+    return checkInput;
 }
 
 bool Validity::stringValid(string word){
@@ -51,19 +46,21 @@ checkInput = false;
            
 	     }
     }
-    return checkInput;
 
-
-    // if(checkInput ==true)
+    // if(checkInput ==false)
     // {
     // 	cout << "WRONG INPUT!";
     // }
-    // if(checkInput == false)
+    // if(checkInput == true)
     // {
     // 	cout << "CORRECT";
+
+    // }
+
+    return checkInput;
     }
      
-}
+
 
 bool Validity::dateValid(int month, int day, int year){
 
@@ -72,48 +69,101 @@ checkInput = true;
 
   if(month >= 1 && month <= 12)
   {
-     checkInput = false;
-     
+     checkInput = false;    
      if(day >= 1 && day <= 30)
        {
   	     
   	     checkInput = false;
   	     if(year >= 2015)
-               
+            
                 {
-  	            checkInput = false;
-  	            	           
-                } 
-
+  	               checkInput = false;  	            	           
+                }
                 else
                 {
                 	checkInput = true;
-                	cout << "WRONG INPUT!";
-                	
+                	//cout << "WRONG YEAR INPUT!";               	
                 }
        }
 
        else
        {
        	checkInput = true;
-       	cout << " WRONG INPUT";
+       	//cout << " WRONG  DAY INPUT!";
        }
-
   }
-
-  else 
-  {
-  	checkInput = true;
-  	cout << " WRONG INPUT";
-  }
-
+     else 
+    {
+  	  checkInput = true;
+  	   //cout << " WRONG MONTH INPUT!";
+    }
+    return checkInput;
 
 }
 
-bool timeValid(int hour, int minute){
+bool Validity::timeValid(int hour, int minute){
 
- bool checkInput;
- checkInput = true;
+  string stringHour;
+  string stringMinute;
 
+  stringHour = to_string(hour);
+  stringMinute = to_string(minute);
+
+  bool checkInput;
+  checkInput = true;
+
+  for (int i =0; i < stringHour.size(); i++)
+  {
+      if(!isdigit(stringHour[i]))
+      {
+        checkInput = false;
+        return checkInput;
+        break;
+      }
+       
+
+      else
+       {
+
+              for(int i =0; i < stringMinute.size(); i++)
+             {
+              
+                   if(!isdigit(stringHour[i]))
+                   {
+                      checkInput = false;
+                      return checkInput;             
+                      break;
+                    }
+
+                   else
+                   {
+                     checkInput = true;
+                  }            
+            }           
+        }
+  }
+
+  if (hour >= 0 && hour <= 23)
+  {
+     checkInput = false;
+
+        if(minute >= 0 && minute <= 59)
+        {
+         checkInput = false;
+         //cout << "OK";
+        }
+        else
+        {
+           checkInput = true;
+           //cout << " wrong minute";
+         } 
+  }
+  else
+  {
+    checkInput = true;
+    //cout <<" wrong hour";
+  }
+
+  return checkInput;
 
 }
