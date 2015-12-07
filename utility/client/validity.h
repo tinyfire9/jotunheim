@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <../airline.h>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
 		int departureYear, int returnMonth, int returnDay, int returnYear);
 	bool returnTimeValid(int departureHour, int depatureMinute,
 		int returnHour, int returnMinute);
+	bool passengerIdValid(int passengerId);
 	bool flightNumberValid(int flightNumber);
 	bool planeIdValid (int planeId);
 	bool numberOfRowsAndColumnsValid(int column, int firstRow, int economyRow, int economyPlusRow);
