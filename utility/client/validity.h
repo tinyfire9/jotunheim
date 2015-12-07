@@ -12,18 +12,18 @@ class Validity
 
 public:
 	Validity();
-	void choiceValid();
-	void stringValid(string word);
+	bool choiceValid(int choice);
+	bool stringValid(string word);
 	//string removeSpaces(string input);
-	void dateValid(int month, int day, int year);
-	void timeValid(int hour, int minute);
-	void returnDateValid(int departureMonth, int departureDay,
+	bool dateValid(int month, int day, int year);
+	bool timeValid(int hour, int minute);
+	bool returnDateValid(int departureMonth, int departureDay,
 		int departureYear, int returnMonth, int returnDay, int returnYear);
-	void returnTimeValid(int departureHour, int depatureMinute,
+	bool returnTimeValid(int departureHour, int depatureMinute,
 		int returnHour, int returnMinute);
-	void flightNumberValid(int flightNumber);
-	void planeIdValid (int planeId);
-	void numberOfRowsAndColumnsValid(int column, int firstRow, int economyRow, int economyPlusRow);
+	bool flightNumberValid(int flightNumber);
+	bool planeIdValid (int planeId);
+	bool numberOfRowsAndColumnsValid(int column, int firstRow, int economyRow, int economyPlusRow);
 
 
 private:
