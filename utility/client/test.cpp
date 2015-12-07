@@ -8,13 +8,15 @@ int main()
 {
 
 	Validity valid;
-    //valid.choiceValid(5a);
+    //valid.choiceValid(21);
 
-    valid.stringValid("hk ");
+    //valid.stringValid("hk 6");
 
-    valid.dateValid(2g,4,2015);
+    //valid.dateValid(4,6,2012);
 
+    valid.timeValid(21,70);
 
+   
 
 	return 0;
 
