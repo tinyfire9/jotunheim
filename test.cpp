@@ -5,7 +5,8 @@
 int main()
 {
 	Airline test;
-	cout << "maximum assigned plane id : " << test.getMaxId("plane") << endl;
-	cout << "maximum assigned passenger id : " << test.getMaxId("passenger") << endl;
-	cout << "maximum assigned flight id : " << test.getMaxId("flight") << endl;
+	// cout << "maximum assigned plane id : " << test.getMaxId("plane") << endl;
+	// cout << "maximum assigned passenger id : " << test.getMaxId("passenger") << endl;
+	// cout << "maximum assigned flight id : " << test.getMaxId("flight") << endl;
+	test.transferPassengers(41, 19, 28);
 }
