@@ -52,6 +52,10 @@ public:
 
     void addPassengerSeat(string passengerSeat);
 
+    bool deletePassenger(int passengerId, string passengerSeat);
+
+    bool deleteLastPassenger();
+
 private:
 
     int column;
@@ -60,7 +64,7 @@ private:
     int number_of_first_class_rows;
     vector<int> passengerIds;
     vector<string> passengerSeats;
-   
+    
 };
 
 #endif	/* PLANE_H */
