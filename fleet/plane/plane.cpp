@@ -89,4 +89,49 @@ void Plane::addPassengerSeat(string passengerSeat)
     Plane::passengerSeats.push_back(passengerSeat);
 }
 
+bool Plane::deletePassenger(int passengerId, string passengerSeat){
+    bool passengerIdFound = false;
+    bool passengerSeatFound = false;
+    bool deleted = false;
+    int passengerIdIndex, passengerSeatIndex;
+
+    // iterate through each seat number and check if the entered seat number exists
+    for (int i = 0; i < Plane::passengerSeats.size(); i++)
+    {
+        if(Plane::passengerSeats[i] == passengerSeat)
+        {
+            passengerSeatFound = true;
+            passengerSeatIndex = i;
+        }
+    }
+    // iterate through each passengerId and check if the entered passengerId exists
+    for (int i = 0; i < Plane::passengerIds.size(); i++)
+    {
+        if(Plane::passengerIds[i] == passengerId)
+        {
+            passengerIdFound = true;
+            passengerIdIndex = i;
+        }
+    }
+    //if, both, passengerId and seatNumber exists remove passenger 
+    if((passengerIdFound == true) && (passengerSeatFound == true))
+    {
+        Plane::passengerSeats.erase(Plane::passengerSeats.begin() + passengerSeatIndex);
+        Plane::passengerIds.erase(Plane::passengerIds.begin() + passengerIdIndex);
+        deleted = true;
+    }
+    return deleted;
+}
+
+bool Plane::deleteLastPassenger(){
+    bool deleted = false;
+    if(Plane::passengerIds.size() == Plane::passengerSeats.size())
+    {
+       Plane::passengerSeats.erase(Plane::passengerSeats.begin() + (Plane::passengerSeats.size()-1));
+       Plane::passengerIds.erase(Plane::passengerIds.begin() + (Plane::passengerIds.size()-1));
+       deleted = true;
+    }
+    return deleted;
+}
+
 #endif
