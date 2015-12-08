@@ -17,7 +17,9 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 			(Airline::fleet.getAvailableEconomyPlusClassSeats(currentPlaneId) >= Airline::fleet.getAvailableEconomyPlusClassSeats(newPlaneId))
 			)
 		{
-			Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId);
+			// Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId);
+			cout << "HEEYYY!" << endl;
+			Airline::fleet.transferPassengers(currentPlaneId, newPlaneId);
 			// call transfer passengers from fleet
 		}
 		else
@@ -27,7 +29,7 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 	}
 	else
 	{
-		cout << "The entered flight number and plane id doesn't match. Please try again!" << endl;
+		cout << "The entered flight number, " << flightNumber << "and plane id, " << currentPlaneId << " doesn't match. Please try again!" << endl;
 	}
 }
 
