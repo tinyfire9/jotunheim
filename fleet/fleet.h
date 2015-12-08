@@ -13,6 +13,7 @@ public:
     int getAvailableEconomyPlusClassSeats(int planeId);
     int getMaxPlaneId();
     bool plane(int planeId);
+    bool transferPassengers(int currentPlaneId, int newPlaneId);
 private:
 	vector<StoragePlane> storagePlanes;
 	vector<NewPlane> newPlanes;
