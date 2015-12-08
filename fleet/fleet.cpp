@@ -208,3 +208,43 @@ bool Fleet::plane(int planeId){
 	}
 	return found;
 }
+
+bool Fleet::transferPassengers(int currentPlaneId, int newPlaneId){
+	bool seatsAvailable = false;
+	bool currentPlaneIdIndex;
+	bool currentPlaneIdFound = false;
+	bool passengersTransfered = false;
+	// check if the current plane exists, if exists store the index
+	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+	{
+		if(Fleet::storagePlanes[i].getPlaneNumber() == currentPlaneId)
+		{
+			cout << "currentPlaneIdFound " << Fleet::storagePlanes[i].getPlaneNumber() << endl;
+			currentPlaneIdIndex = i;
+			currentPlaneIdFound = true;
+		}
+	}
+	//if the current plane exists 
+	if(currentPlaneIdFound == true)
+	{	
+		//find the new plane
+		for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+		{
+			if(Fleet::storagePlanes[i].getPlaneNumber() == newPlaneId)
+			{
+				cout << "newPlaneIdFound " << Fleet::storagePlanes[i].getPlaneNumber() << endl;
+				//transfer each passenger from the current plane to the new one
+				for (int j = Fleet::storagePlanes[currentPlaneIdIndex].getPassengerIds().size() - 1; j >= 0 ; j--)
+				{
+					int id = Fleet::storagePlanes[currentPlaneIdIndex].getPassengerIds()[j];	
+					string seatNumber = Fleet::storagePlanes[currentPlaneIdIndex].getPassengerSeats()[j];
+					Fleet::storagePlanes[i].addPassengerId(id);
+					Fleet::storagePlanes[i].addPassengerSeat(seatNumber);
+					Fleet::storagePlanes[currentPlaneIdIndex].deleteLastPassenger();
+				}
+				break;
+			}
+		}
+		Fleet::utility.writeFile(Fleet::storagePlanes, Fleet::newPlanes, "./utility/data/plane.txt");
+	}
+}
