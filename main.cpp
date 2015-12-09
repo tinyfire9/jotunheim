@@ -48,9 +48,10 @@ int main()
     cout<< "2) add new passenger to a Flight" << endl;
     cout<< "3) add new passenger to a list" << endl;
     cout<< "4) add new flight" << endl;
-    cout<< "5) Display passengers " << endl;
-    cout<< "6) Display upcoming flights " << endl;
-    cout<< "7) Exit " << endl;
+    cout<< "5) transferPassengers " << endl;
+    cout<< "6) Display passengers " << endl;
+    cout<< "7) Display upcoming flights " << endl;
+    cout<< "8) Exit " << endl;
     
     cout << "*   Select one of your desirable option" << endl;
     cout << "*   Enter either from 1 to 7 " << endl;
@@ -321,7 +322,36 @@ int main()
 
 }
 
- if (choice == 5)
+  if(choice ==5)
+  {
+    int flightNumber;
+    int currentPlaneId;
+    int newPlaneId;
+    divider();
+    cout << "\n\n You have selected to transfer passengers! \n\n";
+
+    cout << "Enter the flight number \n >>";
+    cin >> flightNumber;
+
+    cout << "Enter the current plane id you wish to transfer! \n >>";
+    cin >> currentPlaneId;
+
+    cout << "Enter the new plane id you wish to transfer! \n >>";
+    cin >> newPlaneId;
+
+    cout << " You have entered the following inputs to transfer passengers! \n\n";
+    cout << " flight number = " << flightNumber << endl;
+    cout << " current plane id = " << currentPlaneId << endl;
+    cout << " new plane id = " << newPlaneId << endl;
+
+    airline.transferPassengers(flightNumber,currentPlaneId,newPlaneId);
+
+
+
+
+  }
+
+ if (choice == 6)
     {
          int flightNumber;
          cout << " \n\nYou have selected to display the passengers ! \n";
@@ -336,13 +366,13 @@ int main()
 
     }
 
-  if(choice == 6)
+  if(choice == 7)
   {
     cout << "\n\nYou have selected to view the upcoming flights!! \n\n";
     airline.displayUpcomingFlights();
   }
 
-  if(choice == 7)
+  if(choice == 8)
 
   {
     divider();
