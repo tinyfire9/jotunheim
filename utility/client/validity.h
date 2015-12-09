@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <../airline.h>
+//#include "../../airline.h"
 
 using namespace std;
 
@@ -15,7 +15,6 @@ public:
 	Validity();
 	bool choiceValid(int choice);
 	bool stringValid(string word);
-	//string removeSpaces(string input);
 	bool dateValid(int month, int day, int year);
 	bool timeValid(int hour, int minute);
 	bool returnDateValid(int departureMonth, int departureDay,
@@ -29,27 +28,6 @@ public:
 
 
 private:
-
-    string word;
-	int choice;
-	int month;
-	int day;
-	int year;
-	int hour;
-	int minute;
-	int departureMonth;
-	int departureDay;
-	int departureYear;
-	int departureHour;
-	int departureMinute;
-	int returnHour;
-	int returnMinute;
-	int flightNumber;
-	int planeId;
-	int column;
-	int firstRow;
-	int economyRow;
-	int economyPlusRow;
 
 
 };
