@@ -11,6 +11,9 @@ public:
     int getAvailableFirstClassSeats(int planeId);
     int getAvailableEconomyClassSeats(int planeId);
     int getAvailableEconomyPlusClassSeats(int planeId);
+    int getNumberOfFirstClassPassengers(int planeId);
+    int getNumberOfEconomyClassPassengers(int planeId);
+    int getNumberOfEconomyPlusClassPassengers(int planeId);
     int getMaxPlaneId();
     bool plane(int planeId);
     bool transferPassengers(int currentPlaneId, int newPlaneId);
