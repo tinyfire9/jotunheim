@@ -172,6 +172,9 @@ void FlightSchedule::changePlane(int flightNumber, int currentPlaneId, int newPl
 		if((FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber) && (FlightSchedule::storageFlights[i].getPlaneId() == currentPlaneId))
 		{
 			FlightSchedule::storageFlights[i].setPlaneId(newPlaneId);
+			FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
+			FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
 		}
 	}
+
 }
