@@ -17,7 +17,7 @@ void divider()
 }
 
 
-void welcomeMessage()
+void welcomeMessage() // Welcome message
 {  
      cout << "CS 3528: Data Structures and Algorithms \n" 
           << "Fall 2014  \n" 
@@ -32,6 +32,7 @@ int main()
 
    int choice;
 
+  // classes objects
   Airline airline;
   Fleet fleet;
   PassengerSCH passengers;
@@ -43,6 +44,7 @@ int main()
     divider();
    
     cout << "--------------------------------------WELCOME----------------------------\n\n";
+    // User option to pick from
 
     cout<< "1) add new plane" << endl;
     cout<< "2) add new passenger to a Flight" << endl;
@@ -69,7 +71,7 @@ int main()
       
       
         
-         if (choice == 1)
+         if (choice == 1) // If the user picked to add new plane
          {
           divider();
           int column;
@@ -92,13 +94,14 @@ int main()
           cout << "first class rows = " << numberOfFirstClassRows << "\n";
           cout << "economy class rows = " << numberOfEconomyClassRows << "\n";
           cout << "econom plus rows = " << numberOfEconomyPlusRows << "\n\n\n";
-
+          
+          //Creates the new plane with their specific number of seats
           airline.addNewPlane(column,numberOfFirstClassRows,numberOfEconomyClassRows,numberOfEconomyPlusRows);
  
           cout << "Your new plane has been created! \n\n";
          }
 
-         if (choice == 2)
+         if (choice == 2)// If the user picked to add new passenger into flight
          {
 
           bool checkInput;
@@ -120,7 +123,7 @@ int main()
 
 
 
-          if (validity.stringValid(firstName) == false)
+          if (validity.stringValid(firstName) == false) // checks if user entered the correct name format .
           {
           cout << "You have entered an invalid first name format! Please try again! \n";
           }
@@ -132,7 +135,7 @@ int main()
              cout << "Please enter the passenger last name without spaces in between\n >>";
              cin >> lastName;
 
-           if (validity.stringValid(lastName) == false )
+           if (validity.stringValid(lastName) == false )// checks if user entered the correct name format .
              {
                cout << "You have entered an invalid last name format! Please try again! \n";
              }
@@ -141,10 +144,11 @@ int main()
           }
           
 
-          if(validity.stringValid(firstName) == true && validity.stringValid(lastName) == true)
+          if(validity.stringValid(firstName) == true && validity.stringValid(lastName) == true)// If format conditions are met
           {
 
           divider();
+          //Prints out the user input
           cout << "\n\nYou have entered the following inputs to add your new passenger to a flight ! \n\n\n";
           cout << "flight Number = " << flightNumber << "\n";
           cout << "passengerId = " << passengerId << "\n";
@@ -153,8 +157,6 @@ int main()
 
           airline.addNewPassengerToFlight(flightNumber,passengerId,firstName,lastName);
             
-
-
           }
 
           else
@@ -165,7 +167,7 @@ int main()
          }
        }
 
-       if(choice == 3)
+       if(choice == 3) // if the user pick to add passenger to a list
        {
 
             string firstName;
@@ -176,10 +178,10 @@ int main()
             cout << " Please enter the passenger first name \n >>";
             cin >> firstName;
 
-            validity.stringValid(firstName);
+            validity.stringValid(firstName); // validates the user input first name 
            
 
-            cout << " Please enter the passenger last name \n >>";
+            cout << " Please enter the passenger last name \n >>"; // validates the user input last name
             cin >> lastName;
             validity.stringValid(lastName);
             
@@ -192,7 +194,7 @@ int main()
              cout << "first name : " << firstName << "\n";
              cout << "last name: " << lastName << "\n";
 
-             airline.addNewPassengerToList(firstName, lastName);
+             airline.addNewPassengerToList(firstName, lastName); // adds the user input for new passenger into the list
 
            }
            else
@@ -202,7 +204,7 @@ int main()
 
        }
 
-       if (choice == 4 )
+       if (choice == 4 ) // if the user select to add new flight
        {
 
         int planeId;
@@ -259,9 +261,9 @@ int main()
         cout << "Please enter the departure year (xxxx)\n >>";
         cin >> year;
 
-        validity.dateValid(month,day,year);
+        validity.dateValid(month,day,year); // validates the user input for date, month and year.
 
-        if(validity.dateValid(month,day,year) == false)
+        if(validity.dateValid(month,day,year) == false) // checks the condition of user input and convert the month and year format to appropriate format
         {
           if  (month < 10 && day < 10)
 
@@ -269,7 +271,7 @@ int main()
             
             stringMonth = "0" + to_string(month);
             stringDay = "0" + to_string(day);
-            departureDate = stringMonth + "/" + stringDay + "/" + to_string(year);
+            departureDate = stringMonth + "/" + stringDay + "/" + to_string(year); // if month and day is less than 10, then add a 0 in front 
  
           }
 
@@ -277,7 +279,7 @@ int main()
 
           {
             stringMonth = "0" + to_string(month);
-            departureDate = stringMonth + "/" + to_string(day) + "/" + to_string(year);
+            departureDate = stringMonth + "/" + to_string(day) + "/" + to_string(year); // if month is less than 10, add a 0 infront
 
 
           }
@@ -285,11 +287,11 @@ int main()
           else if (month > 10 && day < 10) 
           {
             stringDay = "0" + to_string(day);
-            departureDate = to_string(month) + "/" + stringDay + "/" + to_string(year);           
+            departureDate = to_string(month) + "/" + stringDay + "/" + to_string(year);// if day is less than 10, add a 0 infront           
 
           }
 
-          else if (month > 10 && day > 10)
+          else if (month > 9 && day > 9) // if month and day is more than 9
           {
 
             departureDate =  to_string(month) + "/" + to_string(day) + "/"+ to_string(year);
@@ -303,7 +305,7 @@ int main()
         cout << "Please enter the departure minute (0-59)\n >>";
         cin >> minute;
 
-        validity.timeValid(hour, minute);
+        validity.timeValid(hour, minute); // validates the hour and time  in 24 hour format and 60 minute format
 
         if(validity.timeValid(hour,minute) == false)
         {
@@ -311,17 +313,17 @@ int main()
           if (hour < 10 && minute > 9)
           {
             stringHour = "0" + to_string(hour);
-            departureTime = stringHour + ":" + to_string(minute);
+            departureTime = stringHour + ":" + to_string(minute); // if hour is less than 10, add a 0 infront
 
           }
 
           else if (hour > 9 && minute < 10)
           {
             stringMinute = "0" + to_string(minute);
-            departureTime = to_string(hour) + ":" + stringMinute;
+            departureTime = to_string(hour) + ":" + stringMinute; // if minute is less than 10, add a 0 infront
           }
 
-          else if (hour < 10 && minute < 10)
+          else if (hour < 10 && minute < 10) // if hour  and mintue is less than 10, add a 0 infront for both of them
           {
             stringHour = "0" + to_string(hour);
             stringMinute = "0" + to_string(minute);
@@ -329,7 +331,7 @@ int main()
             departureTime = stringHour + ":" + stringMinute;
           }
 
-          else if (hour > 9 && minute > 9)
+          else if (hour > 9 && minute > 9) // if hour and minute is more than 9, just assign them to departureTime string.
 
           {
             departureTime = to_string(hour) + ":" + to_string(minute);
@@ -345,7 +347,7 @@ int main()
            cout << "Please enter the return year (xxxx > 2015)\n >>";
            cin >> returnYear;
 
-           validity.returnDateValid(month,day,year,returnMonth,returnDay,returnYear);
+           validity.returnDateValid(month,day,year,returnMonth,returnDay,returnYear);// validates the return month,day and year
 
            if (validity.returnDateValid(month,day,year,returnMonth,returnDay,returnYear) == false)
            {
@@ -386,22 +388,22 @@ int main()
 
 
 
-             validity.timeValid(returnHour,returnMinute);
+             validity.timeValid(returnHour,returnMinute); //validates the time format (24 hour and 60 minute)
 
-             validity.returnTimeValid(hour,minute,returnHour,returnMinute); 
+             validity.returnTimeValid(hour,minute,returnHour,returnMinute); //validates the return time format with departure time.
 
 
 
-               if( validity.returnTimeValid(hour,minute,returnHour,returnMinute) == true )
+               if( validity.returnTimeValid(hour,minute,returnHour,returnMinute) == true )// if validation is true, convert them to their appropriate format
                    {
 
-                    if(returnHour > 9 && returnMinute > 9)
+                    if(returnHour > 9 && returnMinute > 9) // if return hour and return minute is more than 9, just assign it to return time 
                     {
                       returnTime = to_string(returnHour) + ":" + to_string(returnMinute);
 
                     }
 
-                    else if(returnHour < 10 && returnMinute < 10)
+                    else if(returnHour < 10 && returnMinute < 10) // if return hour and return minute is less than 10, add a zero in front
                     {
                       stringReturnMinute = "0" + to_string(returnMinute);
                       stringReturnHour = "0" + to_string(returnHour);
@@ -409,20 +411,20 @@ int main()
                       returnTime = stringReturnHour + ":"+ stringReturnMinute;
                     }
 
-                    else if (returnHour < 10 && returnMinute > 9)
+                    else if (returnHour < 10 && returnMinute > 9) // if return hour is less than 10, add a 0 in front.
                     {
                       stringReturnHour = "0" + to_string(returnHour);
                       returnTime = stringReturnHour + ":" + to_string(returnMinute);
                     }
 
-                    else if (returnHour > 9 && returnMinute < 10)
+                    else if (returnHour > 9 && returnMinute < 10) //if return minute is less than 10, add a 0 in front
                     {
                       stringReturnMinute = "0" + to_string(returnMinute);
                       returnTime = to_string(returnHour) + ":" + stringReturnMinute;
                     }
 
 
-                    cout << " You have entered the following inputs to add new flight ! \n\n\n";
+                    cout << " You have entered the following inputs to add new flight ! \n\n\n";// prints the user input
 
                      cout << "Plane id = " <<planeId << endl;
                      cout << "Origin = " << origin << endl;
@@ -431,7 +433,8 @@ int main()
                      cout << "Departure Time = " << departureTime << endl;
                      cout << "Return date  = " <<returnDate << endl;
                      cout << "Return time = " << returnTime << endl;
-
+                     
+                     //Adds the user input into the addNewFlight method to add a new flight.
                      airline.addNewFlight(planeId, origin, destination, departureDate, departureTime,returnDate,returnTime);
 
                    }
@@ -446,7 +449,7 @@ int main()
 
 }
 
-  if(choice ==5)
+  if(choice ==5) // if user select to transfer passengers!
   {
     int flightNumber;
     int currentPlaneId;
@@ -468,14 +471,12 @@ int main()
     cout << " current plane id = " << currentPlaneId << endl;
     cout << " new plane id = " << newPlaneId << endl;
 
-    airline.transferPassengers(flightNumber,currentPlaneId,newPlaneId);
-
-
+    airline.transferPassengers(flightNumber,currentPlaneId,newPlaneId); // validates the transfered passengers
 
 
   }
 
- if (choice == 6)
+ if (choice == 6) // if user select to display the passengers on that flight
     {
          int flightNumber;
          cout << " \n\nYou have selected to display the passengers ! \n";
@@ -490,16 +491,16 @@ int main()
 
     }
 
-  if(choice == 7)
+  if(choice == 7) // if the user select to view the upcoming flights
   {
     cout << "\n\nYou have selected to view the upcoming flights!! \n\n";
     airline.displayUpcomingFlights();
   }
 
-  if(choice == 8)
+  if(choice == 8)// if the user select to exit the program
 
   {
-    divider();
+    divider(); 
     cout << "\n\n You have selected to exit the program!! THANK YOU FOR USING! \n\n";
 
     divider();
