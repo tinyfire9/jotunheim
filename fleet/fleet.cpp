@@ -1,10 +1,43 @@
 #include <iostream>
+#include <vector>
 #include "fleet.h"
-#include "./plane/newPlane.cpp"
+#include "./plane/newPlane.h"
 #include <algorithm>
 
 Fleet::Fleet(){
 	Fleet::utility.populateReadArray(Fleet::storagePlanes, "./utility/data/plane.txt");
+}
+
+bool Fleet::allPotentialSeatsAvailable(int currentPlaneId, int newPlaneId){
+	vector<string> currentPlane;
+	vector<string> newPlane;
+	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+	{
+		if(Fleet::storagePlanes[i].getPlaneNumber() == currentPlaneId)
+		{
+			currentPlane = Fleet::storagePlanes[i].getPassengerSeats();
+			break;
+		}		
+	}
+	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
+	{
+		if(Fleet::storagePlanes[i].getPlaneNumber() == newPlaneId)
+		{
+			newPlane = Fleet::storagePlanes[i].getPassengerSeats();
+			break;
+		}
+	}
+	for (int i = 0; i < newPlane.size(); i++)
+	{
+		for (int j = 0; j < currentPlane.size(); j++)
+		{
+			if(newPlane[i] == currentPlane[j])
+			{
+				return false;
+			}
+		}
+	}
+	return true;
 }
 
 int Fleet::getNumberOfFirstClassPassengers(int planeId)

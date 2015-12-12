@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../utility/fleet/utilityPlane.cpp"
+#include "../utility/fleet/utilityPlane.h"
 
 class Fleet
 {
@@ -17,6 +17,7 @@ public:
     int getMaxPlaneId();
     bool plane(int planeId);
     bool transferPassengers(int currentPlaneId, int newPlaneId);
+    bool allPotentialSeatsAvailable(int currentPlaneId, int newPlaneId);
 private:
 	vector<StoragePlane> storagePlanes;
 	vector<NewPlane> newPlanes;
