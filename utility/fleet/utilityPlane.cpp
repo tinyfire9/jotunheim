@@ -12,7 +12,7 @@
 #include <typeinfo>
 #include <stdlib.h>
 #include <string>
-#include "../../fleet/plane/storagePlane.cpp"
+#include "../../fleet/plane/storagePlane.h"
 #include "utilityPlane.h"
 using namespace std;
 

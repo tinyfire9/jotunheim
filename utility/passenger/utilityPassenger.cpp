@@ -12,7 +12,7 @@
 #include <typeinfo>
 #include <stdlib.h>
 #include <string>
-#include "../../passengers/passenger/storagePassenger.cpp"
+#include "../../passengers/passenger/storagePassenger.h"
 #include "utilityPassenger.h"
 using namespace std;
 

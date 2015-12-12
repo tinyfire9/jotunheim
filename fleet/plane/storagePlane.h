@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "plane.cpp"
+#include "plane.h"
 using namespace std;
 
 #ifndef STORAGE_PLANE_H

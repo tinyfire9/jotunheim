@@ -1,6 +1,6 @@
 #include <iostream>
 #include "passengers.h"
-#include "./passenger/newPassenger.cpp"
+#include "./passenger/newPassenger.h"
 #include <algorithm>
 
 PassengerSCH::PassengerSCH(){

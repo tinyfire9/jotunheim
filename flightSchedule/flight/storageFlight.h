@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "flight.cpp"
+#include "flight.h"
 using namespace std;
 
 #ifndef STORAGE_FLIGHT_H

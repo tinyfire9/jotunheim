@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <ctime>
 #include "flightSchedule.h"
-#include "./flight/newFlight.cpp"
+#include "./flight/newFlight.h"
 
 
 FlightSchedule::FlightSchedule(){

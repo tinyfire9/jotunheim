@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../utility/passenger/utilityPassenger.cpp"
+#include "../utility/passenger/utilityPassenger.h"
 
 class PassengerSCH
 {

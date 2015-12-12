@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "airline.cpp"
-#include "utility/client/validity.cpp"
+#include "airline.h"
+#include "utility/client/validity.h"
 
 using namespace std;
 

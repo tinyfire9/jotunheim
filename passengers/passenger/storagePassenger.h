@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "passenger.cpp"
+#include "passenger.h"
 using namespace std;
 
 #ifndef STORAGE_PASSENGER_H

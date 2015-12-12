@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <typeinfo>
 #include <exception>
-#include "../../flightSchedule/flight/storageFlight.cpp"
+#include "../../flightSchedule/flight/storageFlight.h"
 #include "flightScheduleUtility.h"
 
 using namespace std;

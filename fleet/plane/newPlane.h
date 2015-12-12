@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "plane.cpp"
+#include "plane.h"
 #include <sstream>
 #include <fstream>
 using namespace std;

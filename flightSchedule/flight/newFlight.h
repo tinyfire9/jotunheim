@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "flight.cpp"
+#include "flight.h"
 #include <sstream>
 #include <fstream>
 using namespace std;

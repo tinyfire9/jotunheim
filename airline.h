@@ -1,8 +1,8 @@
 #include <string>
 #include <iostream>
-#include "./fleet/fleet.cpp"
-#include "./flightSchedule/flightSchedule.cpp"
-#include "./passengers/passengers.cpp"
+#include "./fleet/fleet.h"
+#include "./flightSchedule/flightSchedule.h"
+#include "./passengers/passengers.h"
 
 #ifndef AIRLINE
 #define AIRLINE

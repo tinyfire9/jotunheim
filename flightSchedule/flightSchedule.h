@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../utility/flightSchedule/flightScheduleUtility.cpp"
+#include "../utility/flightSchedule/flightScheduleUtility.h"
 
 class FlightSchedule
 {

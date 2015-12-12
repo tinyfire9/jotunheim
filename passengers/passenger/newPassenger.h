@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "passenger.cpp"
+#include "passenger.h"
 #include <sstream>
 #include <fstream>
 using namespace std;
