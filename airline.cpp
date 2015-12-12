@@ -14,12 +14,19 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 			(Airline::fleet.getAvailableEconomyPlusClassSeats(currentPlaneId) >= Airline::fleet.getNumberOfEconomyPlusClassPassengers(newPlaneId))
 			)
 		{
-			Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId);
-			Airline::fleet.transferPassengers(currentPlaneId, newPlaneId);
+			if(Airline::fleet.allPotentialSeatsAvailable(currentPlaneId, newPlaneId) == true)
+			{
+				Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId);
+				Airline::fleet.transferPassengers(currentPlaneId, newPlaneId);
+			}
+			else
+			{
+				cout << "Sorry, the several seats are already taken! " << endl;
+			}
 		}
 		else
 		{
-			cout << "Sorry there isn't enough amount of seats on the new plane, #" << newPlaneId << endl;
+			cout << "Sorry, there isn't enough amount of seats on the new plane, #" << newPlaneId << endl;
 		}
 	}
 	else
