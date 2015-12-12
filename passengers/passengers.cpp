@@ -4,7 +4,7 @@
 #include <algorithm>
 
 PassengerSCH::PassengerSCH(){
-	PassengerSCH::utility.populateReadArray(PassengerSCH::storagePassengers,"./utility/data/passenger.txt");
+	PassengerSCH::utility.populateReadArray(PassengerSCH::storagePassengers,"./utility/data/passenger.txt"); // gets the data from the passenger utility
 }
 
 void PassengerSCH::addPassenger(
@@ -17,7 +17,7 @@ void PassengerSCH::addPassenger(
 		lastName
 	);
 	PassengerSCH::newPassengers.push_back(passenger);
-	PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers,"./utility/data/passenger.txt");
+	PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers,"./utility/data/passenger.txt"); // write to the passenger utility text file
 }
 void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 	bool found = false;
@@ -34,26 +34,26 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 			{
 				if(ids[j] == flightNumber)
 				{
-					duplicateFlightNumber = true;
+					duplicateFlightNumber = true; // checks if there is duplication of flight number
 				}
 			}
 			for (int j = 0; j < seatNumbers.size(); j++)
 			{
 				if(seatNumbers[j] == seat)
 				{
-					duplicateSeat = true;
+					duplicateSeat = true; // checks the seat number size and duplicate seat
 				}
 			}
 		}
 		if((duplicateFlightNumber == false) && (duplicateSeat == false) && (found == true))
 		{
-			PassengerSCH::storagePassengers[i].addFlightNumber(flightNumber);
-			PassengerSCH::storagePassengers[i].addPassengerSeat(seat);
+			PassengerSCH::storagePassengers[i].addFlightNumber(flightNumber); // adds the new flight number into storage
+			PassengerSCH::storagePassengers[i].addPassengerSeat(seat); // adds the new passenger seat into strage
 		}
 	}
 
 	
-	if(found == false)
+	if(found == false) // check conditions if flight, seat or passenger number is taken or exist.
 	{
 		cout << "Entered passenger number, " << passengerID << ", does not exist! Please try again!" << endl;
 	}
@@ -72,7 +72,7 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
     
 }
 
-int PassengerSCH::getMaxPassengerId(){
+int PassengerSCH::getMaxPassengerId(){ // gets the max passenger id to check the capacity of passenger intake
 	int max = 0;
 	for (int i = 0; i < PassengerSCH::storagePassengers.size(); i++)
 	{
