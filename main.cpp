@@ -56,7 +56,7 @@ int main()
     cout<< "8) Exit " << endl;
     
     cout << "*   Select one of your desirable option" << endl;
-    cout << "*   Enter either from 1 to 7 " << endl;
+    cout << "*   Enter either from 1 to 8 " << endl;
     divider();
     cout << " >> ";
     cin >> choice;
