@@ -227,6 +227,18 @@ int main()
          int hour;
          int minute;
 
+         string stringMonth ;
+         string stringDay;
+
+         string stringMinute;
+         string stringHour;
+
+         string stringReturnHour;
+         string stringReturnMinute;
+
+         string stringReturnMonth;
+         string stringReturnDay;
+
 
         cout << " You have selected to add new flight ! \n\n";
         cout << "Please enter the plane id to add the new flight ! \n >>";
@@ -251,7 +263,38 @@ int main()
 
         if(validity.dateValid(month,day,year) == false)
         {
-          departureDate =  to_string(month) + "/" + to_string(day) + "/"+ to_string(year);
+          if  (month < 10 && day < 10)
+
+          {
+            
+            stringMonth = "0" + to_string(month);
+            stringDay = "0" + to_string(day);
+            departureDate = stringMonth + "/" + stringDay + "/" + to_string(year);
+ 
+          }
+
+          else if( month < 10 && day > 10)
+
+          {
+            stringMonth = "0" + to_string(month);
+            departureDate = stringMonth + "/" + to_string(day) + "/" + to_string(year);
+
+
+          }
+
+          else if (month > 10 && day < 10) 
+          {
+            stringDay = "0" + to_string(day);
+            departureDate = to_string(month) + "/" + stringDay + "/" + to_string(year);           
+
+          }
+
+          else if (month > 10 && day > 10)
+          {
+
+            departureDate =  to_string(month) + "/" + to_string(day) + "/"+ to_string(year);
+
+          }
 
         cout << "Please enter the departure hour (0-23)\n >>";
         cin >> hour;
@@ -264,7 +307,35 @@ int main()
 
         if(validity.timeValid(hour,minute) == false)
         {
-          departureTime = to_string(hour) + ":" + to_string(minute);
+
+          if (hour < 10 && minute > 9)
+          {
+            stringHour = "0" + to_string(hour);
+            departureTime = stringHour + ":" + to_string(minute);
+
+          }
+
+          else if (hour > 9 && minute < 10)
+          {
+            stringMinute = "0" + to_string(minute);
+            departureTime = to_string(hour) + ":" + stringMinute;
+          }
+
+          else if (hour < 10 && minute < 10)
+          {
+            stringHour = "0" + to_string(hour);
+            stringMinute = "0" + to_string(minute);
+
+            departureTime = stringHour + ":" + stringMinute;
+          }
+
+          else if (hour > 9 && minute > 9)
+
+          {
+            departureTime = to_string(hour) + ":" + to_string(minute);
+
+          }
+
           cout << "Please enter the return month (1-12)\n >>";
           cin >> returnMonth;
 
@@ -279,14 +350,41 @@ int main()
            if (validity.returnDateValid(month,day,year,returnMonth,returnDay,returnYear) == false)
            {
 
-              returnDate = to_string(returnMonth) + "/" + to_string(returnDay) + "/" + to_string(returnYear);
-            
+
+              if (returnMonth > 9 && returnDay > 9)
+              {
+                returnDate = to_string(returnMonth) + "/" + to_string(returnDay) + "/" + to_string(returnYear);
+
+              }
+
+              else if (returnMonth < 10 && returnDay < 10)
+              {
+                stringReturnMonth = "0" + to_string(returnMonth);
+                stringReturnDay = "0" + to_string(returnDay);
+
+                returnDate = stringReturnMonth + "/" + stringReturnDay + "/"+ to_string(returnYear);
+              }
+
+              else if (returnMonth < 10 && returnDay > 9)
+              {
+                stringReturnMonth = "0" + to_string(returnMonth);
+                returnDate = stringReturnMonth + "/" + to_string(returnDay) + to_string(returnYear);
+              }
+
+              else if (returnMonth > 9 && returnDay < 10)
+              {
+                stringReturnDay = "0" + to_string(returnDay);
+                returnDate = to_string(returnMonth) + "/" + stringReturnDay + "/" + to_string(returnYear);
+              }
+                    
 
               cout << "Please enter the return hour (0-24) \n >>";
              cin >> returnHour ;
 
              cout << "Please enter the return minute (0-59)\n >>";
              cin >> returnMinute;
+
+
 
              validity.timeValid(returnHour,returnMinute);
 
@@ -296,17 +394,43 @@ int main()
 
                if( validity.returnTimeValid(hour,minute,returnHour,returnMinute) == true )
                    {
-                    returnTime = to_string(returnHour) + ":" + to_string(returnMinute);
+
+                    if(returnHour > 9 && returnMinute > 9)
+                    {
+                      returnTime = to_string(returnHour) + ":" + to_string(returnMinute);
+
+                    }
+
+                    else if(returnHour < 10 && returnMinute < 10)
+                    {
+                      stringReturnMinute = "0" + to_string(returnMinute);
+                      stringReturnHour = "0" + to_string(returnHour);
+
+                      returnTime = stringReturnHour + ":"+ stringReturnMinute;
+                    }
+
+                    else if (returnHour < 10 && returnMinute > 9)
+                    {
+                      stringReturnHour = "0" + to_string(returnHour);
+                      returnTime = stringReturnHour + ":" + to_string(returnMinute);
+                    }
+
+                    else if (returnHour > 9 && returnMinute < 10)
+                    {
+                      stringReturnMinute = "0" + to_string(returnMinute);
+                      returnTime = to_string(returnHour) + ":" + stringReturnMinute;
+                    }
+
 
                     cout << " You have entered the following inputs to add new flight ! \n\n\n";
 
                      cout << "Plane id = " <<planeId << endl;
                      cout << "Origin = " << origin << endl;
                      cout << "Destination = " << destination<< endl;
-                     cout << " Departure date = " << departureDate << endl;
-                     cout << " Departure Time = " << departureTime << endl;
-                     cout << " Return date  = " <<returnDate << endl;
-                     cout << " Return time = " << returnTime << endl;
+                     cout << "Departure date = " << departureDate << endl;
+                     cout << "Departure Time = " << departureTime << endl;
+                     cout << "Return date  = " <<returnDate << endl;
+                     cout << "Return time = " << returnTime << endl;
 
                      airline.addNewFlight(planeId, origin, destination, departureDate, departureTime,returnDate,returnTime);
 
