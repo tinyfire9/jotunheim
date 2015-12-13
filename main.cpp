@@ -184,20 +184,22 @@ int main()
           }
           else
           {
+            divider();
             cout << "You have entered an invalid flight number format! Please try again! \n\n";
             exit(0);
           }
           cout << "Please enter the passenger ID to add in new flight \n >>";
           cin >> passengerId;
-          if(cin)
-          {
+            if(cin)
+            {
 
-          }
-          else
-          {
-            cout << "You have entered an invalid flight number format! Please try again! \n\n";
-            exit(0);
-          }
+            }
+            else
+             {
+              divider();
+               cout << "You have entered an invalid flight number format! Please try again! \n\n";
+               exit(0);
+             }
           cout << "Please enter the passenger first name without spaces in between\n >>";
           cin >> firstName;
                if(cin)
@@ -206,6 +208,7 @@ int main()
                 }
                 else
                {
+                divider();
                 cout << "You have entered an invalid first name format! Please try again! \n\n";
                 exit(0);
                 }
@@ -214,6 +217,7 @@ int main()
 
           if (validity.stringValid(firstName) == false) // checks if user entered the correct name format .
           {
+            divider();
           cout << "You have entered an invalid first name format! Please try again! \n";
           }
 
@@ -350,6 +354,7 @@ int main()
         }
         else
         {
+          divider();
           cout << "Wrong input format for plane id! Please try again! \n\n";
           exit(0);
         }
@@ -362,6 +367,7 @@ int main()
         }
         else
         {
+          divider();
           cout << "Wrong input format! for origin Please try again! \n\n";
           exit(0);
         }
@@ -374,6 +380,7 @@ int main()
         }
         else
         {
+          divider();
           cout << "Wrong input format for destination! Please try again! \n\n";
           exit(0);
         }
@@ -386,6 +393,7 @@ int main()
         }
         else
         {
+          divider();
           cout << "Wrong input format for departure month! Please try again! \n\n";
           exit(0);
         }
@@ -398,6 +406,7 @@ int main()
         }
         else
         {
+          divider();
           cout << "Wrong input format for departure day! Please try again! \n\n";
           exit(0);
         }
@@ -410,6 +419,7 @@ int main()
         }
         else
         {
+          divider();
           cout << "Wrong input format for departure year! Please try again! \n\n";
           exit(0);
         }
