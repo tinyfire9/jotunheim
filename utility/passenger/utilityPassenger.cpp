@@ -18,13 +18,13 @@ using namespace std;
 
 
 
-void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, string path)
+void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, string path) // function to read array and push back vector data on passenger
 {
 
 
     PassengerUtility util;
-	string line = "";
-	string chunk = "";
+	string line = "";        // initializes the data member to empty
+	string chunk = "";       // initializes the data member to empty
 
 
 	vector< vector<string> >data;
@@ -36,9 +36,9 @@ void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, s
 	{
 		vector<string> row;
 		stringstream ss(line);
-		while(getline(ss,chunk, '|') )
+		while(getline(ss,chunk, '|') ) // data separated by "|"
 		{
-			row.push_back(chunk);
+			row.push_back(chunk); // pushes the chunk into the vector
 
 		}
 		data.push_back(row);
@@ -52,17 +52,17 @@ void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, s
 		util.split(data[i][0], chunks);
 
 		StoragePassenger Passenger(
-			util.stringToInt(chunks[0]),
+			util.stringToInt(chunks[0]), // convert this id data member to int 
 			chunks[1],
 			chunks[2]
 	    );
 
-	    for(int j = 1; j< data[i].size(); j++)
+	    for(int j = 1; j< data[i].size(); j++) // iterates the data size length
 	    {
           vector<string> passengerInfo;
           util.split(data[i][j],passengerInfo);
-          Passenger.addFlightNumber(util.stringToInt(passengerInfo[0]));
-          Passenger.addPassengerSeat(passengerInfo[1]);
+          Passenger.addFlightNumber(util.stringToInt(passengerInfo[0])); // adds the flight number function 
+          Passenger.addPassengerSeat(passengerInfo[1]); // adds the passenger seat info into the data
 
 	    }
 	    passengers.push_back(Passenger);
@@ -70,7 +70,7 @@ void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, s
 
 }
 
-void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, vector<NewPassenger> &NewPassengers, string path)
+void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, vector<NewPassenger> &NewPassengers, string path)// function to write to file
 {
 	string pipe = "|";
 	ofstream outputStream;
@@ -80,7 +80,7 @@ void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, ve
 	{
 		outputStream << storagePassengers[i].getPassengerNumber() << " " << storagePassengers[i].getFirstName() << " ";
 		outputStream << storagePassengers[i].getLastName() << " ";
-	    vector<int> flightNumbers = storagePassengers[i].getFlightNumber();
+	    vector<int> flightNumbers = storagePassengers[i].getFlightNumber(); // search for the passenger flight number in the storage passenger member function to see if it exist
 	    vector<string> passengerSeats = storagePassengers[i].getPassengerSeats();
 	    for (int j = 0; j < flightNumbers.size(); j++)
 	    {
@@ -92,14 +92,14 @@ void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, ve
    for (int i =0 ; i < NewPassengers.size(); i++)
  {
 	//cout << NewPlanes[i].get_plane_id() << endl;
-	outputStream << NewPassengers[i].getPassengerNumber() << " " << NewPassengers[i].getFirstName() << " ";
+	outputStream << NewPassengers[i].getPassengerNumber() << " " << NewPassengers[i].getFirstName() << " "; 
 	outputStream << NewPassengers[i].getLastName() << " ";
   
-    vector<int> flightNumbers = NewPassengers[i].getFlightNumber();
-    vector<string> passengerSeats = NewPassengers[i].getPassengerSeats();
+    vector<int> flightNumbers = NewPassengers[i].getFlightNumber(); // adds the new passenger into flight number vector
+    vector<string> passengerSeats = NewPassengers[i].getPassengerSeats();// adds the new passenger seat into the passenger seats vector
     for (int j =0; j < flightNumbers.size(); j++)
     {
-    	outputStream << " " << pipe << " " << flightNumbers[j] << " " << passengerSeats[i]; 
+    	outputStream << " " << pipe << " " << flightNumbers[j] << " " << passengerSeats[i]; // displays the flight number and passenger seats
     }
     outputStream << endl;
   }
@@ -109,7 +109,7 @@ void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, ve
 
 
 
-void PassengerUtility::split(string line, vector<string> &words)
+void PassengerUtility::split(string line, vector<string> &words)// splits the word function 
 {
 	stringstream ss(line);
 	string word = "";
@@ -119,7 +119,7 @@ void PassengerUtility::split(string line, vector<string> &words)
 	}
 }
 
-int PassengerUtility::stringToInt(string word)
+int PassengerUtility::stringToInt(string word) // convert string to int 
 {
 	stringstream ss(word);
 	int intVersion;
