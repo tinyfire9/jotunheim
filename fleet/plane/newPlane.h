@@ -16,7 +16,7 @@ public:
 		int max = 0;
 		int id = 0;
 		fstream readStream;
-		readStream.open("./data/plane.txt"); // open the plane file and read 
+		readStream.open("./utility/data/plane.txt"); // open the plane file and read 
 		while(getline(readStream,line))
 		{
 			stringstream ss(line);
