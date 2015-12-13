@@ -20,7 +20,7 @@ void divider()
 void welcomeMessage() // Welcome message
 {  
      cout << "CS 3528: Data Structures and Algorithms \n" 
-          << "Fall 2014  \n" 
+          << "Fall 2015  \n" 
           << "Program4/Final Group Project  \n"
           << "(Bemidji State University) \n"
           << "Author: Yohannes Seifu \n"
