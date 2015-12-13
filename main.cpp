@@ -622,12 +622,40 @@ int main()
 
     cout << "Enter the flight number \n >>";
     cin >> flightNumber;
+    if (cin)
+    {
+      // if correct, do anothing
+
+    }
+    else
+    {
+      cout << "You have entered the wrong flight number input format! Please try again! \n";
+      exit(0);
+    }
 
     cout << "Enter the current plane id you wish to transfer! \n >>";
     cin >> currentPlaneId;
+    if (cin)
+    {
+        // if correct, do anothing
+    }
+    else
+    {
+      cout << "You have entered the wrong plane id input format! Please try again! \n";
+      exit(0);
+    }
 
     cout << "Enter the new plane id you wish to transfer! \n >>";
     cin >> newPlaneId;
+    if (cin)
+    {
+       // if correct, do anothing
+    }
+    else
+    {
+      cout << "You have entered the wrong plane id number input format! Please try again! \n";
+      exit(0);
+    }
 
     cout << " You have entered the following inputs to transfer passengers! \n\n";
     cout << " flight number = " << flightNumber << endl;
