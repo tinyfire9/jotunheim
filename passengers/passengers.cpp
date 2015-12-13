@@ -49,6 +49,7 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 		{
 			PassengerSCH::storagePassengers[i].addFlightNumber(flightNumber); // adds the new flight number into storage
 			PassengerSCH::storagePassengers[i].addPassengerSeat(seat); // adds the new passenger seat into strage
+			break;
 		}
 	}
 
@@ -82,4 +83,35 @@ int PassengerSCH::getMaxPassengerId(){ // gets the max passenger id to check the
 		}
 	}
 	return max;
+}
+
+bool PassengerSCH::passenger(int passengerID){
+	for (int i = 0; i < PassengerSCH::storagePassengers.size(); i++)
+	{
+		if(PassengerSCH::storagePassengers[i].getPassengerNumber() == passengerID)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+string PassengerSCH::getPassengerFirstName(int passengerID){
+	for (int i = 0; i < PassengerSCH::storagePassengers.size(); i++)
+	{
+		if(PassengerSCH::storagePassengers[i].getPassengerNumber() == passengerID)
+		{
+			return PassengerSCH::storagePassengers[i].getFirstName();
+		}
+	}
+}
+
+string PassengerSCH::getPassengerLastName(int passengerID){
+	for (int i = 0; i < PassengerSCH::storagePassengers.size(); i++)
+	{
+		if(PassengerSCH::storagePassengers[i].getPassengerNumber() == passengerID)
+		{
+			return PassengerSCH::storagePassengers[i].getLastName();
+		}
+	}
 }
