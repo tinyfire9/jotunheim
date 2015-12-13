@@ -274,7 +274,7 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
          {
           checkInput = false;
 
-               if (returnDay > 0 && returnDay <= 30)
+               if (returnDay > 0 && returnDay <= 30) // checks the return day 0 - 30
                {
                  checkInput = false;
                }     
