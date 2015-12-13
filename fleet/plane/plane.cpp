@@ -123,7 +123,7 @@ bool Plane::deletePassenger(int passengerId, string passengerSeat){
     return deleted;
 }
 
-bool Plane::deleteLastPassenger(){
+bool Plane::deleteLastPassenger(){ // function to delete last passenger 
     bool deleted = false;
     if(Plane::passengerIds.size() == Plane::passengerSeats.size())
     {
