@@ -14,6 +14,7 @@ class Validity
 public:
 	Validity();
 	bool choiceValid(int choice);
+	bool integerValid(int value);
 	bool stringValid(string word);
 	bool dateValid(int month, int day, int year);
 	bool timeValid(int hour, int minute);
