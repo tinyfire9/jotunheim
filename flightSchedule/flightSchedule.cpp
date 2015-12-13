@@ -6,10 +6,10 @@
 
 
 FlightSchedule::FlightSchedule(){
-	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
+	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt"); // function to populate read array from storage flight and flight schedule text file
 }
 
-void FlightSchedule::addFlight(
+void FlightSchedule::addFlight( // function to add new flight
 	int planeId, 
 	string origin, 
 	string destination,
@@ -28,13 +28,14 @@ void FlightSchedule::addFlight(
 		returnTime
 	);
 	FlightSchedule::newFlights.push_back(flight);
-	FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
-	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
+	FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt"); // function to write file into flight schedule
+	FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt"); // function to populate read array from flightschedule text file
 }
 
-void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firstName, string lastName){
+void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firstName, string lastName){ // function to add new passenger
 	bool found = false;
 	bool duplicatePassenger = false;
+
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
@@ -45,10 +46,12 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 			{
 				if(ids[j] == passengerId)
 				{
+					// checks the duplicate passenger
 					duplicatePassenger = true;
 				}
 			}
 		}
+		// check if there is duplicate passenger. If there is no duplicate then continute to add new passenger id and passenger name
 		if((duplicatePassenger == false) && (found == true))
 		{
 			FlightSchedule::storageFlights[i].addPassengerId(passengerId);
@@ -154,26 +157,26 @@ void FlightSchedule::displayUpcomingFlights(){
 	}
 }
 
-int FlightSchedule::getMaxFlightId(){
+int FlightSchedule::getMaxFlightId(){ // function to get max flight id
 	int max = 0;
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if(FlightSchedule::storageFlights[i].getFlightNumber() > max)
 		{
-			max = FlightSchedule::storageFlights[i].getFlightNumber();
+			max = FlightSchedule::storageFlights[i].getFlightNumber(); // get the total max for flight number 
 		}
 	}
 	return max;
 }
 
-void FlightSchedule::changePlane(int flightNumber, int currentPlaneId, int newPlaneId){
+void FlightSchedule::changePlane(int flightNumber, int currentPlaneId, int newPlaneId){ // function to change plane
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if((FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber) && (FlightSchedule::storageFlights[i].getPlaneId() == currentPlaneId))
 		{
 			FlightSchedule::storageFlights[i].setPlaneId(newPlaneId);
-			FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
-			FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
+			FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");// function to write to flight schedule text file
+			FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");// function to pupulate read array from flight schedule text file
 		}
 	}
 
