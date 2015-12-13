@@ -11,12 +11,12 @@ using namespace std;
 class NewFlight : public Flight{
 public:
 	NewFlight(int planeId, string origin, string destination,string departureDate,string departureTime,string returnDate,string returnTime)
-	: Flight(planeId, origin, destination, departureDate, departureTime, returnDate, returnTime){
-		string line = "";
+	: Flight(planeId, origin, destination, departureDate, departureTime, returnDate, returnTime){ // new flight function when added
+		string line = ""; // set line to empty
 		int max = 0;
 		int id = 0;
 		fstream readStream;
-		readStream.open("./utility/data/flightSchedule.txt");
+		readStream.open("./utility/data/flightSchedule.txt"); // open and reads the flight schedule file text
 		while(getline(readStream, line))
 		{
 			stringstream ss(line);
@@ -26,10 +26,10 @@ public:
 				max = id;
 			}
 		}
-		readStream.close();
-		NewFlight::flightNumber = max + 1;
+		readStream.close(); // close file 
+		NewFlight::flightNumber = max + 1; // increment flight number by 1 from the last flight number 
 	}
-	int getFlightNumber();
+	int getFlightNumber(); // get flight number function
 private:
 	int flightNumber;
 };				
