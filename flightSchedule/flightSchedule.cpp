@@ -54,8 +54,8 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 		// check if there is duplicate passenger. If there is no duplicate then continute to add new passenger id and passenger name
 		if((duplicatePassenger == false) && (found == true))
 		{
-			FlightSchedule::storageFlights[i].addPassengerId(passengerId);
-			FlightSchedule::storageFlights[i].addPassengerName(firstName + " " + lastName);
+			FlightSchedule::storageFlights[i].addPassengerId(passengerId); // stores the passenger id into the storage flights 
+			FlightSchedule::storageFlights[i].addPassengerName(firstName + " " + lastName); // stores the passenger name into the storage flights
 			break;
 		}
 	}
@@ -70,12 +70,12 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 	}
 	else
 	{
-		FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");
-		FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");
+		FlightSchedule::utility.writeFile(FlightSchedule::storageFlights, FlightSchedule::newFlights, "./utility/data/flightSchedule.txt");// function to write the storage flights into the flightSchedule text file 
+		FlightSchedule::utility.populateReadArray(FlightSchedule::storageFlights, "./utility/data/flightSchedule.txt");//function to populate the read array from the flight schedule text file
 	}
 }
 
-bool FlightSchedule::flight(int flightNumber, int planeId){
+bool FlightSchedule::flight(int flightNumber, int planeId){ 
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber && FlightSchedule::storageFlights[i].getPlaneId() == planeId)
@@ -86,19 +86,19 @@ bool FlightSchedule::flight(int flightNumber, int planeId){
 	return false;
 }
 
-void FlightSchedule::displayPassengers(int flightNumber)
+void FlightSchedule::displayPassengers(int flightNumber) // function to display passengers from the given flight number 
 {
 	bool found = false;
 	vector<string> passengers;
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
-		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
+		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber) // if flight number is found in the flight storage class, do this
 		{
 			found = true;
-			passengers = FlightSchedule::storageFlights[i].getPassengerNames();
+			passengers = FlightSchedule::storageFlights[i].getPassengerNames(); // gets the passenger names from the storage flights 
 			for (int i = 0; i < passengers.size(); i++)
 			{
-				cout << passengers[i] << endl;
+				cout << passengers[i] << endl; // prints the list of passenger from the storage flights given a specific flight number
 			}
 			break;
 		}
@@ -109,7 +109,7 @@ void FlightSchedule::displayPassengers(int flightNumber)
 	}
 }
 
-void FlightSchedule::displayUpcomingFlights(){
+void FlightSchedule::displayUpcomingFlights(){ // Display all the upcoming flights from the local time
 	time_t currentTime;
 	struct tm *localTime;
 	time( &currentTime );                   // Get the current time
@@ -118,7 +118,7 @@ void FlightSchedule::displayUpcomingFlights(){
 	int currentYear =  localTime->tm_year + 1900 ;
 	int currentMonth = localTime->tm_mon + 1;
 	int currentDay = localTime->tm_mday;
-	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13)
+	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13) // prints out the identification header with defined witdth
 	 << "destination" << setw(13) << "depDate" << setw(13) << "depTime" << setw(13) 
 	 << "retDate" << setw(13) << "retTime" << endl;
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
@@ -131,7 +131,7 @@ void FlightSchedule::displayUpcomingFlights(){
 		{	
 			if(month == currentMonth)
 			{
-				if(day >= currentDay)
+				if(day >= currentDay) // checks the condition if day is more than or equal to current day
 				{
 					cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
 					cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
@@ -139,7 +139,7 @@ void FlightSchedule::displayUpcomingFlights(){
 					cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
 				}
 			}
-			else if(month > currentMonth)
+			else if(month > currentMonth) // checks the condition if month is more than current month 
 			{
 				cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
 				cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
@@ -147,7 +147,7 @@ void FlightSchedule::displayUpcomingFlights(){
 				cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
 			}
 		}
-		else if(year > currentYear)
+		else if(year > currentYear) // checks the condition if the year is more than current year
 		{
 			cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
 			cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
