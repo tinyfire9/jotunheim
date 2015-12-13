@@ -177,10 +177,38 @@ int main()
           cout << "You have selected to add new passenger to a flight ! \n\n\n";
           cout << "Please enter the flight number to add the new passenger in \n >>";
           cin >> flightNumber;
+
+          if(cin)
+          {
+
+          }
+          else
+          {
+            cout << "You have entered an invalid flight number format! Please try again! \n\n";
+            exit(0);
+          }
           cout << "Please enter the passenger ID to add in new flight \n >>";
           cin >> passengerId;
+          if(cin)
+          {
+
+          }
+          else
+          {
+            cout << "You have entered an invalid flight number format! Please try again! \n\n";
+            exit(0);
+          }
           cout << "Please enter the passenger first name without spaces in between\n >>";
           cin >> firstName;
+               if(cin)
+                {
+
+                }
+                else
+               {
+                cout << "You have entered an invalid first name format! Please try again! \n\n";
+                exit(0);
+                }
 
 
 
@@ -195,6 +223,15 @@ int main()
 
              cout << "Please enter the passenger last name without spaces in between\n >>";
              cin >> lastName;
+             if(cin)
+                {
+
+                }
+               else
+                 {
+                 cout << "You have entered an invalid last name format! Please try again! \n\n";
+                 exit(0);
+                 }
 
            if (validity.stringValid(lastName) == false )// checks if user entered the correct name format .
              {
@@ -307,20 +344,75 @@ int main()
         cout << "Please enter the plane id to add the new flight ! \n >>";
         cin >> planeId;
 
+        if(cin)
+        {
+
+        }
+        else
+        {
+          cout << "Wrong input format for plane id! Please try again! \n\n";
+          exit(0);
+        }
+
         cout << "Please enter the origin \n >>";
         cin >> origin;
+        if(cin)
+        {
+
+        }
+        else
+        {
+          cout << "Wrong input format! for origin Please try again! \n\n";
+          exit(0);
+        }
 
         cout << "Please enter the destination \n >>";
         cin >> destination;
+        if(cin)
+        {
+
+        }
+        else
+        {
+          cout << "Wrong input format for destination! Please try again! \n\n";
+          exit(0);
+        }
 
         cout << "Please enter the departure month (0-12)\n >>";
         cin >> month;
+        if(cin)
+        {
+
+        }
+        else
+        {
+          cout << "Wrong input format for departure month! Please try again! \n\n";
+          exit(0);
+        }
 
         cout << "Please enter the departure day (1-30)\n >>";
         cin >> day;
+        if(cin)
+        {
+
+        }
+        else
+        {
+          cout << "Wrong input format for departure day! Please try again! \n\n";
+          exit(0);
+        }
 
         cout << "Please enter the departure year (xxxx)\n >>";
         cin >> year;
+        if(cin)
+        {
+
+        }
+        else
+        {
+          cout << "Wrong input format for departure year! Please try again! \n\n";
+          exit(0);
+        }
 
         validity.dateValid(month,day,year); // validates the user input for date, month and year.
 
