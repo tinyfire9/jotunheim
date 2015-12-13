@@ -384,9 +384,11 @@ bool Fleet::transferPassengers(int currentPlaneId, int newPlaneId){
 					Fleet::storagePlanes[i].addPassengerSeat(seatNumber);
 					Fleet::storagePlanes[currentPlaneIdIndex].deleteLastPassenger();
 				}
+				passengersTransfered = true;
 				break;
 			}
 		}
 		Fleet::utility.writeFile(Fleet::storagePlanes, Fleet::newPlanes, "./utility/data/plane.txt");
 	}
+	return passengersTransfered;
 }
