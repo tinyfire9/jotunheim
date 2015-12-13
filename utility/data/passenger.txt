@@ -2,6 +2,6 @@
 0 FName LName  | 0 FlightNumber | 0 FlightNumber
 0 FName LName  | 0 FlightNumber | 0 FlightNumber | 0 FlightNumber
 0 FName LName  | 0 FlightNumber | 0 FlightNumber | 0 FlightNumber
-1 CHEAH HON  | 1234 5a | 4566 5a | 8765 5a
+1 CHEAH HON  | 1234 5a | 4566 5a | 8765 5a | 40 3A
 2 cheah hon  | 8999 5C | 9999 5C
 3 firstN lastN 
