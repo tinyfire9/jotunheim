@@ -9,13 +9,13 @@ Validity::Validity(){};
 
 
 
-bool Validity::choiceValid(int choice){
+bool Validity::choiceValid(int choice){ // checks user input selection from 1 - 8
 
   
 bool checkInput;
 checkInput = false;
  
-    if (choice >= 1 && choice <= 9)
+    if (choice >= 1 && choice < 9) 
     {
       checkInput = true;
       //cout << " CORRECT";
@@ -28,7 +28,7 @@ checkInput = false;
     return checkInput;
 }
 
-bool Validity::stringValid(string word){
+bool Validity::stringValid(string word){ // checks the string  format if it is valid
 
 
 bool checkInput;
@@ -36,7 +36,7 @@ checkInput = false;
 
     for (int i =0; i < word.size(); i++)
      {
-      if(!isalpha(word[i]) || isspace(word[i]))
+      if(!isalpha(word[i]) || isspace(word[i])) // checks if it is alphabet or there is space in between the string
       {
         checkInput = false;
         break;
@@ -54,7 +54,7 @@ checkInput = false;
      
 
 
-bool Validity::dateValid(int month, int day, int year){
+bool Validity::dateValid(int month, int day, int year){ // checks the user input date format
 
 bool checkInput;
 checkInput = true;
@@ -99,18 +99,18 @@ checkInput = true;
 
 }
 
-bool Validity::timeValid(int hour, int minute){
+bool Validity::timeValid(int hour, int minute){ // checks the user input time format 
 
   string stringHour;
   string stringMinute;
 
-  stringHour = to_string(hour);
-  stringMinute = to_string(minute);
+  stringHour = to_string(hour); // convert hour to string
+  stringMinute = to_string(minute); // convert minute to string 
 
   bool checkInput;
   checkInput = true;
 
-  for (int i =0; i < stringHour.size(); i++)
+  for (int i =0; i < stringHour.size(); i++) // interates the string hour size to check if it is digit
   {
       if(!isdigit(stringHour[i]))
       {
@@ -150,10 +150,10 @@ bool Validity::timeValid(int hour, int minute){
   if( checkInput == true )
     { 
 
-              if (hour >= 0 && hour <= 23)
+              if (hour >= 0 && hour <= 23) // checks if the hour is more than or  equal to 0 or less than or equal to 23 
               {
                  checkInput = false;
-                    if(minute >= 0 && minute <= 59)
+                    if(minute >= 0 && minute <= 59) // checks if the minute is more than 0 or less than or equal to 59 
                     {
                      checkInput = false;
                      
@@ -162,7 +162,7 @@ bool Validity::timeValid(int hour, int minute){
                     {
                        checkInput = true;
                        
-                       cout << " Wrong minute input !!! \n";
+                       cout << " Wrong minute input !!! \n"; // prompt error message 
                        exit(0);
                      } 
                 }            
@@ -170,7 +170,7 @@ bool Validity::timeValid(int hour, int minute){
                   {
                       checkInput = true;
                       
-                      cout <<" Wrong hour input \n";
+                      cout <<" Wrong hour input \n"; // prompt error message
                       exit(0);
                  }
     }
@@ -181,21 +181,21 @@ bool Validity::timeValid(int hour, int minute){
 
 
 bool Validity::returnDateValid(int departureMonth, int departureDay,
-    int departureYear, int returnMonth, int returnDay, int returnYear)
+    int departureYear, int returnMonth, int returnDay, int returnYear) // checks the user input for return date 
 {
 
   bool checkInput;
   checkInput = true;
 
-  if (departureMonth >= 1 && departureMonth <= 12)
+  if (departureMonth >= 1 && departureMonth <= 12) // checks from 1 - 12 for departure month 
   {
      checkInput = false;
 
-     if(departureDay >= 1 && departureDay <= 30)
+     if(departureDay >= 1 && departureDay <= 30) // checks from 1 - 30 for departure day 
      {
         checkInput = false;
 
-               if(departureYear >= 2015)
+               if(departureYear >= 2015) // checks if departure year is more than or equal to 2015
                 {
                   checkInput = false;
 
@@ -205,8 +205,8 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
                 {
                  checkInput = true;
                  
-                 cout << "Wrong departure year input \n";
-                 exit(0);
+                 cout << "Wrong departure year input \n"; // prompt error message 
+                 exit(0); // exit program 
                 }
 
      }
@@ -215,8 +215,8 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
          {
           checkInput = true;
          
-          cout <<"Wrong day input \n";
-          exit(0);
+          cout <<"Wrong day input \n"; // prompt error message 
+          exit(0); // exit program
          }
 
   }
@@ -225,8 +225,8 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
       {
         checkInput = true;
         
-        cout <<"Wrong month input \n";
-        exit(0);
+        cout <<"Wrong month input \n"; // prompt error message 
+        exit(0); //exit program 
       }
 
 
@@ -234,11 +234,11 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
   {
      checkInput = false;
 
-           if(returnMonth >= departureMonth && returnMonth <= 12)
+           if(returnMonth >= departureMonth && returnMonth <= 12) // checks the return month so that it does not go below the departure month
            {       
                     checkInput = false; 
 
-                    if(returnDay < 30 && returnDay > departureDay)
+                    if(returnDay < 30 && returnDay > departureDay) // checks if return day is less than 30 and return day must be more than or equal to departure day
                     {
                      checkInput = false;
 
@@ -265,10 +265,10 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
     
   }
 
-  else if (returnYear > departureYear)
+  else if (returnYear > departureYear) // if return year is more than departure year then do the following conditions
       {
         checkInput = false;
-         if( returnMonth > 0 && returnMonth <= 12)
+         if( returnMonth > 0 && returnMonth <= 12) // checks the return month from 0 - 12 
          {
           checkInput = false;
 
@@ -299,7 +299,7 @@ bool Validity::returnDateValid(int departureMonth, int departureDay,
 }
 
 bool Validity::returnTimeValid(int departureHour, int departureMinute,
-    int returnHour, int returnMinute)
+    int returnHour, int returnMinute) // checks the time valid format 
 {
   bool checkInput;
   checkInput = true;
@@ -309,16 +309,16 @@ bool Validity::returnTimeValid(int departureHour, int departureMinute,
   string stringReturnHour;
   string stringReturnMinute;
 
-  stringDepartureHour = to_string(departureHour);
-  stringDepartureMinute = to_string(departureMinute);
-  stringReturnHour = to_string(returnHour);
-  stringReturnMinute = to_string(returnMinute);
+  stringDepartureHour = to_string(departureHour); // convert the departureHour variables to string to their appropriate format if less than 0
+  stringDepartureMinute = to_string(departureMinute); // convert the departureHMinute variables to string to their appropriate format if less than 0
+  stringReturnHour = to_string(returnHour); // convert the returnHour  variables to string to their appropriate format if less than 0
+  stringReturnMinute = to_string(returnMinute);// convert the returnHour variables to string to their appropriate format if less than 0
 
 
 for(int i = 0 ; i < stringDepartureHour.size(); i++)
 {
 
-   if(!isdigit(stringDepartureHour[i]))
+   if(!isdigit(stringDepartureHour[i])) // checks if user input is digit 
    {
     checkInput = false;
     
@@ -384,12 +384,12 @@ for(int i = 0 ; i < stringDepartureHour.size(); i++)
 
 if(checkInput == true)
 {
-  if(departureHour >= 0 && departureHour <= 23)
+  if(departureHour >= 0 && departureHour <= 23) // checks if departureHour is more than 0 and less than 23
   {
-        if(departureMinute >= 0 && departureMinute <= 59)
+        if(departureMinute >= 0 && departureMinute <= 59) // checks if departureMinute is more than or equal to 0 and less than or equal to 59
          {
             
-             if(returnHour >= 0 && returnHour <= 23)
+             if(returnHour >= 0 && returnHour <= 23) // checks if return hour is more than or equal to 0 or less than or equal to 23
              {
                    checkInput = true;
                    if(returnMinute >= 0 && returnMinute <= 59)
