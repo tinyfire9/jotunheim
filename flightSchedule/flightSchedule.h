@@ -12,6 +12,7 @@ public:
 	bool flight(int flightNumber, int planeId);
 	void displayPassengers(int flightNumber);
 	void displayUpcomingFlights();
+	void displayPastFlights();
 	int getMaxFlightId();
 	void changePlane(int flightNumber, int currentPlaneId, int newPlaneId);
 private:
