@@ -46,7 +46,23 @@ void Airline::addNewFlight(int planeId, string origin, string destination,string
 }
 
 void Airline::addNewPassengerToFlight(int flightNumber, int passengerId, string firstName, string lastName){
-	Airline::schedule.addPassenger(flightNumber, passengerId, firstName, lastName); // function to add the new passenger to the flight 
+	if(Airline::passengers.passenger(passengerId) == true)
+	{
+		if(Airline::passengers.getPassengerFirstName(passengerId) == firstName && Airline::passengers.getPassengerLastName(passengerId) == lastName)
+		{
+			Airline::schedule.addPassenger(flightNumber, passengerId, firstName, lastName); // function to add the new passenger to the flight 
+			Airline::passengers.addFlight(passengerId, flightNumber, "3A");
+			cout << "Passenger successfully added to flight. Thanks !" << endl;
+		}
+		else
+		{
+			cout << "Entered passengerId does not match with firstName and lastName. Please, try again!" << endl;
+		}
+	}
+	else
+	{
+		cout << "PassengerId " << passengerId << ", does not exist! Please add passenger to the passengers list and try adding again!" << endl;
+	}
 }
 
 void Airline::addNewPlane(int column, int number_of_first_class_rows, int number_of_economy_class_rows, int number_of_economy_plus_rows){
