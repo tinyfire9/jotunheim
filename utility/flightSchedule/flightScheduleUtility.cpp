@@ -10,14 +10,14 @@
 
 using namespace std;
 
-void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, string path)
+void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, string path) // function to populate the array from storage flights with the path directory
 {
 	FlightScheduleUtility util;
 	string line = "";
 	string chunk = "";
 	vector< vector<string> > data;
 	fstream readStream;
-	readStream.open(path.c_str());
+	readStream.open(path.c_str()); //Opens up the file from the subdirectory file location 
 	
 	//read each line and split by |
 	while(getline(readStream, line))
@@ -44,8 +44,8 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, st
 		util.split(data[i][0], chunks);
 
 		StorageFlight flight(
-			util.stringToInt(chunks[0]), 
-			util.stringToInt(chunks[1]), 
+			util.stringToInt(chunks[0]), //convert this string to int
+			util.stringToInt(chunks[1]), //convert this strong to int 
 			chunks[2], 
 			chunks[3],
 			chunks[4], 
@@ -57,42 +57,42 @@ void FlightScheduleUtility::populateReadArray(vector<StorageFlight> &flights, st
 		{
 			vector<string> passsengerInfo;
 			util.split(data[i][j], passsengerInfo);
-			flight.addPassengerId(util.stringToInt(passsengerInfo[0]));
+			flight.addPassengerId(util.stringToInt(passsengerInfo[0])); // add passenger id into flight and also convert from string to int
 			flight.addPassengerName(passsengerInfo[1] + " " + passsengerInfo[2]);//lastname, firstname
 		}
-		flights.push_back(flight);
+		flights.push_back(flight); //pushes back the flight into the vector
 	}
 }
 
 
-void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights, string path)
+void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights, string path)//function to write the flightScheduleUility into file
 {
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
 	outputStream.open(path.c_str());
-	for (int i = 0; i < storageFlights.size(); i++)
+	for (int i = 0; i < storageFlights.size(); i++)// iterates the storageFlight.size to display all the information
 	{
-		outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " ";
+		outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " "; // 
 		outputStream << storageFlights[i].getOrigin() << " " << storageFlights[i].getDestination() << " ";
 		outputStream << storageFlights[i].getDepartureDate() << " " << storageFlights[i].getDepartureTime() << " ";
 		outputStream << storageFlights[i].getReturnDate() << " " << storageFlights[i].getReturnTime();
-		vector<int> passengerIds = storageFlights[i].getPassengerIds();
-		vector<string> passengerNames = storageFlights[i].getPassengerNames();
+		vector<int> passengerIds = storageFlights[i].getPassengerIds(); //gets all the newFlights and store them temporarily into the storage flight vector
+		vector<string> passengerNames = storageFlights[i].getPassengerNames(); // gets all the passengerName and store them temporarily into the storage flight vector 
 		for (int j = 0; j < passengerIds.size(); j++)
 		{
 			outputStream << " " << pipe << " " << passengerIds[j] << " " << passengerNames[j];
 		}
 		outputStream << endl;
 	}
-	for (int i = 0; i < newFlights.size(); i++)
+	for (int i = 0; i < newFlights.size(); i++) // iterates the newFlights.size to display them
 	{
 		outputStream << newFlights[i].getFlightNumber() << " " << newFlights[i].getPlaneId() << " ";
 		outputStream << newFlights[i].getOrigin() << " " << newFlights[i].getDestination() << " ";
 		outputStream << newFlights[i].getDepartureDate() << " " << newFlights[i].getDepartureTime() << " ";
 		outputStream << newFlights[i].getReturnDate() << " " << newFlights[i].getReturnTime();
-		vector<int> passengerIds = newFlights[i].getPassengerIds();
-		vector<string> passengerNames = newFlights[i].getPassengerNames();
+		vector<int> passengerIds = newFlights[i].getPassengerIds(); //gets all the newFlights and store them temporarily into the vector 
+		vector<string> passengerNames = newFlights[i].getPassengerNames(); //gets all the passengerNames and store them temporarily into the vector 
 		for (int j = 0; j < passengerIds.size(); j++)
 		{
 			outputStream << " " << pipe << " " << passengerIds[j] << " " << passengerNames[j];
@@ -101,7 +101,7 @@ void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vect
 	}
 	outputStream.close();
 }
-void FlightScheduleUtility::split(string line, vector<string> &words)
+void FlightScheduleUtility::split(string line, vector<string> &words)// function to split the data 
 {
 	stringstream ss(line);
 	string word = "";
@@ -111,7 +111,7 @@ void FlightScheduleUtility::split(string line, vector<string> &words)
 	}
 }
 
-int FlightScheduleUtility::stringToInt(string word)
+int FlightScheduleUtility::stringToInt(string word)// function to convert the string to int
 {
 	stringstream ss(word);
 	int intVersion;
