@@ -28,29 +28,7 @@ checkInput = false;
     return checkInput;
 }
 
-bool Validity::integerValid(int value){
-  bool checkInput;
-  checkInput = false;
 
-  string stringValue;
-
-  stringValue = to_string(value);
-
-  for (int i = 0; i <stringValue.size(); i ++)
-  {
-    if(isalpha(stringValue[i]) || isspace(stringValue[i]))
-    {
-      cout << "Wrong input! Please try again! \n";
-      break;
-    }
-    else
-    {
-      checkInput = true;
-    }
-  }
-  return checkInput;
-
-}
 
 bool Validity::stringValid(string word){ // checks the string  format if it is valid
 
