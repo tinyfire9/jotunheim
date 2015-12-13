@@ -81,12 +81,16 @@ int main()
           cout << "You have selected to add new plane! \n\n\n";
           cout << "Please enter the number of column! \n >>";
           cin >> column;
+          validity.integerValid(column);
           cout << "Please enter the number of rows for first class \n >>";
           cin >> numberOfFirstClassRows;
+           validity.integerValid(numberOfFirstClassRows);
           cout << "Please enter the number of rows for economy class \n >>";
           cin >> numberOfEconomyClassRows;
+          validity.integerValid(numberOfEconomyClassRows);
           cout << "Please enter the number of rows for economy plus class \n >>";
           cin >> numberOfEconomyPlusRows;
+          validity.integerValid(numberOfEconomyPlusRows);
           divider();
 
           cout << "You have entered the following inputs for your new plane: \n";
@@ -94,9 +98,17 @@ int main()
           cout << "first class rows = " << numberOfFirstClassRows << "\n";
           cout << "economy class rows = " << numberOfEconomyClassRows << "\n";
           cout << "econom plus rows = " << numberOfEconomyPlusRows << "\n\n\n";
+
           
-          //Creates the new plane with their specific number of seats
+         if(validity.integerValid(column)== true && validity.integerValid(numberOfFirstClassRows) == true 
+          && validity.integerValid(numberOfEconomyClassRows) == true && validity.integerValid(numberOfEconomyPlusRows)== true)
+         {
+           //Creates the new plane with their specific number of seats
           airline.addNewPlane(column,numberOfFirstClassRows,numberOfEconomyClassRows,numberOfEconomyPlusRows);
+
+         }
+          
+         
  
           cout << "Your new plane has been created! \n\n";
          }
