@@ -11,12 +11,12 @@ using namespace std;
 class NewPlane : public Plane{
 public:
 	NewPlane(int column, int number_of_first_class_rows, int number_of_economy_class_rows, int number_of_economy_plus_rows)
-	: Plane(column, number_of_first_class_rows, number_of_economy_class_rows, number_of_economy_plus_rows){
-		string line = "";
+	: Plane(column, number_of_first_class_rows, number_of_economy_class_rows, number_of_economy_plus_rows){ //new function for new plane when added
+		string line = ""; // set line to empty
 		int max = 0;
 		int id = 0;
 		fstream readStream;
-		readStream.open("./data/plane.txt");
+		readStream.open("./data/plane.txt"); // open the plane file and read 
 		while(getline(readStream,line))
 		{
 			stringstream ss(line);
@@ -30,7 +30,7 @@ public:
 
 	}
 
-	int getPlaneNumber();
+	int getPlaneNumber(); // get plane number function
 
 private:
 	int planeNumber;
