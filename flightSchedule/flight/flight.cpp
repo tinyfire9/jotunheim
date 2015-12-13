@@ -34,75 +34,75 @@ string Flight::getOrigin(){
 	return Flight::origin;
 }
 
-string Flight::getDestination(){
+string Flight::getDestination(){ // get method for destionation
 	return Flight::destination;
 }
 
-string Flight::getDepartureDate(){
+string Flight::getDepartureDate(){// get method for departure date
 	return Flight::departureDate;
 }
 
-string Flight::getDepartureTime(){
+string Flight::getDepartureTime(){// get method for departure time
 	return Flight::departureTime;
 }
 
-string Flight::getReturnDate(){
+string Flight::getReturnDate(){// get method for return date 
 	return Flight::returnDate;
 } 
 
-string Flight::getReturnTime(){
+string Flight::getReturnTime(){// get method for return time
 	return Flight::returnTime;
 }
 
-vector<int> Flight::getPassengerIds(){
+vector<int> Flight::getPassengerIds(){// get method for passenger ids 
 	return Flight::passengerIds;
 }
 
-vector<string> Flight::getPassengerNames()
+vector<string> Flight::getPassengerNames()// get method for passenger names
 {
 	return Flight::passengerNames;
 }
 
-void Flight::setPlaneId(int planeId)
+void Flight::setPlaneId(int planeId) // set method for new plane id
 {
 	Flight::planeId = planeId;
 }
-
-void Flight::setOrigin(string origin)
+// set method for new origin 
+void Flight::setOrigin(string origin)// set method for new origin 
 {
 	Flight::origin = origin;
 } 
 
-void Flight::setDestination(string destination)
+void Flight::setDestination(string destination)// set method for new destination
 {
 	Flight::destination = destination;
 } 
 
-void Flight::setDepartureDate(string departureDate)
+void Flight::setDepartureDate(string departureDate)// set method for new departure date 
 {
 	Flight::departureDate = departureDate;
 } 
 
-void Flight::setDepartureTime(string departureTime)
+void Flight::setDepartureTime(string departureTime)// set method for new departure time
 {
 	Flight::departureTime = departureTime;
 }
 
-void Flight::setReturnDate(string returnDate)
+void Flight::setReturnDate(string returnDate)// set method for new return date 
 {
 	Flight::returnDate = returnDate;
 }
 
-void Flight::setReturnTime(string returnTime)
+void Flight::setReturnTime(string returnTime)// set method for new return time
 {
 	Flight::returnTime = returnTime;
 }
 
-void Flight::addPassengerId(int passengerId){
+void Flight::addPassengerId(int passengerId){ // adds the new passenger id into the passenger id vector
 	Flight::passengerIds.push_back(passengerId);
 }
 
-void Flight::addPassengerName(string passengerName){
+void Flight::addPassengerName(string passengerName){ // adds the new passenger name into the passenger name vector 
 	Flight::passengerNames.push_back(passengerName);
 }
 
