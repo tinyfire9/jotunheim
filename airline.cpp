@@ -17,7 +17,11 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 			if(Airline::fleet.allPotentialSeatsAvailable(currentPlaneId, newPlaneId) == true) // if seats are available, do this
 			{
 				Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId); // change the plane schedule 
-				Airline::fleet.transferPassengers(currentPlaneId, newPlaneId); // transfer the passenger from old plane id to the new plane id
+				// transfer the passenger from old plane id to the new plane id
+				if( Airline::fleet.transferPassengers(currentPlaneId, newPlaneId) == true)
+				{
+					cout << "Passengers transferred successfully! :D" << endl;
+				}
 			}
 			else
 			{
@@ -77,5 +81,6 @@ int Airline::getMaxId(string type){ // function to get the max id number in the 
 	else
 	{
 		cout << "Entered type does not exist! Available types are plane, passenger and flight. Please try again!" << endl;
+		return 0;
 	}
 }
