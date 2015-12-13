@@ -81,36 +81,85 @@ int main()
           cout << "You have selected to add new plane! \n\n\n";
           cout << "Please enter the number of column! \n >>";
           cin >> column;
-          validity.integerValid(column);
+          if(cin)
+          {
+              //If format is correct , do nothing 
+          }
+          else
+          {
+            divider();
+            cout << "Wrong input column format! Please try again! \n"; // if format is wrong, prompt error message
+            exit(0);
+          }
+  
           cout << "Please enter the number of rows for first class \n >>";
           cin >> numberOfFirstClassRows;
-           validity.integerValid(numberOfFirstClassRows);
+          if(cin)
+          {
+            //If format is correct , do nothing 
+ 
+          }
+          else
+          {
+            divider();
+            cout << "Wrong input number of rows for first class format! Please try again! \n\n";
+            exit(0);
+          }
+
           cout << "Please enter the number of rows for economy class \n >>";
           cin >> numberOfEconomyClassRows;
-          validity.integerValid(numberOfEconomyClassRows);
+          if(cin)
+          {
+            //If format is correct , do nothing 
+
+          }
+          else
+          {
+            divider();
+            cout << "Wrong input number of rows for economy class format! Please try again! \n\n";
+            exit(0);
+          }
+       
           cout << "Please enter the number of rows for economy plus class \n >>";
           cin >> numberOfEconomyPlusRows;
-          validity.integerValid(numberOfEconomyPlusRows);
+          if(cin)
+          {
+            //If format is correct , do nothing 
+
+          }
+          else
+          {
+            divider();
+            cout << "Wrong input number of rows for economy plus format! Please try again! \n\n";
+            exit(0);
+          }
+     
           divider();
 
+          
+
+          
+         // if(validity.integerValid(column)== true && validity.integerValid(numberOfFirstClassRows) == true 
+         //  && validity.integerValid(numberOfEconomyClassRows) == true && validity.integerValid(numberOfEconomyPlusRows)== true)
+         // {
           cout << "You have entered the following inputs for your new plane: \n";
           cout << "column = " << column << "\n";
           cout << "first class rows = " << numberOfFirstClassRows << "\n";
           cout << "economy class rows = " << numberOfEconomyClassRows << "\n";
           cout << "econom plus rows = " << numberOfEconomyPlusRows << "\n\n\n";
-
-          
-         if(validity.integerValid(column)== true && validity.integerValid(numberOfFirstClassRows) == true 
-          && validity.integerValid(numberOfEconomyClassRows) == true && validity.integerValid(numberOfEconomyPlusRows)== true)
-         {
            //Creates the new plane with their specific number of seats
           airline.addNewPlane(column,numberOfFirstClassRows,numberOfEconomyClassRows,numberOfEconomyPlusRows);
+          cout << "Your new plane has been created! \n\n";
 
-         }
+         //}
+
+         // if(validity.integerValid(column)== false ||validity.integerValid(numberOfFirstClassRows) == false 
+         //  || validity.integerValid(numberOfEconomyClassRows) == false || validity.integerValid(numberOfEconomyPlusRows) == false)
+         // {}
           
          
  
-          cout << "Your new plane has been created! \n\n";
+          
          }
 
          if (choice == 2)// If the user picked to add new passenger into flight
