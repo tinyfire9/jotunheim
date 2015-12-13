@@ -8,12 +8,12 @@ using namespace std;
 
 class StoragePassenger : public Passenger{
 public:
-	StoragePassenger(int passengerId, string firstName, string lastName)
+	StoragePassenger(int passengerId, string firstName, string lastName) // a class that stores the passenger id, first name and last name
 	: Passenger(firstName, lastName)
 	{
 		StoragePassenger::passengerId =  passengerId;
 	}
-	int getPassengerNumber();
+	int getPassengerNumber(); // function to get the passenger number 
 private:
 	int passengerId;
 
