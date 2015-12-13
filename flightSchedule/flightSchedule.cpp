@@ -116,15 +116,23 @@ void FlightSchedule::displayUpcomingFlights(){ // Display all the upcoming fligh
 	time( &currentTime );                   // Get the current time
 	localTime = localtime( &currentTime );  // Convert the current time to the local time
 
+	int currentHour = localTime->tm_hour;
+	int currentMinute = localTime->tm_min;
 	int currentYear =  localTime->tm_year + 1900 ;
 	int currentMonth = localTime->tm_mon + 1;
 	int currentDay = localTime->tm_mday;
+	cout << "-----------------------------------------------------------" << endl;
+	cout << "Current time(MM/DD/YYYY, HH:MM) : " << currentMonth << "/" << currentDay << "/" << currentYear << ", " << currentHour << ":" << currentMinute << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13) // prints out the identification header with defined witdth
 	 << "destination" << setw(13) << "depDate" << setw(13) << "depTime" << setw(13) 
 	 << "retDate" << setw(13) << "retTime" << endl;
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		string departureDate = FlightSchedule::storageFlights[i].getDepartureDate();
+		string departureTime = FlightSchedule::storageFlights[i].getDepartureTime();
+		int hour = FlightSchedule::utility.stringToInt(departureTime.substr(0, 2));
+		int minute = FlightSchedule::utility.stringToInt(departureTime.substr(3, 2));
 		int month = FlightSchedule::utility.stringToInt(departureDate.substr(0, 2));
 		int day = FlightSchedule::utility.stringToInt(departureDate.substr(3,2));
 		int year = FlightSchedule::utility.stringToInt(departureDate.substr(6, 4));
@@ -132,7 +140,27 @@ void FlightSchedule::displayUpcomingFlights(){ // Display all the upcoming fligh
 		{	
 			if(month == currentMonth)
 			{
-				if(day >= currentDay) // checks the condition if day is more than or equal to current day
+				if(day == currentDay)
+				{
+					if(hour == currentHour)
+					{
+						if(minute >= currentMinute)
+						{
+							cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+							cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+							cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+							cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;							
+						}
+					}
+					else if(hour > currentHour)
+					{
+						cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+						cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+						cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+						cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+					}
+				}
+				else if(day > currentDay) // checks the condition if day is more than or equal to current day
 				{
 					cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
 					cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
@@ -158,6 +186,81 @@ void FlightSchedule::displayUpcomingFlights(){ // Display all the upcoming fligh
 	}
 }
 
+void FlightSchedule::displayPastFlights(){ // Display all the upcoming flights from the local time
+	time_t currentTime;
+	struct tm *localTime;
+	time( &currentTime );                   // Get the current time
+	localTime = localtime( &currentTime );  // Convert the current time to the local time
+
+	int currentHour = localTime->tm_hour;
+	int currentMinute = localTime->tm_min;
+	int currentYear =  localTime->tm_year + 1900 ;
+	int currentMonth = localTime->tm_mon + 1;
+	int currentDay = localTime->tm_mday;
+	cout << "-----------------------------------------------------------" << endl;
+	cout << "Current time(MM/DD/YYYY, HH:MM) : " << currentMonth << "/" << currentDay << "/" << currentYear << ", " << currentHour << ":" << currentMinute << endl;
+	cout << "-----------------------------------------------------------" << endl;
+	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13) // prints out the identification header with defined witdth
+	 << "destination" << setw(13) << "depDate" << setw(13) << "depTime" << setw(13) 
+	 << "retDate" << setw(13) << "retTime" << endl;
+	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
+	{
+		string departureDate = FlightSchedule::storageFlights[i].getDepartureDate();
+		string departureTime = FlightSchedule::storageFlights[i].getDepartureTime();
+		int hour = FlightSchedule::utility.stringToInt(departureTime.substr(0, 2));
+		int minute = FlightSchedule::utility.stringToInt(departureTime.substr(3, 2));
+		int month = FlightSchedule::utility.stringToInt(departureDate.substr(0, 2));
+		int day = FlightSchedule::utility.stringToInt(departureDate.substr(3,2));
+		int year = FlightSchedule::utility.stringToInt(departureDate.substr(6, 4));
+		if(year == currentYear)
+		{	
+			if(month == currentMonth)
+			{
+				if(day == currentDay)
+				{
+					if(hour == currentHour)
+					{
+						if(minute <= currentMinute)
+						{
+							cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+							cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+							cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+							cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;							
+						}
+					}
+					else if(hour < currentHour)
+					{
+						cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+						cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+						cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+						cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+					}
+				}
+				else if(day < currentDay) // checks the condition if day is more than or equal to current day
+				{
+					cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+					cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+					cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+					cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+				}
+			}
+			else if(month < currentMonth) // checks the condition if month is more than current month 
+			{
+				cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+				cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+				cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+				cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+			}
+		}
+		else if(year < currentYear) // checks the condition if the year is more than current year
+		{
+			cout << FlightSchedule::storageFlights[i].getFlightNumber() << setw(15) << FlightSchedule::storageFlights[i].getPlaneId() << setw(15);
+			cout << FlightSchedule::storageFlights[i].getOrigin() << setw(15) << FlightSchedule::storageFlights[i].getDestination() << setw(15);
+			cout << FlightSchedule::storageFlights[i].getDepartureDate() << setw(15) << FlightSchedule::storageFlights[i].getDepartureTime() << setw(15);
+			cout << FlightSchedule::storageFlights[i].getReturnDate() << setw(15) << FlightSchedule::storageFlights[i].getReturnTime() << endl;
+		}
+	}
+}
 int FlightSchedule::getMaxFlightId(){ // function to get max flight id
 	int max = 0;
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
