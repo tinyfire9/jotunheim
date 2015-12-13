@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "./flight/storageFlight.h"
 #include "../utility/flightSchedule/flightScheduleUtility.h"
 
 class FlightSchedule

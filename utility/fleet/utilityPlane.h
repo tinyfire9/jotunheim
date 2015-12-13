@@ -5,6 +5,7 @@
  * Created on November 19, 2015, 10:01 PM
  */
 #include "../../fleet/plane/newPlane.h"
+#include "../../fleet/plane/storagePlane.h"
 #include <string>
 #include <iostream>
 #include "../utility.h"
