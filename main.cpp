@@ -5,17 +5,13 @@
 
 using namespace std;
 
-
-
 void divider();
 void welcomeMessage();
 
-
-void divider()
+void divider() 
 {
   cout << "---------------------------------------------------------------------------\n\n";
 }
-
 
 void welcomeMessage() // Welcome message
 {  
@@ -29,48 +25,40 @@ void welcomeMessage() // Welcome message
 
 int main()
 {
-
-   int choice;
-
   // classes objects
   Airline airline;
   Fleet fleet;
   PassengerSCH passengers;
   FlightSchedule schedule;
   Validity validity;
-    
-    divider();
-    welcomeMessage();
-    divider();
+  int choice;
+  divider();
+  welcomeMessage();
+  divider();
    
-    cout << "--------------------------------------WELCOME----------------------------\n\n";
-    // User option to pick from
+  cout << "--------------------------------------WELCOME----------------------------\n\n";
+  // User option to pick from
 
-    cout<< "1) add new plane" << endl;
-    cout<< "2) add new passenger to a Flight" << endl;
-    cout<< "3) add new passenger to a list" << endl;
-    cout<< "4) add new flight" << endl;
-    cout<< "5) transferPassengers " << endl;
-    cout<< "6) Display passengers " << endl;
-    cout<< "7) Display upcoming flights " << endl;
-    cout<< "8) Exit " << endl;
+  cout<< "1) add new plane" << endl;
+  cout<< "2) add new passenger to a Flight" << endl;
+  cout<< "3) add new passenger to a list" << endl;
+  cout<< "4) add new flight" << endl;
+  cout<< "5) transferPassengers " << endl;
+  cout<< "6) Display passengers " << endl;
+  cout<< "7) Display upcoming flights " << endl;
+  cout<< "8) Exit " << endl;
+  cout << "*   Select one of your desirable option" << endl;
+  cout << "*   Enter either from 1 to 8 " << endl;
+  divider();
+  cout << " >> ";
+  cin >> choice; // User input for the selection choice 
+  if(validity.choiceValid(choice) == false)
+  {
+     cout << "You have entered an invalid choice! Please try again! \n";
+  }
     
-    cout << "*   Select one of your desirable option" << endl;
-    cout << "*   Enter either from 1 to 8 " << endl;
-    divider();
-    cout << " >> ";
-    cin >> choice;
-    
-    if(validity.choiceValid(choice) == false)
-    {
-      cout << "You have entered an invalid choice! Please try again! \n";
-    }
-    
-    if(validity.choiceValid(choice) == true)
-    {
-      
-      
-        
+  if(validity.choiceValid(choice) == true)
+  {      
          if (choice == 1) // If the user picked to add new plane
          {
           divider();
@@ -97,7 +85,6 @@ int main()
           if(cin)
           {
             //If format is correct , do nothing 
- 
           }
           else
           {
@@ -111,7 +98,6 @@ int main()
           if(cin)
           {
             //If format is correct , do nothing 
-
           }
           else
           {
@@ -125,124 +111,92 @@ int main()
           if(cin)
           {
             //If format is correct , do nothing 
-
           }
           else
           {
             divider();
             cout << "Wrong input number of rows for economy plus format! Please try again! \n\n";
             exit(0);
-          }
-     
+          }  
           divider();
-
-          
-
-          
-         // if(validity.integerValid(column)== true && validity.integerValid(numberOfFirstClassRows) == true 
-         //  && validity.integerValid(numberOfEconomyClassRows) == true && validity.integerValid(numberOfEconomyPlusRows)== true)
-         // {
           cout << "You have entered the following inputs for your new plane: \n";
           cout << "column = " << column << "\n";
           cout << "first class rows = " << numberOfFirstClassRows << "\n";
           cout << "economy class rows = " << numberOfEconomyClassRows << "\n";
           cout << "econom plus rows = " << numberOfEconomyPlusRows << "\n\n\n";
-           //Creates the new plane with their specific number of seats
-          airline.addNewPlane(column,numberOfFirstClassRows,numberOfEconomyClassRows,numberOfEconomyPlusRows);
-          cout << "Your new plane has been created! \n\n";
-
-         //}
-
-         // if(validity.integerValid(column)== false ||validity.integerValid(numberOfFirstClassRows) == false 
-         //  || validity.integerValid(numberOfEconomyClassRows) == false || validity.integerValid(numberOfEconomyPlusRows) == false)
-         // {}
-          
-         
- 
-          
+          airline.addNewPlane(column,numberOfFirstClassRows,numberOfEconomyClassRows,numberOfEconomyPlusRows);//Creates the new plane with their specific number of seats
+          cout << "Your new plane has been created! \n\n";     
          }
-
          if (choice == 2)// If the user picked to add new passenger into flight
          {
-
           bool checkInput;
           checkInput = true;
-
           int flightNumber;
           int passengerId;
           string firstName;
           string lastName;
-
-        
+          string seatNumber;
+      
           cout << "You have selected to add new passenger to a flight ! \n\n\n";
           cout << "Please enter the flight number to add the new passenger in \n >>";
-          cin >> flightNumber;
+          cin >> flightNumber; //Receive user input for flight number 
 
-          if(cin)
-          {
-
+          if(cin){
+           //If format is correct , do nothing 
           }
-          else
-          {
+          else{
             divider();
             cout << "You have entered an invalid flight number format! Please try again! \n\n";
             exit(0);
           }
           cout << "Please enter the passenger ID to add in new flight \n >>";
-          cin >> passengerId;
-            if(cin)
-            {
+          cin >> passengerId; // Receive user input for passenger id 
+          if(cin){
+             //If format is correct , do nothing  
+          }
+          else{
+            divider();
+            cout << "You have entered an invalid flight number format! Please try again! \n\n";
+            exit(0);
+          }
+          cout << "Please enter the seat number (For example: 4A)\n >>";
+          cin >> seatNumber;// Receive the user input for seat number 
 
-            }
-            else
-             {
-              divider();
-               cout << "You have entered an invalid flight number format! Please try again! \n\n";
-               exit(0);
-             }
           cout << "Please enter the passenger first name without spaces in between\n >>";
-          cin >> firstName;
-               if(cin)
-                {
-
-                }
-                else
-               {
-                divider();
-                cout << "You have entered an invalid first name format! Please try again! \n\n";
-                exit(0);
-                }
-
-
+          cin >> firstName; // Receive user input for first name
+          if(cin){
+              //If format is correct , do nothing 
+          }
+          else{
+            divider();
+            cout << "You have entered an invalid first name format! Please try again! \n\n";
+            exit(0);
+          }
 
           if (validity.stringValid(firstName) == false) // checks if user entered the correct name format .
           {
-            divider();
+          divider();
           cout << "You have entered an invalid first name format! Please try again! \n";
+          exit(0);
           }
-
           else
           {
+          cout << "Please enter the passenger last name without spaces in between\n >>";
+          cin >> lastName;
+          if(cin){
+           //If correct, do nothing
+          }
+          else
+          {
+          cout << "You have entered an invalid last name format! Please try again! \n\n";
+          exit(0);
+          }
 
-
-             cout << "Please enter the passenger last name without spaces in between\n >>";
-             cin >> lastName;
-             if(cin)
-                {
-
-                }
-               else
-                 {
-                 cout << "You have entered an invalid last name format! Please try again! \n\n";
-                 exit(0);
-                 }
-
-           if (validity.stringValid(lastName) == false )// checks if user entered the correct name format .
-             {
-               cout << "You have entered an invalid last name format! Please try again! \n";
-             }
-
-             
+          if(validity.stringValid(lastName) == false )// checks if user entered the correct name format .
+          {
+          cout << "You have entered an invalid last name format! Please try again! \n";
+          }
+          
           }
           
 
@@ -256,102 +210,83 @@ int main()
           cout << "passengerId = " << passengerId << "\n";
           cout << "first name = " << firstName << "\n";
           cout << "last name = " << lastName << "\n";
+          cout << "seat number =" << seatNumber << "\n";
 
-          airline.addNewPassengerToFlight(flightNumber,passengerId,firstName,lastName);
-            
+          airline.addNewPassengerToFlight(flightNumber,passengerId,firstName,lastName, seatNumber);          
           }
-
           else
           {
             cout << "You have entered some incorrect format! Please try again!";
           }
-
          }
        }
 
        if(choice == 3) // if the user pick to add passenger to a list
        {
-
             string firstName;
             string lastName;
-
             cout << " You have selected to add passenger to a list! \n";
-
             cout << " Please enter the passenger first name \n >>";
-            cin >> firstName;
+            cin >> firstName; // Receive user input for first name
 
             validity.stringValid(firstName); // validates the user input first name 
            
-
             cout << " Please enter the passenger last name \n >>"; // validates the user input last name
             cin >> lastName;
             validity.stringValid(lastName);
             
-
-
             if(validity.stringValid(firstName) == true && validity.stringValid(lastName) == true)
             {
-              divider();
+             divider();
              cout << "\n\nYou have entered the following inputs to add a new passenger to a list ! \n\n\n";
              cout << "first name : " << firstName << "\n";
              cout << "last name: " << lastName << "\n";
 
              airline.addNewPassengerToList(firstName, lastName); // adds the user input for new passenger into the list
-
-           }
-           else
-           {
-            cout << "You have entered an invalid input or wrong format! Please try again!";
-           }
+            }
+            else
+            {
+             cout << "You have entered an invalid input or wrong format! Please try again!";
+            }
 
        }
 
        if (choice == 4 ) // if the user select to add new flight
        {
 
-        int planeId;
+        
         string origin;
         string destination;
         string departureDate;
         string departureTime;
         string returnDate;
         string returnTime;
-
-         int month;
-         int day;
-         int year;
-
-         int returnMonth;
-         int returnDay;
-         int returnYear;
-
-         int returnHour;
-         int returnMinute;
-
-         int hour;
-         int minute;
-
-         string stringMonth ;
-         string stringDay;
-
-         string stringMinute;
-         string stringHour;
-
-         string stringReturnHour;
-         string stringReturnMinute;
-
-         string stringReturnMonth;
-         string stringReturnDay;
-
-
+        string stringMonth;
+        string stringDay;
+        string stringMinute;
+        string stringHour;
+        string stringReturnHour;
+        string stringReturnMinute;
+        string stringReturnMonth;
+        string stringReturnDay;
+        int planeId;
+        int month;
+        int day;
+        int year;
+        int returnMonth;
+        int returnDay;
+        int returnYear;
+        int returnHour;
+        int returnMinute;
+        int hour;
+        int minute;
+    
         cout << " You have selected to add new flight ! \n\n";
         cout << "Please enter the plane id to add the new flight ! \n >>";
         cin >> planeId;
-
-        if(cin)
-        {
-
-        }
+        if(cin){
+         //If user input correct, do nothing
+        } 
         else
         {
           divider();
@@ -361,9 +296,8 @@ int main()
 
         cout << "Please enter the origin \n >>";
         cin >> origin;
-        if(cin)
-        {
-
+        if(cin){
+         //If user input correct, do nothing
         }
         else
         {
@@ -374,9 +308,8 @@ int main()
 
         cout << "Please enter the destination \n >>";
         cin >> destination;
-        if(cin)
-        {
-
+        if(cin){
+         //If user input correct, do nothing
         }
         else
         {
@@ -387,9 +320,8 @@ int main()
 
         cout << "Please enter the departure month (0-12)\n >>";
         cin >> month;
-        if(cin)
-        {
-
+        if(cin){
+         //If user input correct, do nothing
         }
         else
         {
@@ -400,9 +332,8 @@ int main()
 
         cout << "Please enter the departure day (1-30)\n >>";
         cin >> day;
-        if(cin)
-        {
-
+        if(cin){
+           //If user input correct, do nothing
         }
         else
         {
@@ -413,9 +344,8 @@ int main()
 
         cout << "Please enter the departure year (xxxx)\n >>";
         cin >> year;
-        if(cin)
-        {
-
+        if(cin){
+         //If user input correct, do nothing
         }
         else
         {
@@ -514,19 +444,15 @@ int main()
 
            if (validity.returnDateValid(month,day,year,returnMonth,returnDay,returnYear) == false)
            {
-
-
               if (returnMonth > 9 && returnDay > 9)
               {
                 returnDate = to_string(returnMonth) + "/" + to_string(returnDay) + "/" + to_string(returnYear);
-
               }
 
               else if (returnMonth < 10 && returnDay < 10)
               {
                 stringReturnMonth = "0" + to_string(returnMonth);
                 stringReturnDay = "0" + to_string(returnDay);
-
                 returnDate = stringReturnMonth + "/" + stringReturnDay + "/"+ to_string(returnYear);
               }
 
@@ -541,54 +467,38 @@ int main()
                 stringReturnDay = "0" + to_string(returnDay);
                 returnDate = to_string(returnMonth) + "/" + stringReturnDay + "/" + to_string(returnYear);
               }
-                    
-
               cout << "Please enter the return hour (0-24) \n >>";
-             cin >> returnHour ;
+              cin >> returnHour ;
 
-             cout << "Please enter the return minute (0-59)\n >>";
-             cin >> returnMinute;
+              cout << "Please enter the return minute (0-59)\n >>";
+              cin >> returnMinute;
 
-
-
-             validity.timeValid(returnHour,returnMinute); //validates the time format (24 hour and 60 minute)
-
-             validity.returnTimeValid(hour,minute,returnHour,returnMinute); //validates the return time format with departure time.
-
-
+              validity.timeValid(returnHour,returnMinute); //validates the time format (24 hour and 60 minute)
+              validity.returnTimeValid(hour,minute,returnHour,returnMinute); //validates the return time format with departure time.
 
                if( validity.returnTimeValid(hour,minute,returnHour,returnMinute) == true )// if validation is true, convert them to their appropriate format
-                   {
-
+                {
                     if(returnHour > 9 && returnMinute > 9) // if return hour and return minute is more than 9, just assign it to return time 
                     {
                       returnTime = to_string(returnHour) + ":" + to_string(returnMinute);
-
                     }
-
                     else if(returnHour < 10 && returnMinute < 10) // if return hour and return minute is less than 10, add a zero in front
                     {
                       stringReturnMinute = "0" + to_string(returnMinute);
                       stringReturnHour = "0" + to_string(returnHour);
-
                       returnTime = stringReturnHour + ":"+ stringReturnMinute;
                     }
-
                     else if (returnHour < 10 && returnMinute > 9) // if return hour is less than 10, add a 0 in front.
                     {
                       stringReturnHour = "0" + to_string(returnHour);
                       returnTime = stringReturnHour + ":" + to_string(returnMinute);
                     }
-
                     else if (returnHour > 9 && returnMinute < 10) //if return minute is less than 10, add a 0 in front
                     {
                       stringReturnMinute = "0" + to_string(returnMinute);
                       returnTime = to_string(returnHour) + ":" + stringReturnMinute;
                     }
-
-
-                    cout << " You have entered the following inputs to add new flight ! \n\n\n";// prints the user input
-
+                     cout << " You have entered the following inputs to add new flight ! \n\n\n";// prints the user input
                      cout << "Plane id = " <<planeId << endl;
                      cout << "Origin = " << origin << endl;
                      cout << "Destination = " << destination<< endl;
@@ -596,22 +506,13 @@ int main()
                      cout << "Departure Time = " << departureTime << endl;
                      cout << "Return date  = " <<returnDate << endl;
                      cout << "Return time = " << returnTime << endl;
-                     
-                     //Adds the user input into the addNewFlight method to add a new flight.
+                    //Adds the user input into the addNewFlight method to add a new flight.
                      airline.addNewFlight(planeId, origin, destination, departureDate, departureTime,returnDate,returnTime);
-
                    }
            }
-
-
-
- 
         }
-
     }
-
 }
-
   if(choice ==5) // if user select to transfer passengers!
   {
     int flightNumber;
@@ -619,20 +520,17 @@ int main()
     int newPlaneId;
     divider();
     cout << "\n\n You have selected to transfer passengers! \n\n";
-
     cout << "Enter the flight number \n >>";
     cin >> flightNumber;
     if (cin)
     {
       // if correct, do anothing
-
     }
     else
     {
       cout << "You have entered the wrong flight number input format! Please try again! \n";
       exit(0);
     }
-
     cout << "Enter the current plane id you wish to transfer! \n >>";
     cin >> currentPlaneId;
     if (cin)
@@ -661,25 +559,18 @@ int main()
     cout << " flight number = " << flightNumber << endl;
     cout << " current plane id = " << currentPlaneId << endl;
     cout << " new plane id = " << newPlaneId << endl;
-
     airline.transferPassengers(flightNumber,currentPlaneId,newPlaneId); // validates the transfered passengers
-
-
   }
 
  if (choice == 6) // if user select to display the passengers on that flight
     {
          int flightNumber;
-         cout << " \n\nYou have selected to display the passengers ! \n";
-         
+         cout << " \n\nYou have selected to display the passengers ! \n";       
          cout << " Enter the flight number to view the passengers \n >>"; 
          cin >> flightNumber;
          cout << " You have selected to view flight " << flightNumber << " passengers \n" ;
          airline.displayPassengers(flightNumber);
-
          divider();
-
-
     }
 
   if(choice == 7) // if the user select to view the upcoming flights
@@ -693,7 +584,6 @@ int main()
   {
     divider(); 
     cout << "\n\n You have selected to exit the program!! THANK YOU FOR USING! \n\n";
-
     divider();
     exit(0);
   }
