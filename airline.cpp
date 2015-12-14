@@ -5,17 +5,21 @@
 Airline::Airline(){};
 
 void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPlaneId){// function to transfer the passengers
+	//checks if current flightNumber exists and planeId is correct &&
+	//checks if new planeId exists
 	if((Airline::schedule.flight(flightNumber, currentPlaneId) == true) 
 		&& ((Airline::fleet.plane(newPlaneId) == true)))
 	{
-		if(// checks all the available type of seats  if it meets the condition 
+		if(//  checks if there are enough seats on each class 
 			(Airline::fleet.getAvailableFirstClassSeats(currentPlaneId) >= Airline::fleet.getNumberOfFirstClassPassengers(newPlaneId)) &&
 			(Airline::fleet.getAvailableEconomyClassSeats(currentPlaneId) >= Airline::fleet.getNumberOfEconomyClassPassengers(newPlaneId)) &&
 			(Airline::fleet.getAvailableEconomyPlusClassSeats(currentPlaneId) >= Airline::fleet.getNumberOfEconomyPlusClassPassengers(newPlaneId))
 			)
 		{
+			//checks if the potential seats are all availble
 			if(Airline::fleet.allPotentialSeatsAvailable(currentPlaneId, newPlaneId) == true) // if seats are available, do this
 			{
+				//change plane on the flightSchedule
 				Airline::schedule.changePlane(flightNumber, currentPlaneId, newPlaneId); // change the plane schedule 
 				// transfer the passenger from old plane id to the new plane id
 				if( Airline::fleet.transferPassengers(currentPlaneId, newPlaneId) == true)
@@ -41,6 +45,7 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 
 void Airline::addNewFlight(int planeId, string origin, string destination,string departureDate,
 		string departureTime, string returnDate, string returnTime){
+	// check if the entered planeId exists
 	if(Airline::fleet.plane(planeId) == true)
 	{
 		Airline::schedule.addFlight(planeId, origin, destination,departureDate,
@@ -91,24 +96,4 @@ void Airline::displayUpcomingFlights(){ // display all the upcoming flights
 
 void Airline::displayPastFlights(){
 	Airline::schedule.displayPastFlights();
-}
-
-int Airline::getMaxId(string type){ // function to get the max id number in the list 
-	if(type == "plane")
-	{
-		return Airline::fleet.getMaxPlaneId();
-	}
-	else if(type == "passenger")
-	{
-		return Airline::passengers.getMaxPassengerId();
-	}
-	else if(type == "flight")
-	{
-		return Airline::schedule.getMaxFlightId();
-	}
-	else
-	{
-		cout << "Entered type does not exist! Available types are plane, passenger and flight. Please try again!" << endl;
-		return 0;
-	}
 }
