@@ -45,6 +45,12 @@ void PlaneUtility::populateReadArray(vector<StoragePlane> &planes, string path)/
          
 	}
 
+	//(Format) data[i][0] : column, first class rows, economy class rows, economy plus class rows
+	// on each iteration, 
+		// breakdown the plane info part of the data ^ by space & put it in a vector
+		// breakdown the passegerInfos (['passengerId seatNumber', 'passengerIdf seatNumber'] ) by space 
+		//		 and push each data on plane vector
+
 	for(int i = 0; i < data.size(); i++ )
 	{
 		vector<string> chunks;
@@ -78,8 +84,9 @@ void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlan
 	ofstream outputStream;
 	string outputData = "";
 	outputStream.open(path.c_str());
+	//write the data from the storagePlane and newPlane to text file
 	for (int i = 0; i< storagePlanes.size(); i++) // iterates the storagePlane size
-		//output all the plane information and put it into the temporarily vector
+		// extract the data from each method and insert it into the output stream
 	{
 		outputStream << storagePlanes[i].getPlaneNumber() << " " << storagePlanes[i].get_column() << " ";
 		outputStream << storagePlanes[i].get_number_of_first_class_rows() << " " << storagePlanes[i].get_number_of_economy_class_rows() << " ";
@@ -95,7 +102,7 @@ void PlaneUtility::writeFile(vector<StoragePlane> &storagePlanes, vector<NewPlan
      }
    for (int i =0 ; i < NewPlanes.size(); i++)
  {
-	//cout << NewPlanes[i].get_plane_id() << endl;
+	// extract the data from each method and insert it into the output stream
 	outputStream << NewPlanes[i].getPlaneNumber() << " " << NewPlanes[i].get_column() << " ";
     outputStream << NewPlanes[i].get_number_of_first_class_rows() << " " << NewPlanes[i].get_number_of_economy_class_rows() << " ";
     outputStream << NewPlanes[i].get_number_of_economy_plus_rows() << " ";
