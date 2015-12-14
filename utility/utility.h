@@ -29,16 +29,15 @@ private:
 public:
 	utility(){};
 	/*
-		Pre-condition : expects a storageFlight type vector,  a newFlight type vector and a file path
-		Post-condition : loops through each item and gets all the data by from each method from both vectors 
-				and writes it to a file specified by the user
+		Pre-condition : expects a file path //to be Overloaded
+		Post-condition : write to 
 	*/
-    virtual void writeFile(vector<StorageFlight> &storageFlights,vector<NewFlight> &newFlights, string path){};
+    virtual void writeFile(string path){};
     /*
-		Pre-condition : expects a line and a vector 
-		Post-condition : splits the line by space and pushes each chunk into the vector
+        Pre-condition : expects a file path //to be Overloaded
+        Post-condition : reads to file
     */
-    virtual void populateReadArray(vector<StorageFlight> &flights, string path){};
+    virtual void populateReadArray(string path){};
     /*
 		Pre-condition : expects a line and a vector 
 		Post-condition : splits the line by space and pushes each chunk into the vector
