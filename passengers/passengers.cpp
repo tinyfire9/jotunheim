@@ -25,8 +25,22 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 	bool duplicateSeat = false;
 	for (int i = 0; i < PassengerSCH::storagePassengers.size(); i++)
 	{
-		if(PassengerSCH::storagePassengers[i].getPassengerNumber() == passengerID)
+		/*
+	        iterates through each passengers checks if flight Number exist
+	 	       -if it finds the passenger Number
+			       - check if the passenger is already in the flight
+		       -if the flightNumber is found and the passenger is not already in there
+			       - add passenger and it's name
+			       - write to txt file
+			       -fluse newPassenger vector and reload data to storagePassenger vector
+	*/		if(PassengerSCH::storagePassengers[i].getPassengerNumber() == passengerID)
 		{
+			/*
+			if passenger number is found, 
+				- add the flight to passenger
+				- write to file
+				- flush newPassenger vector & re-load data to storagePassengers vector
+		    */
 			found = true;
 			vector<int> ids = PassengerSCH::storagePassengers[i].getFlightNumber();
 			vector<string> seatNumbers = PassengerSCH::storagePassengers[i].getPassengerSeats();
@@ -70,6 +84,11 @@ void PassengerSCH::addFlight(int passengerID, int flightNumber, string seat){
 	{
 		PassengerSCH::utility.writeFile(PassengerSCH::storagePassengers, PassengerSCH::newPassengers, "./utility/data/passenger.txt");
 	}
+	/*
+		for each passenger, it gets the flight number and seat number
+			- compares the flight number, seat number and passenger number
+			   displays if the seat number or passenger has already taken the flight in the future
+	*/
     
 }
 
