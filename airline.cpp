@@ -41,17 +41,25 @@ void Airline::transferPassengers(int flightNumber, int currentPlaneId, int newPl
 
 void Airline::addNewFlight(int planeId, string origin, string destination,string departureDate,
 		string departureTime, string returnDate, string returnTime){
-	Airline::schedule.addFlight(planeId, origin, destination,departureDate,
-		departureTime, returnDate, returnTime); // function to add new flight 
+	if(Airline::fleet.plane(planeId) == true)
+	{
+		Airline::schedule.addFlight(planeId, origin, destination,departureDate,
+			departureTime, returnDate, returnTime); // function to add new flight 
+		cout << "Flight successfully added! Thanks!" << endl;
+	}
+	else
+	{
+		cout << "Entered Plane Id does exist. Please try adding a plane first or try another planeId. Thanks!" << endl;
+	}
 }
 
-void Airline::addNewPassengerToFlight(int flightNumber, int passengerId, string firstName, string lastName){
+void Airline::addNewPassengerToFlight(int flightNumber, int passengerId, string firstName, string lastName, string seatNumber){
 	if(Airline::passengers.passenger(passengerId) == true)
 	{
 		if(Airline::passengers.getPassengerFirstName(passengerId) == firstName && Airline::passengers.getPassengerLastName(passengerId) == lastName)
 		{
 			Airline::schedule.addPassenger(flightNumber, passengerId, firstName, lastName); // function to add the new passenger to the flight 
-			Airline::passengers.addFlight(passengerId, flightNumber, "3A");
+			Airline::passengers.addFlight(passengerId, flightNumber, seatNumber);
 			cout << "Passenger successfully added to flight. Thanks !" << endl;
 		}
 		else
@@ -79,6 +87,10 @@ void Airline::displayPassengers(int flightNumber){ // display all the passenger 
 
 void Airline::displayUpcomingFlights(){ // display all the upcoming flights 
 	Airline::schedule.displayUpcomingFlights();
+}
+
+void Airline::displayPastFlights(){
+	Airline::schedule.displayPastFlights();
 }
 
 int Airline::getMaxId(string type){ // function to get the max id number in the list 
