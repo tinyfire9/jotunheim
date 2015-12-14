@@ -276,6 +276,16 @@ void Fleet::addPassenger(int planeNumber, int passengerId, string seat){  // add
 	bool duplicatePassenger = false;
 	bool duplicateSeat = false;
 	cout << storagePlanes.size() << endl;
+
+	/*
+	iterates through each plane checks if plane Number exits
+		-if it finds the plane Number
+			- check if the pasenger is already in the plane
+		-if the plane is found and the passenger is not already in there
+			- add passenger and it's name
+			- write to txt file
+			-fluse newPassenger vector and reload data to storagePassenger vector
+	*/
 	for (int i = 0; i < Fleet::storagePlanes.size(); i++)
 	{
 		cout << Fleet::storagePlanes[i].getPlaneNumber() << " -- " << planeNumber << endl;
@@ -288,14 +298,14 @@ void Fleet::addPassenger(int planeNumber, int passengerId, string seat){  // add
 			{
 				if(ids[j] == passengerId)
 				{
-					duplicatePassenger = true;
+					duplicatePassenger = true; // checks if there is duplicate on passengerId
 				}
 			}
 			for (int j = 0; j < seatNumbers.size(); j++)
 			{
 				if(seatNumbers[j] == seat)
 				{
-					duplicateSeat = true;
+					duplicateSeat = true;// checks if there is duplicate on seatNumbers
 				}
 			}
 		}
