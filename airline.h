@@ -20,10 +20,11 @@ public:
 		string returnDate,
 		string returnTime);
 	void addNewPlane(int column, int number_of_first_class_rows, int number_of_economy_class_rows, int number_of_economy_plus_rows);
-	void addNewPassengerToFlight(int flightNumber, int passengerId, string firstName, string lastName);
+	void addNewPassengerToFlight(int flightNumber, int passengerId, string firstName, string lastName, string seatNumber);
 	void addNewPassengerToList(string firstName, string lastName);
 	void displayPassengers(int flightNumber);
 	void displayUpcomingFlights();
+	void displayPastFlights();
 	int getMaxId(string type);
 private:
 	Fleet fleet;
