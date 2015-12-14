@@ -36,7 +36,15 @@ void FlightSchedule::addFlight( // function to add new flight
 void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firstName, string lastName){ // function to add new passenger
 	bool found = false;
 	bool duplicatePassenger = false;
-
+	/*
+	iterates through each flight checks if flight Number exits
+		-if it finds the flight Number
+			- check if the passenger is already in the flight
+		-if the flightNumber is found and the passenger is not already in there
+			- add passenger and it's name
+			- write to txt file
+			-fluse newFlights vector and reload data to storageFlights vector
+	*/
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber)
@@ -77,6 +85,7 @@ void FlightSchedule::addPassenger(int flightNumber, int passengerId, string firs
 }
 
 bool FlightSchedule::flight(int flightNumber, int planeId){ 
+	// returns true if the flight# and planeId matchs a flight with the given planeId
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		if(FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber && FlightSchedule::storageFlights[i].getPlaneId() == planeId)
@@ -127,6 +136,11 @@ void FlightSchedule::displayUpcomingFlights(){ // Display all the upcoming fligh
 	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13) // prints out the identification header with defined witdth
 	 << "destination" << setw(13) << "depDate" << setw(13) << "depTime" << setw(13) 
 	 << "retDate" << setw(13) << "retTime" << endl;
+	/*
+		for each flight, it gets the departure date and time
+			- compares the current date&time against the departure date&time and
+			 displays if the date&time is in the future
+	*/
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		string departureDate = FlightSchedule::storageFlights[i].getDepartureDate();
@@ -203,6 +217,11 @@ void FlightSchedule::displayPastFlights(){ // Display all the upcoming flights f
 	cout << "flightID" << setw(13) << "planeID" << setw(13) << "origin" << setw(13) // prints out the identification header with defined witdth
 	 << "destination" << setw(13) << "depDate" << setw(13) << "depTime" << setw(13) 
 	 << "retDate" << setw(13) << "retTime" << endl;
+	/*
+		for each flight, it gets the departure date and time
+			- compares the current date&time against the departure date&time and
+			 displays if the date&time is in the past
+	*/
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
 		string departureDate = FlightSchedule::storageFlights[i].getDepartureDate();
@@ -261,21 +280,19 @@ void FlightSchedule::displayPastFlights(){ // Display all the upcoming flights f
 		}
 	}
 }
-int FlightSchedule::getMaxFlightId(){ // function to get max flight id
-	int max = 0;
-	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
-	{
-		if(FlightSchedule::storageFlights[i].getFlightNumber() > max)
-		{
-			max = FlightSchedule::storageFlights[i].getFlightNumber(); // get the total max for flight number 
-		}
-	}
-	return max;
-}
 
 void FlightSchedule::changePlane(int flightNumber, int currentPlaneId, int newPlaneId){ // function to change plane
+	/*
+		looks for a flight with the given flightnumber and planeId
+	*/
 	for (int i = 0; i < FlightSchedule::storageFlights.size(); i++)
 	{
+		/*
+			if flight number if found, 
+				- change the planeId
+				- write to file
+				- flush newFlights vector & re-load data to storageFlights vector
+		*/
 		if((FlightSchedule::storageFlights[i].getFlightNumber() == flightNumber) && (FlightSchedule::storageFlights[i].getPlaneId() == currentPlaneId))
 		{
 			FlightSchedule::storageFlights[i].setPlaneId(newPlaneId);
