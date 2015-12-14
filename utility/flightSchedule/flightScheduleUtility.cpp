@@ -70,7 +70,9 @@ void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vect
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
+	// write the data from the storageFlights and newFlights to text file
 	outputStream.open(path.c_str());
+	// extract the data from each method and instert it into the output stream
 	for (int i = 0; i < storageFlights.size(); i++)// iterates the storageFlight.size to display all the information
 	{
 		outputStream << storageFlights[i].getFlightNumber() << " " << storageFlights[i].getPlaneId() << " "; // 
@@ -85,7 +87,8 @@ void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vect
 		}
 		outputStream << endl;
 	}
-	for (int i = 0; i < newFlights.size(); i++) // iterates the newFlights.size to display them
+	// extract the data from each method and instert it into the output stream
+	for (int i = 0; i < newFlights.size(); i++) 
 	{
 		outputStream << newFlights[i].getFlightNumber() << " " << newFlights[i].getPlaneId() << " ";
 		outputStream << newFlights[i].getOrigin() << " " << newFlights[i].getDestination() << " ";
@@ -93,6 +96,7 @@ void FlightScheduleUtility::writeFile(vector<StorageFlight> &storageFlights,vect
 		outputStream << newFlights[i].getReturnDate() << " " << newFlights[i].getReturnTime();
 		vector<int> passengerIds = newFlights[i].getPassengerIds(); //gets all the newFlights and store them temporarily into the vector 
 		vector<string> passengerNames = newFlights[i].getPassengerNames(); //gets all the passengerNames and store them temporarily into the vector 
+		// extract the passengerIds from each
 		for (int j = 0; j < passengerIds.size(); j++)
 		{
 			outputStream << " " << pipe << " " << passengerIds[j] << " " << passengerNames[j];
