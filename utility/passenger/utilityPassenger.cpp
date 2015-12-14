@@ -69,13 +69,20 @@ void PassengerUtility::populateReadArray(vector<StoragePassenger> &passengers, s
 	}
 
 }
+	//(Format) data[i][0] : passengerId, firstName, lastName 
+	// on each iteration, 
+		// breakdown the passenger info part of the data ^ by space & put it in a vector
+		// breakdown the passegerInfos (['seatNumber, flightNumber', 'seatNumber, flightNumber'] ) by space 
+		//		 and push each data on passenger vector
 
 void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, vector<NewPassenger> &NewPassengers, string path)// function to write to file
 {
 	string pipe = "|";
 	ofstream outputStream;
 	string outputData = "";
+	// write the data from the storagePassenger and newPassenger to text file
 	outputStream.open(path.c_str());
+	// extract the data from each method and instert it into the output stream
 	for (int i = 0; i< storagePassengers.size(); i++)
 	{
 		outputStream << storagePassengers[i].getPassengerNumber() << " " << storagePassengers[i].getFirstName() << " ";
@@ -89,14 +96,16 @@ void PassengerUtility::writeFile(vector<StoragePassenger> &storagePassengers, ve
 	    outputStream << endl;
 
      }
+     // extract the data from each method and instert it into the output stream
    for (int i =0 ; i < NewPassengers.size(); i++)
  {
-	//cout << NewPlanes[i].get_plane_id() << endl;
+
 	outputStream << NewPassengers[i].getPassengerNumber() << " " << NewPassengers[i].getFirstName() << " "; 
 	outputStream << NewPassengers[i].getLastName() << " ";
   
     vector<int> flightNumbers = NewPassengers[i].getFlightNumber(); // adds the new passenger into flight number vector
     vector<string> passengerSeats = NewPassengers[i].getPassengerSeats();// adds the new passenger seat into the passenger seats vector
+    // extract the flightNumbers from each
     for (int j =0; j < flightNumbers.size(); j++)
     {
     	outputStream << " " << pipe << " " << flightNumbers[j] << " " << passengerSeats[i]; // displays the flight number and passenger seats
